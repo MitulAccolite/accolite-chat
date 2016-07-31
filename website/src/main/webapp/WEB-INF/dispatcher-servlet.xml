@@ -17,24 +17,8 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.
         </property>
     </bean>
 
-
-<!--
-
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-
-        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-        <property name="url" value="jdbc:sqlserver://localhost:1433;databaseName=ChatRoom;integratedSecurity=true" />
-        <property name="username" value="sa" />
-        <property name="password" value="accolite" />
-    </bean>
-
--->
-
-
-    <mvc:resources mapping="/css/**" location="WEB-INF/css/"/>
-
+    <mvc:resources mapping="/resources/**" location="/resources/theme1/"
+                   cache-period="31556926"/>
     <mvc:annotation-driven />
-
 
 </beans>

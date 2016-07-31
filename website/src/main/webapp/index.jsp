@@ -11,7 +11,10 @@
     <title>$Title$</title>
   </head>
   <body>
-  hello
-  $END$
+
+  <form action="/login">
+    <input type="submit" value="Click to continue">
+  </form>
+
   </body>
 </html>

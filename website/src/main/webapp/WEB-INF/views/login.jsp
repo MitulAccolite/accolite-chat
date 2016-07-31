@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,27 @@
 
 <title>Login form :: Accolite office chat</title>
 
-<link href="css/login.css" rel="stylesheet">
-<link href="css/metro.css" rel="stylesheet">
-<link href="css/metro-icons.css" rel="stylesheet">
-<link href="css/metro-responsive.css" rel="stylesheet">
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-colors.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-colors.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-icons.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-responsive.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-responsive.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-rtl.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-rtl.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-schemes.css"/>" rel="stylesheet">
+<link href="<c:url value="/resource/css/metro-schemes.min.css"/>" rel="stylesheet">
 
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/metro.js"></script>
-<script src="js/login.js"></script>
+<script src="<c:url value="/resources/js/jquery-2.1.3.min.js"/>"></script>
+<script src="<c:url value="/resources/js/metro.js"/>"></script>
+<script src="<c:url value="/resources/js/login.js"/>"></script>
+<script src="<c:url value="/resources/js/customMetro.js"/>"></script>
+<script src="<c:url value="/resources/js/metro.min.js"/>"></script>
+
+
 </head>
 <body class="bg-darkTeal">
 	<section class="block-shadow">
