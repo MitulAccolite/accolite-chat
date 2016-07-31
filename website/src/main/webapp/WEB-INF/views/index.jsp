@@ -15,14 +15,14 @@
 
 <title>Login form :: Accolite office chat</title>
 
-<link href="css/login.css" rel="stylesheet">
-<link href="css/metro.css" rel="stylesheet">
-<link href="css/metro-icons.css" rel="stylesheet">
-<link href="css/metro-responsive.css" rel="stylesheet">
+<link href="../css/login.css" rel="stylesheet">
+<link href="../css/metro.css" rel="stylesheet">
+<link href="../css/metro-icons.css" rel="stylesheet">
+<link href="../css/metro-responsive.css" rel="stylesheet">
 
-<script src="js/jquery-2.1.3.min.js"></script>
-<script src="js/metro.js"></script>
-<script src="js/login.js"></script>
+<script src="../js/jquery-2.1.3.min.js"></script>
+<script src="../js/metro.js"></script>
+<script src="../js/login.js"></script>
 </head>
 <body class="bg-darkTeal">
 	<section class="block-shadow">
