@@ -10711,19 +10711,19 @@ $.widget( "metro.wizard2" , {
         onFinish: function(page, wiz){
             //<<<user code
             //mobile number validation
-//          var isMobileValid=false;
-//          var elements=$('div.step.active input');
-//          var mobile=$(elements[0]);
-//          if(mobile.val().search("/[^0-9]/")==-1 && mobile.val().length==10){
-//              isMobileValid=true;
-//              markMe(mobile.parent(),"success");
-//          }else{
-//              showHint(mobile, "invalid mobile number");
-//              markMe(mobile.parent(),"error");
-//          }
-//          if(isMobileValid){
+            var isMobileValid=false;
+            var elements=$('div.step.active input');
+            var mobile=$(elements[0]);
+            if(mobile.val().search("/[^0-9]/")==-1 && mobile.val().length==10){
+                isMobileValid=true;
+                markMe(mobile.parent(),"success");
+            }else{
+                showHint(mobile, "invalid mobile number");
+                markMe(mobile.parent(),"error");
+            }
+            if(isMobileValid){
                 registerMe();
-//          }
+            }
             //user code>>>>
         },
         onHelp: function(page, wiz){},

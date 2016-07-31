@@ -106,11 +106,10 @@ data-button-labels='{"help": "?", "prev": "<span class=\"mif-arrow-left\"></span
 					</div>
 				</div>
 				<div class="text-small padding20 bg-grayLighter">
-					Enter your First Name, Middle Name, Last Name and Nick Name. Then press finish.
+					Enter your First Name, Middle Name, Last Name and Nick Name. Then press next.
 				</div>
 			</div>
 		</div>
-		<!-- for contact
 		<div class="step">
 			<div class="step-content">
 				<p class="text-small lowercase no-margin">User Registration</p>
@@ -133,5 +132,4 @@ data-button-labels='{"help": "?", "prev": "<span class=\"mif-arrow-left\"></span
 				</div>
 			</div>
 		</div>
-		-->
 </div>
