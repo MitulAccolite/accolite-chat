@@ -1,14 +1,5 @@
-function notifyOnErrorInput(input){
-	var message = input.data('validateHint');
-	$.Notify({
-		caption: 'Error',
-		content: message,
-		type: 'alert'
-	});
-}
 $( document ).ready(function() {
-	var form = $(".login-form");
-
+    var form = $(".login-form");
     form.css({
         opacity: 1,
         "-webkit-transform": "scale(1)",
@@ -18,7 +9,7 @@ $( document ).ready(function() {
     });
     
     $('.button.register').click(function(){
-    	$("section").load("register.jsp");
-    	$("section").addClass("register");
+        $("section").load("register.jsp");
+        $("section").addClass("register");
     });
 });

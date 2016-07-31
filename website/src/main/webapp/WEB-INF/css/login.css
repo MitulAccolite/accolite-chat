@@ -13,12 +13,12 @@
             transform: scale(.8);
         }
 input {
-	 border-style: solid !important;
+     border-style: solid !important;
 }
 section.register {
             width: 50rem;
             position: fixed;
-            top: 20%;
+            top: 10%;
             left: 20%;
             background-color: #ffffff;
         }
