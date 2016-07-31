@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="accolite-chat:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="accolite-chat-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="accolite-chat:war exploded" />
+    </root>
+  </artifact>
+</component>
