@@ -13,6 +13,9 @@
 <meta name="author" content="Lokesh, Sachin, Diksha and Mitul">
 
 <!-- <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' /> -->
+	<meta name="google-signin-client_id" content="191899389670-7mhigfa0nkc35kvbjv4c1b5i8e9d84am.apps.googleusercontent.com">
+
+
 
 <title>Login form :: Accolite office chat</title>
 
@@ -36,11 +39,11 @@
 <script src="<c:url value="/resources/js/customMetro.js"/>"></script>
 <script src="<c:url value="/resources/js/metro.min.js"/>"></script>
 
-
 </head>
 <body class="bg-darkTeal">
 	<section class="block-shadow">
 		<div class="login-form padding20">
+
 			<form action="chatRoom" method="POST" data-role="validator"
 				data-hint-mode="hint" data-hint-easing="easeOutBounce">
 				<h1 class="text-light">Login to Accolite Chat</h1>

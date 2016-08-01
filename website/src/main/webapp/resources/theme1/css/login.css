@@ -13,7 +13,7 @@
             transform: scale(.8);
         }
 input {
-     border-style: solid !important;
+	 border-style: solid !important;
 }
 section.register {
             width: 50rem;
