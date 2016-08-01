@@ -19,16 +19,16 @@
 <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/metro.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/metro.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-colors.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-colors.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-icons.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-icons.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-responsive.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-responsive.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-rtl.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-rtl.min.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-schemes.css"/>" rel="stylesheet">
-<link href="<c:url value="/resource/css/metro-schemes.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-colors.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-colors.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-icons.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-icons.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-responsive.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-responsive.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-rtl.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-rtl.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-schemes.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/metro-schemes.min.css"/>" rel="stylesheet">
 
 <script src="<c:url value="/resources/js/jquery-2.1.3.min.js"/>"></script>
 <script src="<c:url value="/resources/js/metro.js"/>"></script>
@@ -76,8 +76,10 @@
 				<br /> <br />
 				<div class="form-actions">
 					<button type="submit" class="button primary login">Login</button>
-					<button type="button" class="button link register">Register</button>
 				</div>
+			</form>
+			<form action="register">
+				<button type="submit" class="button link register">Register</button>
 			</form>
 		</div>
 	</section>

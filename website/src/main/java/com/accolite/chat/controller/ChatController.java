@@ -21,5 +21,10 @@ public class ChatController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/register")
+    public ModelAndView register(HttpServletRequest servletRequest) throws Exception {
+        ModelAndView modelAndView = new ModelAndView("register");
+        return modelAndView;
+    }
 
 }

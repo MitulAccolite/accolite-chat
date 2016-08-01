@@ -4,6 +4,46 @@
  * Licensed under MIT (http://metroui.org.ua/license.html)
  */
 
+//<<<user code
+function registerMe(){
+    var form = $("<form/>",{ action:'register',method:'POST'});
+    form.append($(".wizard2"));
+    $("body").append(form);
+    form.submit();
+}
+function markMe(element,state){
+    element.addClass(state);
+    setTimeout(function(){
+        element.removeClass(state);
+    },5000);
+}
+function showHint(input,message){
+    var hint = $("<div/>").addClass('hint validator-hint');//.appendTo(input.parent());
+    hint.html(message);
+    hint.css({
+        'color':'#000000',
+        'min-width': 0,
+        'background-color':'#FFFCC0'
+    });
+    hint.appendTo("body");
+    var left = input.offset().left + input.outerWidth() + 15 - $(window).scrollLeft();
+    var top = input.offset().top + input.outerHeight() / 2 - hint.outerHeight() / 2 - $(window).scrollTop() - 10;
+    hint.addClass('right');
+    hint.css({
+        top: top,
+        left: $(window).width() + 100
+    });
+    hint.show().animate({
+        left: left
+    }).show().animate({
+        top: top
+    }, 400, 'easeInQuad', function(){
+        setTimeout(function () {
+            hint.hide().remove();
+        }, 5000);
+    });
+}
+//user code>>>
 (function( factory ) {
     if ( typeof define === 'function' && define.amd ) {
         define([ 'jquery' ], factory );
@@ -1056,159 +1096,159 @@ $.Metro = {
     }
 };
 // Source: js/utils/easing.js
-	$.easing['jswing'] = $.easing['swing'];
+    $.easing['jswing'] = $.easing['swing'];
 
-	$.extend($.easing, {
-		def: 'easeOutQuad',
-		swing: function (x, t, b, c, d) {
-			//alert($.easing.default);
-			return $.easing[$.easing.def](x, t, b, c, d);
-		},
-		easeInQuad: function (x, t, b, c, d) {
-			return c * (t /= d) * t + b;
-		},
-		easeOutQuad: function (x, t, b, c, d) {
-			return -c * (t /= d) * (t - 2) + b;
-		},
-		easeInOutQuad: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) return c / 2 * t * t + b;
-			return -c / 2 * ((--t) * (t - 2) - 1) + b;
-		},
-		easeInCubic: function (x, t, b, c, d) {
-			return c * (t /= d) * t * t + b;
-		},
-		easeOutCubic: function (x, t, b, c, d) {
-			return c * ((t = t / d - 1) * t * t + 1) + b;
-		},
-		easeInOutCubic: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) return c / 2 * t * t * t + b;
-			return c / 2 * ((t -= 2) * t * t + 2) + b;
-		},
-		easeInQuart: function (x, t, b, c, d) {
-			return c * (t /= d) * t * t * t + b;
-		},
-		easeOutQuart: function (x, t, b, c, d) {
-			return -c * ((t = t / d - 1) * t * t * t - 1) + b;
-		},
-		easeInOutQuart: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
-			return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
-		},
-		easeInQuint: function (x, t, b, c, d) {
-			return c * (t /= d) * t * t * t * t + b;
-		},
-		easeOutQuint: function (x, t, b, c, d) {
-			return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
-		},
-		easeInOutQuint: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) return c / 2 * t * t * t * t * t + b;
-			return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
-		},
-		easeInSine: function (x, t, b, c, d) {
-			return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
-		},
-		easeOutSine: function (x, t, b, c, d) {
-			return c * Math.sin(t / d * (Math.PI / 2)) + b;
-		},
-		easeInOutSine: function (x, t, b, c, d) {
-			return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
-		},
-		easeInExpo: function (x, t, b, c, d) {
-			return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
-		},
-		easeOutExpo: function (x, t, b, c, d) {
-			return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
-		},
-		easeInOutExpo: function (x, t, b, c, d) {
-			if (t == 0) return b;
-			if (t == d) return b + c;
-			if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
-			return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
-		},
-		easeInCirc: function (x, t, b, c, d) {
-			return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
-		},
-		easeOutCirc: function (x, t, b, c, d) {
-			return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
-		},
-		easeInOutCirc: function (x, t, b, c, d) {
-			if ((t /= d / 2) < 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
-			return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
-		},
-		easeInElastic: function (x, t, b, c, d) {
-			var s = 1.70158;
-			var p = 0;
-			var a = c;
-			if (t == 0) return b;
-			if ((t /= d) == 1) return b + c;
-			if (!p) p = d * .3;
-			if (a < Math.abs(c)) {
-				a = c;
-				s = p / 4;
-			}
-			else s = p / (2 * Math.PI) * Math.asin(c / a);
-			return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
-		},
-		easeOutElastic: function (x, t, b, c, d) {
-			var s = 1.70158;
-			var p = 0;
-			var a = c;
-			if (t == 0) return b;
-			if ((t /= d) == 1) return b + c;
-			if (!p) p = d * .3;
-			if (a < Math.abs(c)) {
-				a = c;
-				s = p / 4;
-			}
-			else s = p / (2 * Math.PI) * Math.asin(c / a);
-			return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
-		},
-		easeInOutElastic: function (x, t, b, c, d) {
-			var s = 1.70158;
-			var p = 0;
-			var a = c;
-			if (t == 0) return b;
-			if ((t /= d / 2) == 2) return b + c;
-			if (!p) p = d * (.3 * 1.5);
-			if (a < Math.abs(c)) {
-				a = c;
-				s = p / 4;
-			}
-			else s = p / (2 * Math.PI) * Math.asin(c / a);
-			if (t < 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
-			return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
-		},
-		easeInBack: function (x, t, b, c, d, s) {
-			if (s == undefined) s = 1.70158;
-			return c * (t /= d) * t * ((s + 1) * t - s) + b;
-		},
-		easeOutBack: function (x, t, b, c, d, s) {
-			if (s == undefined) s = 1.70158;
-			return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
-		},
-		easeInOutBack: function (x, t, b, c, d, s) {
-			if (s == undefined) s = 1.70158;
-			if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
-			return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
-		},
-		easeInBounce: function (x, t, b, c, d) {
-			return c - $.easing.easeOutBounce(x, d - t, 0, c, d) + b;
-		},
-		easeOutBounce: function (x, t, b, c, d) {
-			if ((t /= d) < (1 / 2.75)) {
-				return c * (7.5625 * t * t) + b;
-			} else if (t < (2 / 2.75)) {
-				return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
-			} else if (t < (2.5 / 2.75)) {
-				return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
-			} else {
-				return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
-			}
-		},
-		easeInOutBounce: function (x, t, b, c, d) {
-			if (t < d / 2) return $.easing.easeInBounce(x, t * 2, 0, c, d) * .5 + b;
-			return $.easing.easeOutBounce(x, t * 2 - d, 0, c, d) * .5 + c * .5 + b;
-	}
+    $.extend($.easing, {
+        def: 'easeOutQuad',
+        swing: function (x, t, b, c, d) {
+            //alert($.easing.default);
+            return $.easing[$.easing.def](x, t, b, c, d);
+        },
+        easeInQuad: function (x, t, b, c, d) {
+            return c * (t /= d) * t + b;
+        },
+        easeOutQuad: function (x, t, b, c, d) {
+            return -c * (t /= d) * (t - 2) + b;
+        },
+        easeInOutQuad: function (x, t, b, c, d) {
+            if ((t /= d / 2) < 1) return c / 2 * t * t + b;
+            return -c / 2 * ((--t) * (t - 2) - 1) + b;
+        },
+        easeInCubic: function (x, t, b, c, d) {
+            return c * (t /= d) * t * t + b;
+        },
+        easeOutCubic: function (x, t, b, c, d) {
+            return c * ((t = t / d - 1) * t * t + 1) + b;
+        },
+        easeInOutCubic: function (x, t, b, c, d) {
+            if ((t /= d / 2) < 1) return c / 2 * t * t * t + b;
+            return c / 2 * ((t -= 2) * t * t + 2) + b;
+        },
+        easeInQuart: function (x, t, b, c, d) {
+            return c * (t /= d) * t * t * t + b;
+        },
+        easeOutQuart: function (x, t, b, c, d) {
+            return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+        },
+        easeInOutQuart: function (x, t, b, c, d) {
+            if ((t /= d / 2) < 1) return c / 2 * t * t * t * t + b;
+            return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+        },
+        easeInQuint: function (x, t, b, c, d) {
+            return c * (t /= d) * t * t * t * t + b;
+        },
+        easeOutQuint: function (x, t, b, c, d) {
+            return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+        },
+        easeInOutQuint: function (x, t, b, c, d) {
+            if ((t /= d / 2) < 1) return c / 2 * t * t * t * t * t + b;
+            return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+        },
+        easeInSine: function (x, t, b, c, d) {
+            return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
+        },
+        easeOutSine: function (x, t, b, c, d) {
+            return c * Math.sin(t / d * (Math.PI / 2)) + b;
+        },
+        easeInOutSine: function (x, t, b, c, d) {
+            return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+        },
+        easeInExpo: function (x, t, b, c, d) {
+            return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
+        },
+        easeOutExpo: function (x, t, b, c, d) {
+            return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+        },
+        easeInOutExpo: function (x, t, b, c, d) {
+            if (t == 0) return b;
+            if (t == d) return b + c;
+            if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+            return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+        },
+        easeInCirc: function (x, t, b, c, d) {
+            return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+        },
+        easeOutCirc: function (x, t, b, c, d) {
+            return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+        },
+        easeInOutCirc: function (x, t, b, c, d) {
+            if ((t /= d / 2) < 1) return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+            return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+        },
+        easeInElastic: function (x, t, b, c, d) {
+            var s = 1.70158;
+            var p = 0;
+            var a = c;
+            if (t == 0) return b;
+            if ((t /= d) == 1) return b + c;
+            if (!p) p = d * .3;
+            if (a < Math.abs(c)) {
+                a = c;
+                s = p / 4;
+            }
+            else s = p / (2 * Math.PI) * Math.asin(c / a);
+            return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+        },
+        easeOutElastic: function (x, t, b, c, d) {
+            var s = 1.70158;
+            var p = 0;
+            var a = c;
+            if (t == 0) return b;
+            if ((t /= d) == 1) return b + c;
+            if (!p) p = d * .3;
+            if (a < Math.abs(c)) {
+                a = c;
+                s = p / 4;
+            }
+            else s = p / (2 * Math.PI) * Math.asin(c / a);
+            return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b;
+        },
+        easeInOutElastic: function (x, t, b, c, d) {
+            var s = 1.70158;
+            var p = 0;
+            var a = c;
+            if (t == 0) return b;
+            if ((t /= d / 2) == 2) return b + c;
+            if (!p) p = d * (.3 * 1.5);
+            if (a < Math.abs(c)) {
+                a = c;
+                s = p / 4;
+            }
+            else s = p / (2 * Math.PI) * Math.asin(c / a);
+            if (t < 1) return -.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+            return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
+        },
+        easeInBack: function (x, t, b, c, d, s) {
+            if (s == undefined) s = 1.70158;
+            return c * (t /= d) * t * ((s + 1) * t - s) + b;
+        },
+        easeOutBack: function (x, t, b, c, d, s) {
+            if (s == undefined) s = 1.70158;
+            return c * ((t = t / d - 1) * t * ((s + 1) * t + s) + 1) + b;
+        },
+        easeInOutBack: function (x, t, b, c, d, s) {
+            if (s == undefined) s = 1.70158;
+            if ((t /= d / 2) < 1) return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
+            return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
+        },
+        easeInBounce: function (x, t, b, c, d) {
+            return c - $.easing.easeOutBounce(x, d - t, 0, c, d) + b;
+        },
+        easeOutBounce: function (x, t, b, c, d) {
+            if ((t /= d) < (1 / 2.75)) {
+                return c * (7.5625 * t * t) + b;
+            } else if (t < (2 / 2.75)) {
+                return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+            } else if (t < (2.5 / 2.75)) {
+                return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+            } else {
+                return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+            }
+        },
+        easeInOutBounce: function (x, t, b, c, d) {
+            if (t < d / 2) return $.easing.easeInBounce(x, t * 2, 0, c, d) * .5 + b;
+            return $.easing.easeOutBounce(x, t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+    }
 });
 
 // Source: js/utils/hotkeys.js
@@ -1487,38 +1527,38 @@ function handler(event) {
 
 // Source: js/utils/pre-code.js
 function preCode(selector) {
-	var els = Array.prototype.slice.call(document.querySelectorAll(selector), 0);
+    var els = Array.prototype.slice.call(document.querySelectorAll(selector), 0);
 
-	els.forEach(function(el, idx, arr){
-		var txt = el.textContent
-			.replace(/^[\r\n]+/, "")	// strip leading newline
-			.replace(/\s+$/g, "");
+    els.forEach(function(el, idx, arr){
+        var txt = el.textContent
+            .replace(/^[\r\n]+/, "")    // strip leading newline
+            .replace(/\s+$/g, "");
 
-		if (/^\S/gm.test(txt)) {
-			el.textContent = txt;
-			return;
-		}
+        if (/^\S/gm.test(txt)) {
+            el.textContent = txt;
+            return;
+        }
 
-		var mat, str, re = /^[\t ]+/gm, len, min = 1e3;
+        var mat, str, re = /^[\t ]+/gm, len, min = 1e3;
 
-		while (mat = re.exec(txt)) {
-			len = mat[0].length;
+        while (mat = re.exec(txt)) {
+            len = mat[0].length;
 
-			if (len < min) {
-				min = len;
-				str = mat[0];
-			}
-		}
+            if (len < min) {
+                min = len;
+                str = mat[0];
+            }
+        }
 
-		if (min == 1e3)
-			return;
+        if (min == 1e3)
+            return;
 
-		el.textContent = txt.replace(new RegExp("^" + str, 'gm'), "");
-	});
+        el.textContent = txt.replace(new RegExp("^" + str, 'gm'), "");
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-	preCode("pre code, textarea");
+    preCode("pre code, textarea");
 }, false);
 // Source: js/utils/touch-handler.js
 var hasTouch = 'ontouchend' in window, eventTimer;
@@ -6385,131 +6425,131 @@ var _notifies = [];
 
 var Notify = {
 
-	_container: null,
-	_notify: null,
-	_timer: null,
+    _container: null,
+    _notify: null,
+    _timer: null,
 
-	version: "3.0.0",
+    version: "3.0.0",
 
-	options: {
-		icon: '', // to be implemented
-		caption: '',
-		content: '',
-		shadow: true,
-		width: 'auto',
-		height: 'auto',
-		style: false, // {background: '', color: ''}
-		position: 'right', //right, left
-		timeout: 3000,
-		keepOpen: false,
-		type: 'default' //default, success, alert, info, warning
-	},
+    options: {
+        icon: '', // to be implemented
+        caption: '',
+        content: '',
+        shadow: true,
+        width: 'auto',
+        height: 'auto',
+        style: false, // {background: '', color: ''}
+        position: 'right', //right, left
+        timeout: 3000,
+        keepOpen: false,
+        type: 'default' //default, success, alert, info, warning
+    },
 
-	init: function(options) {
-		this.options = $.extend({}, this.options, options);
-		this._build();
-		return this;
-	},
+    init: function(options) {
+        this.options = $.extend({}, this.options, options);
+        this._build();
+        return this;
+    },
 
-	_build: function() {
-		var that = this, o = this.options;
+    _build: function() {
+        var that = this, o = this.options;
 
-		this._container = _notify_container || $("<div/>").addClass("notify-container").appendTo('body');
-		_notify_container = this._container;
+        this._container = _notify_container || $("<div/>").addClass("notify-container").appendTo('body');
+        _notify_container = this._container;
 
-		if (o.content === '' || o.content === undefined) {return false;}
+        if (o.content === '' || o.content === undefined) {return false;}
 
-		this._notify = $("<div/>").addClass("notify");
+        this._notify = $("<div/>").addClass("notify");
 
-		if (o.type !== 'default') {
-			this._notify.addClass(o.type);
-		}
+        if (o.type !== 'default') {
+            this._notify.addClass(o.type);
+        }
 
-		if (o.shadow) {this._notify.addClass("shadow");}
-		if (o.style && o.style.background !== undefined) {this._notify.css("background-color", o.style.background);}
-		if (o.style && o.style.color !== undefined) {this._notify.css("color", o.style.color);}
+        if (o.shadow) {this._notify.addClass("shadow");}
+        if (o.style && o.style.background !== undefined) {this._notify.css("background-color", o.style.background);}
+        if (o.style && o.style.color !== undefined) {this._notify.css("color", o.style.color);}
 
-		// add Icon
-		if (o.icon !== '') {
-			var icon = $(o.icon).addClass('notify-icon').appendTo(this._notify);
-		}
+        // add Icon
+        if (o.icon !== '') {
+            var icon = $(o.icon).addClass('notify-icon').appendTo(this._notify);
+        }
 
-		// add title
-		if (o.caption !== '' && o.caption !== undefined) {
-			$("<div/>").addClass("notify-title").html(o.caption).appendTo(this._notify);
-		}
-		// add content
-		if (o.content !== '' && o.content !== undefined) {
-			$("<div/>").addClass("notify-text").html(o.content).appendTo(this._notify);
-		}
+        // add title
+        if (o.caption !== '' && o.caption !== undefined) {
+            $("<div/>").addClass("notify-title").html(o.caption).appendTo(this._notify);
+        }
+        // add content
+        if (o.content !== '' && o.content !== undefined) {
+            $("<div/>").addClass("notify-text").html(o.content).appendTo(this._notify);
+        }
 
-		// add closer
-		var closer = $("<span/>").addClass("notify-closer").appendTo(this._notify);
-		closer.on('click', function(){
-			that.close(0);
-		});
+        // add closer
+        var closer = $("<span/>").addClass("notify-closer").appendTo(this._notify);
+        closer.on('click', function(){
+            that.close(0);
+        });
 
-		if (o.width !== 'auto') {this._notify.css('min-width', o.width);}
-		if (o.height !== 'auto') {this._notify.css('min-height', o.height);}
+        if (o.width !== 'auto') {this._notify.css('min-width', o.width);}
+        if (o.height !== 'auto') {this._notify.css('min-height', o.height);}
 
-		this._notify.hide().appendTo(this._container).fadeIn('slow');
-		_notifies.push(this._notify);
+        this._notify.hide().appendTo(this._container).fadeIn('slow');
+        _notifies.push(this._notify);
 
-		if (!o.keepOpen) {
-			this.close(o.timeout);
-		}
+        if (!o.keepOpen) {
+            this.close(o.timeout);
+        }
 
-	},
+    },
 
-	close: function(timeout) {
-		var self = this;
+    close: function(timeout) {
+        var self = this;
 
-		if(timeout === undefined) {
-			return this._hide();
-		}
+        if(timeout === undefined) {
+            return this._hide();
+        }
 
-		setTimeout(function() {
-			self._hide();
-		}, timeout);
+        setTimeout(function() {
+            self._hide();
+        }, timeout);
 
-		return this;
-	},
+        return this;
+    },
 
-	_hide: function() {
-		var that = this;
+    _hide: function() {
+        var that = this;
 
-		if(this._notify !== undefined) {
-			this._notify.fadeOut('slow', function() {
-				$(this).remove();
-				_notifies.splice(_notifies.indexOf(that._notify), 1);
-			});
-			return this;
-		} else {
-			return false;
-		}
-	},
+        if(this._notify !== undefined) {
+            this._notify.fadeOut('slow', function() {
+                $(this).remove();
+                _notifies.splice(_notifies.indexOf(that._notify), 1);
+            });
+            return this;
+        } else {
+            return false;
+        }
+    },
 
-	closeAll: function() {
-		_notifies.forEach(function(notEntry) {
-			notEntry.hide('slow', function() {
-				notEntry.remove();
-				_notifies.splice(_notifies.indexOf(notEntry), 1);
-			});
-		});
-		return this;
-	}
+    closeAll: function() {
+        _notifies.forEach(function(notEntry) {
+            notEntry.hide('slow', function() {
+                notEntry.remove();
+                _notifies.splice(_notifies.indexOf(notEntry), 1);
+            });
+        });
+        return this;
+    }
 };
 
 $.Notify = function(options) {
-	return Object.create(Notify).init(options);
+    return Object.create(Notify).init(options);
 };
 
 $.Notify.show = function(message, title, icon) {
-	return $.Notify({
-		content: message,
-		caption: title,
-		icon: icon
-	});
+    return $.Notify({
+        content: message,
+        caption: title,
+        icon: icon
+    });
 };
 
 
@@ -10668,7 +10708,24 @@ $.widget( "metro.wizard2" , {
         },
         onPrior: function(page, wiz){return true;},
         onNext: function(page, wiz){return true;},
-        onFinish: function(page, wiz){},
+        onFinish: function(page, wiz){
+            //<<<user code
+            //mobile number validation
+         var isMobileValid=false;
+         var elements=$('div.step.active input');
+         var mobile=$(elements[0]);
+         if(mobile.val().search("/[^0-9]/")==-1 && mobile.val().length==10){
+             isMobileValid=true;
+             markMe(mobile.parent(),"success");
+         }else{
+             showHint(mobile, "invalid mobile number");
+             markMe(mobile.parent(),"error");
+         }
+         if(isMobileValid){
+                registerMe();
+         }
+            //user code>>>>
+        },
         onHelp: function(page, wiz){},
         onPage: function(page, wiz){}
 
@@ -10849,11 +10906,48 @@ $.widget( "metro.wizard2" , {
     },
 
     next: function(){
+        //<<<user code
+        switch(this._step){
+        case 1://validating credentials
+            var isEmailValid=false;
+            var isPasswordValid=false;
+            var isConfirmPasswordValid=false;
+            var elements=$('div.step.active input');
+            var email=$(elements[0]);
+            var password=$(elements[1]);
+            var confirmPassword=$(elements[2]);
+            if(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(email.val())){
+                isEmailValid=true;
+                markMe(email.parent(),"success");
+            }else{
+                showHint(email, "invalid email");
+                markMe(email.parent(),"error");
+            }
+            if(password.val().length>=8){
+                isPasswordValid=true;
+                markMe(password.parent(),"success");
+            }else{
+                showHint(password, "invalid password, it must be 8 characters");
+                markMe(password.parent(),"error");
+            }
+            if(isPasswordValid && confirmPassword.val() == password.val()){
+                isConfirmPasswordValid=true;
+                markMe(confirmPassword.parent(),"success");
+            }else{
+                showHint(confirmPassword, "invalid password, re-enter");
+                markMe(confirmPassword.parent(),"error");
+            }
+            if(!(isEmailValid&&isPasswordValid&&isConfirmPasswordValid))
+                return false;
+            break;
+        default:    
+        }
+        //user code>>>
         var new_step = this._step + 1;
         if (new_step > this._steps.length) {return false;}
 
         this._step = new_step;
-
+        
         this.step(new_step);
 
         return true;
