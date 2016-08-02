@@ -9,7 +9,7 @@ $( document ).ready(function() {
     });
     
     $('.button.register').click(function(){
-    	$("section").load("register.jsp");
+    	$("section").load("register");
     	$("section").addClass("register");
     });
 });

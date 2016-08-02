@@ -16,5 +16,6 @@ public interface UserDaoInterface {
     public User findUserByNickname(String nickname);
     public void updateUserUsingId(int userID, String fname, String lname, String mname, String email, String nickname);
     public void setUserInActive(int userID, boolean activeState);
+    public User findUserByEmail(String email);
 
 }

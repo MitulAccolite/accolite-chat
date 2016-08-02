@@ -3,6 +3,7 @@ package com.accolite.chat.dao;
 import com.accolite.chat.dao_interface.LoginCredentialsDaoInterface;
 import com.accolite.chat.database_handler.DatabaseManager;
 import com.accolite.chat.model.LoginCredentials;
+import com.accolite.chat.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -70,15 +71,16 @@ public class LoginCredentialsDao implements LoginCredentialsDaoInterface {
         return resultList;
     }
 
-    public boolean verifyCredentials(String username, String password) {
+    public LoginCredentials verifyCredentials(String username, String password) {
         session.getSessionFactory().openSession();
         Query q = session.createQuery("From LoginCredentials where username = ? and password = ?");
         q.setString(0,username);
         q.setString(1,password);
-        int loginCredentials = q.list().size();
-        if(loginCredentials>0){
-            return true;
+        LoginCredentials user = (LoginCredentials) q.list().get(0);
+        //int user =  q.list().size();
+        if(user!=null){
+            return user;
         }
-        return false;
+        return null;
     }
 }

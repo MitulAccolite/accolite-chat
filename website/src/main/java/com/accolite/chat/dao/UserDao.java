@@ -47,6 +47,15 @@ public class UserDao implements UserDaoInterface {
         return result;
     }
 
+    public User findUserByEmail(String email) {
+        session.getSessionFactory().openSession();
+        Query q = session.createQuery("From User where email = ?");
+        q.setString(0, email);
+        User result = (User) q.list().get(0);
+        return result;
+    }
+
+
     public List<User> showAllUsers() {
         session = databaseManager.getSessionFactory().openSession();
         Query q = session.createQuery("From User");

@@ -15,5 +15,11 @@ Chat Room Appears Here
 
 Username : ${username}
 Password : ${password}
+
+Details :
+Name : ${user.firstName}
+LastName : ${user.lastName}
+NickName : ${user.nickName}
+Email : ${user.email}
 </body>
 </html>

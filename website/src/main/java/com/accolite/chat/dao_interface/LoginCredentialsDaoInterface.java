@@ -1,6 +1,7 @@
 package com.accolite.chat.dao_interface;
 
 import com.accolite.chat.model.LoginCredentials;
+import com.accolite.chat.model.User;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface LoginCredentialsDaoInterface {
     public void updateUserName(int userID, String username);
     public void addUser(LoginCredentials loginCredentials);
     public List<LoginCredentials> showAllCredentials();
-    public boolean verifyCredentials(String username, String password);
+    public LoginCredentials verifyCredentials(String username, String password);
 
 }
