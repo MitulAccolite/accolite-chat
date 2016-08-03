@@ -28,7 +28,7 @@
 <body class="bg-darkTeal">
 <section class="block-shadow">
 	<div class="login-form padding20">
-		<form action="chatRoom" method="POST" data-role="validator"
+		<form action="/validate" method="POST" data-role="validator"
 			  data-hint-mode="hint" data-hint-easing="easeOutBounce">
 			<h1 class="text-light">Login to Accolite Chat</h1>
 			<hr class="thin" />

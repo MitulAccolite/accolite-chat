@@ -1,3 +1,4 @@
+<%@ taglib prefix="commandName" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Mitul Kapoor
@@ -21,5 +22,11 @@ Name : ${user.firstName}
 LastName : ${user.lastName}
 NickName : ${user.nickName}
 Email : ${user.email}
+
+<form action="/profileView">
+    <input type="hidden" value="${user.email}" name="user">
+    <input type="submit" value="View Profile"/>
+</form>
+
 </body>
 </html>

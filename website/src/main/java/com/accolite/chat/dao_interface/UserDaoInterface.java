@@ -17,5 +17,7 @@ public interface UserDaoInterface {
     public void updateUserUsingId(int userID, String fname, String lname, String mname, String email, String nickname);
     public void setUserInActive(int userID, boolean activeState);
     public User findUserByEmail(String email);
+    public int getUserId(String email);
+    public User allGroupsForUser(String username);
 
 }

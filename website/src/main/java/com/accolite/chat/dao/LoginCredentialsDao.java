@@ -19,7 +19,7 @@ public class LoginCredentialsDao implements LoginCredentialsDaoInterface {
     private Session session;
     private DatabaseManager databaseManager;
 
-    public LoginCredentialsDao(){
+    public LoginCredentialsDao() {
         databaseManager = new DatabaseManager();
         session = databaseManager.getSessionFactory().openSession();
     }
@@ -27,16 +27,16 @@ public class LoginCredentialsDao implements LoginCredentialsDaoInterface {
     public void updateUserPassword(int userID, String password) {
         session.getSessionFactory().openSession();
         Transaction tx = null;
-        try{
+        try {
             tx = session.beginTransaction();
-            LoginCredentials loginCredentials = (LoginCredentials) session.get(LoginCredentials.class,userID);
+            LoginCredentials loginCredentials = (LoginCredentials) session.get(LoginCredentials.class, userID);
             loginCredentials.setPassword(password);
             session.update(loginCredentials);
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -44,16 +44,16 @@ public class LoginCredentialsDao implements LoginCredentialsDaoInterface {
     public void updateUserName(int userID, String username) {
         session.getSessionFactory().openSession();
         Transaction tx = null;
-        try{
+        try {
             tx = session.beginTransaction();
-            LoginCredentials loginCredentials = (LoginCredentials) session.get(LoginCredentials.class,userID);
+            LoginCredentials loginCredentials = (LoginCredentials) session.get(LoginCredentials.class, userID);
             loginCredentials.setUsername(username);
             session.update(loginCredentials);
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
@@ -74,13 +74,14 @@ public class LoginCredentialsDao implements LoginCredentialsDaoInterface {
     public LoginCredentials verifyCredentials(String username, String password) {
         session.getSessionFactory().openSession();
         Query q = session.createQuery("From LoginCredentials where username = ? and password = ?");
-        q.setString(0,username);
-        q.setString(1,password);
-        LoginCredentials user = (LoginCredentials) q.list().get(0);
+        q.setString(0, username);
+        q.setString(1, password);
+        List user = (List<LoginCredentials>) q.list();
         //int user =  q.list().size();
-        if(user!=null){
-            return user;
+        if(user.size()>0){
+            return (LoginCredentials) user.get(0);
         }
         return null;
     }
+
 }

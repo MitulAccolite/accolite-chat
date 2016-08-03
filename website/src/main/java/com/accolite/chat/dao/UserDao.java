@@ -2,6 +2,7 @@ package com.accolite.chat.dao;
 
 import com.accolite.chat.dao_interface.UserDaoInterface;
 import com.accolite.chat.database_handler.DatabaseManager;
+import com.accolite.chat.model.Group;
 import com.accolite.chat.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -51,6 +52,22 @@ public class UserDao implements UserDaoInterface {
         session.getSessionFactory().openSession();
         Query q = session.createQuery("From User where email = ?");
         q.setString(0, email);
+        User result = (User) q.list().get(0);
+        return result;
+    }
+
+    public int getUserId(String email) {
+        session.getSessionFactory().openSession();
+        Query q = session.createQuery("From User where email = ?");
+        q.setString(0, email);
+        User result = (User) q.list().get(0);
+        return result.getId();
+    }
+
+    public User allGroupsForUser(String username) {
+        session.getSessionFactory().openSession();
+        Query q = session.createQuery("From User where email = ?");
+        q.setString(0, username);
         User result = (User) q.list().get(0);
         return result;
     }
