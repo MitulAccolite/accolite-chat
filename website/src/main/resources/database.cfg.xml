@@ -20,13 +20,13 @@
         <property name="connection.pool_size">10</property>
         <property name="current_session_context_class">thread</property>
 
-        <mapping class="com.accolite.chat.model.Group" />
-        <mapping class="com.accolite.chat.model.Group_user" />
-        <mapping class="com.accolite.chat.model.LoginCredentials" />
+        <mapping class="com.accolite.chat.model.ChatGroup" />
+      <!--  <mapping class="com.accolite.chat.model.GroupUsers" />-->
+        <mapping class="com.accolite.chat.model.Credential" />
         <mapping class="com.accolite.chat.model.Message" />
         <mapping class="com.accolite.chat.model.Notification" />
         <mapping class="com.accolite.chat.model.User" />
-        <mapping class="com.accolite.chat.model.UserRole" />
+        <mapping class="com.accolite.chat.model.Role" />
 
         <!-- <mapping resource="com/mkyong/user/DBUser.hbm.xml"></mapping> -->
     </session-factory>

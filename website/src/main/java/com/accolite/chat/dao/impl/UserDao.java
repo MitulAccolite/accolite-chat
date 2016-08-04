@@ -2,7 +2,8 @@ package com.accolite.chat.dao.impl;
 
 import com.accolite.chat.dao.IUserDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
-import com.accolite.chat.model.Group;
+import com.accolite.chat.model.Credential;
+import com.accolite.chat.model.Role;
 import com.accolite.chat.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -19,10 +20,41 @@ public class UserDao implements IUserDao {
     private Session session;
     private DatabaseManager databaseManager;
 
-    public UserDao(){
+    public UserDao() {
 
         databaseManager = new DatabaseManager();
         session = databaseManager.getSessionFactory().openSession();
+    }
+
+
+    public void add(User user) {
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+    }
+
+    public void add (Credential credential){
+        session.beginTransaction();
+        session.save(credential);
+        session.getTransaction().commit();
+    }
+
+
+
+
+    public void add(Role role) {
+        session.beginTransaction();
+        session.save(role);
+        session.getTransaction().commit();
+    }
+
+
+    public Role findRoleByName(String role) {
+        session.getSessionFactory().openSession();
+        Query q = session.createQuery("From Role where role = ?");
+        q.setString(0, role);
+        Role result = (Role) q.list().get(0);
+        return result;
     }
 
 
@@ -88,12 +120,12 @@ public class UserDao implements IUserDao {
         return result;
     }
 
-    public void updateUserUsingId(int userID, String fname,String lname,String mname,String email,String nickname) {
+    public void updateUserUsingId(int userID, String fname, String lname, String mname, String email, String nickname) {
         session.getSessionFactory().openSession();
         Transaction tx = null;
-        try{
+        try {
             tx = session.beginTransaction();
-            User user1 = (User) session.get(User.class,userID);
+            User user1 = (User) session.get(User.class, userID);
             user1.setFirstName(fname);
             user1.setLastName(lname);
             user1.setMiddleName(mname);
@@ -101,27 +133,27 @@ public class UserDao implements IUserDao {
             user1.setNickName(nickname);
             session.update(user1);
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
 
-    public void setUserInActive(int userID,boolean activeState) {
+    public void setUserInActive(int userID, boolean activeState) {
         session.getSessionFactory().openSession();
         Transaction tx = null;
-        try{
+        try {
             tx = session.beginTransaction();
-            User user1 = (User) session.get(User.class,userID);
+            User user1 = (User) session.get(User.class, userID);
             user1.setActive(activeState);
             session.update(user1);
             tx.commit();
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }

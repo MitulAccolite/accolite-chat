@@ -1,7 +1,12 @@
 package com.accolite.chat.model;
 
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by Mitul Kapoor on 7/30/2016.
@@ -12,93 +17,72 @@ public class Message {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String message;
-    private int userID;
     private Date created;
-    private int groupID;
-    private boolean isArchived;
-
     @ManyToOne
     private User user;
-
     @ManyToOne
-    private Group group;
+    private ChatGroup chatGroup;
 
-    public Message(){
-
+    public Message() {
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public Message(String msg, int userid, Date created, int groupID, boolean isArchived, User user){
-        this.message = msg;
-        this.userID = userid;
-        this.created = created;
-        this.groupID = groupID;
-        this.isArchived = isArchived;
-        this.user = user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setMessage(String message) {
+    public Message(String message, Date created, User user) {
         this.message = message;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public void setCreated(Date created) {
         this.created = created;
+        this.user = user;
     }
 
-    public void setGroupID(int groupID) {
-        this.groupID = groupID;
-    }
 
-    public void setArchived(boolean archived) {
-        isArchived = archived;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public int getUserID() {
-        return userID;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Date getCreated() {
         return created;
     }
 
-    public int getGroupID() {
-        return groupID;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
-    public boolean isArchived() {
-        return isArchived;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public ChatGroup getChatGroup() {
+        return chatGroup;
+    }
+
+    public void setChatGroup(ChatGroup chatGroup) {
+        this.chatGroup = chatGroup;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", created=" + created +
+                ", user=" + user +
+                ", chatGroup=" + chatGroup +
+                '}';
     }
 }

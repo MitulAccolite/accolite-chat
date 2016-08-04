@@ -1,9 +1,320 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="database.cfg.xml/Hibernate" uuid="8b160100-eab1-4ab1-b821-9062bfedb27a">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="database.cfg.xml/Hibernate" uuid="da3b148a-0f49-4bbc-bd49-fd6c82688816">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  <data-source name="MySQL - officechat@localhost" uuid="54c10d54-9285-4488-a064-06902ceb49e6">
+    <database-info product="MySQL" version="5.7.13-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="officechat">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="chatroom"/>
+      <schema id="3" name="employee"/>
+      <schema id="4" name="information_schema"/>
+      <schema id="5" name="jndi"/>
+      <schema id="6" name="mysql"/>
+      <schema id="7" name="performance_schema"/>
+      <schema id="8" name="pollingtest"/>
+      <schema id="9" name="sakila"/>
+      <schema id="10" name="sys"/>
+      <schema id="11" name="temporary"/>
+      <schema id="12" name="voting"/>
+      <schema id="13" name="world"/>
+      <table id="14" parent="1" name="chatgroup"/>
+      <table id="15" parent="1" name="chatgroup_message"/>
+      <table id="16" parent="1" name="chatgroup_user"/>
+      <table id="17" parent="1" name="credential"/>
+      <table id="18" parent="1" name="message"/>
+      <table id="19" parent="1" name="notification"/>
+      <table id="20" parent="1" name="role"/>
+      <table id="21" parent="1" name="user"/>
+      <table id="22" parent="1" name="user_message"/>
+      <table id="23" parent="1" name="user_role"/>
+      <column id="24" parent="14" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="25" parent="14" name="created">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="26" parent="14" name="name">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="27" parent="14" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="28" parent="15" name="ChatGroup_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="29" parent="15" name="messages_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="30" parent="15" name="FKF32A518F32B5217F">
+        <columns>messages_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="31" parent="15" name="FKF32A518F8A05C644">
+        <columns>ChatGroup_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="32" parent="15" name="messages_id">
+        <columns>messages_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="33" parent="15" name="messages_id">
+        <columns>messages_id</columns>
+        <underlying-index>messages_id</underlying-index>
+      </key>
+      <foreign-key id="34" parent="15" name="FKF32A518F8A05C644">
+        <columns>ChatGroup_id</columns>
+        <ref-key>~.chatgroup.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="35" parent="15" name="FKF32A518F32B5217F">
+        <columns>messages_id</columns>
+        <ref-key>~.message.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="36" parent="16" name="chatGroups_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="37" parent="16" name="users_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="38" parent="16" name="FK276C474339934A33">
+        <columns>users_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="39" parent="16" name="FK276C474356D49B1F">
+        <columns>chatGroups_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="40" parent="16" name="FK276C474356D49B1F">
+        <columns>chatGroups_id</columns>
+        <ref-key>~.chatgroup.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="41" parent="16" name="FK276C474339934A33">
+        <columns>users_id</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="42" parent="17" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="43" parent="17" name="created">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="44" parent="17" name="password">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="45" parent="17" name="updated">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="46" parent="17" name="username">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="47" parent="17" name="user_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="48" parent="17" name="FK4E15C47740A27190">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="49" parent="17" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="50" parent="17" name="FK4E15C47740A27190">
+        <columns>user_id</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="51" parent="18" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="52" parent="18" name="created">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="53" parent="18" name="message">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="54" parent="18" name="chatGroup_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="55" parent="18" name="user_id">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="56" parent="18" name="FK9C2397E740A27190">
+        <columns>user_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="57" parent="18" name="FK9C2397E78A05C644">
+        <columns>chatGroup_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="58" parent="18" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="59" parent="18" name="FK9C2397E78A05C644">
+        <columns>chatGroup_id</columns>
+        <ref-key>~.chatgroup.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="60" parent="18" name="FK9C2397E740A27190">
+        <columns>user_id</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="61" parent="19" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="62" parent="19" name="details">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="63" parent="19" name="email">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <key id="64" parent="19" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="65" parent="20" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="66" parent="20" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)|0</data-type>
+        <default-expression>&apos;USER&apos;</default-expression>
+      </column>
+      <key id="67" parent="20" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="68" parent="21" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="69" parent="21" name="created">
+        <data-type>datetime|0</data-type>
+      </column>
+      <column id="70" parent="21" name="email">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="71" parent="21" name="firstName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="72" parent="21" name="isActive">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)|0</data-type>
+      </column>
+      <column id="73" parent="21" name="lastName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="74" parent="21" name="middleName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="75" parent="21" name="nickName">
+        <data-type>varchar(255)|0</data-type>
+      </column>
+      <column id="76" parent="21" name="updated">
+        <data-type>datetime|0</data-type>
+      </column>
+      <key id="77" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="78" parent="22" name="User_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="79" parent="22" name="messages_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="80" parent="22" name="FKDE839332B5217F">
+        <columns>messages_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="81" parent="22" name="FKDE839340A27190">
+        <columns>User_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="82" parent="22" name="messages_id">
+        <columns>messages_id</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="83" parent="22" name="messages_id">
+        <columns>messages_id</columns>
+        <underlying-index>messages_id</underlying-index>
+      </key>
+      <foreign-key id="84" parent="22" name="FKDE839340A27190">
+        <columns>User_id</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="85" parent="22" name="FKDE839332B5217F">
+        <columns>messages_id</columns>
+        <ref-key>~.message.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="86" parent="23" name="users_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="87" parent="23" name="roles_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="88" parent="23" name="FK8B9F886A39902609">
+        <columns>roles_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="89" parent="23" name="FK8B9F886A39934A33">
+        <columns>users_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="90" parent="23" name="FK8B9F886A39934A33">
+        <columns>users_id</columns>
+        <ref-key>~.user.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="91" parent="23" name="FK8B9F886A39902609">
+        <columns>roles_id</columns>
+        <ref-key>~.role.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
   </data-source>
 </component>

@@ -2,7 +2,6 @@ package com.accolite.chat.controller;
 
 import com.accolite.chat.dao.impl.LoginCredentialsDao;
 import com.accolite.chat.dao.impl.UserDao;
-import com.accolite.chat.dao.UserRoleDao;
 import com.accolite.chat.model.*;
 import manager.ChatManager;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ import java.util.List;
 @Controller
 public class ChatController {
 
-    private List<User> activeUsers = new ArrayList<User>();
+    /*private List<User> activeUsers = new ArrayList<User>();
 
     @RequestMapping(value = "/authenticate")
     public ModelAndView authenticate(HttpServletRequest servletRequest) throws Exception {
@@ -125,6 +124,6 @@ public class ChatController {
     public ModelAndView error(HttpServletRequest servletRequest) throws Exception {
         ModelAndView modelAndView = new ModelAndView("error404");
         return modelAndView;
-    }
+    }*/
 
 }

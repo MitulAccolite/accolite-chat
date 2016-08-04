@@ -1,6 +1,6 @@
 package com.accolite.chat.dao;
 
-import com.accolite.chat.model.UserRole;
+import com.accolite.chat.model.Role;
 
 import java.util.List;
 
@@ -8,8 +8,9 @@ import java.util.List;
  * Created by Mitul Kapoor on 7/30/2016.
  */
 public interface IUserRoleDao {
-    public UserRole getUserRole(int userID);
-    public void addUserRole(int userID, String role);
-    public List<UserRole> showAllUserRoles();
+    Role getUserRole(int userID);
 
+    void addUserRole(int userID, String role);
+
+    List<Role> showAllUserRoles();
 }

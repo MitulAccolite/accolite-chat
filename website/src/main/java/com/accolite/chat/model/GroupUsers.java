@@ -6,17 +6,17 @@ import java.util.Date;
  * Created by Mitul Kapoor on 7/30/2016.
  */
 
-public class Group_user {
+public class GroupUsers {
 
     private int groupID;
     private int userID;
     private Date joined;
 
-    public Group_user(){
+    public GroupUsers() {
 
     }
 
-    public Group_user(int id,int user,Date date){
+    public GroupUsers(int id, int user, Date date) {
         this.groupID = id;
         this.userID = user;
         this.joined = date;

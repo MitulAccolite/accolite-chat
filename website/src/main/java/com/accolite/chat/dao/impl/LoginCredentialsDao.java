@@ -2,7 +2,6 @@ package com.accolite.chat.dao.impl;
 
 import com.accolite.chat.dao.ILoginCredentialsDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
-import com.accolite.chat.model.LoginCredentials;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -14,15 +13,17 @@ import java.util.List;
 /**
  * Created by Mitul Kapoor on 7/30/2016.
  */
-public class LoginCredentialsDao implements ILoginCredentialsDao {
+public class LoginCredentialsDao/* implements ILoginCredentialsDao*/ {
 
-    private Session session;
+   /* private Session session;
     private DatabaseManager databaseManager;
 
     public LoginCredentialsDao() {
         databaseManager = new DatabaseManager();
         session = databaseManager.getSessionFactory().openSession();
     }
+
+
 
     public void updateUserPassword(int userID, String password) {
         session.getSessionFactory().openSession();
@@ -83,5 +84,5 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
         }
         return null;
     }
-
+*/
 }

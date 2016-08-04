@@ -2,9 +2,11 @@ package com.accolite.chat.dao.impl;
 
 import com.accolite.chat.dao.IUserRoleDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
-import com.accolite.chat.model.UserRole;
-import org.hibernate.Query;
+import com.accolite.chat.model.Role;
+
 import org.hibernate.Session;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
@@ -17,30 +19,33 @@ public class UserRoleDao implements IUserRoleDao {
     private Session session;
     private DatabaseManager databaseManager;
 
-    public UserRoleDao(){
+    public UserRoleDao() {
         databaseManager = new DatabaseManager();
         session = databaseManager.getSessionFactory().openSession();
     }
 
-    public UserRole getUserRole(int userID) {
-        session.getSessionFactory().openSession();
+    public Role getUserRole(int userID) {
+      /*  session.getSessionFactory().openSession();
         Query q = session.createQuery("From UserRole where userID= ?");
         q.setInteger(0, userID);
         UserRole result = (UserRole) q.list().get(0);
-        return result;
+        return result;*/
+
+        throw new NotImplementedException();
     }
 
     public void addUserRole(int userID, String role) {
-        UserRole userRole = new UserRole(userID,role);
+      /*  UserRole userRole = new UserRole(userID, role);
         session.beginTransaction();
         session.save(userRole);
-        session.getTransaction().commit();
+        session.getTransaction().commit();*/
     }
 
-    public List<UserRole> showAllUserRoles() {
-        session.getSessionFactory().openSession();
+    public List<Role> showAllUserRoles() {
+       /* session.getSessionFactory().openSession();
         Query q = session.createQuery("From UserRole");
         List<UserRole> result = q.list();
-        return result;
+        return result;*/
+        throw new NotImplementedException();
     }
 }

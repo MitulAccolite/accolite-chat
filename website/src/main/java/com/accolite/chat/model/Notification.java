@@ -11,44 +11,41 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Notification {
-
     @Id
     @GeneratedValue
-    private int id;
+    private Integer id;
     private String email;
-    private String notificationDetails;
+    private String details;
 
-
-    public Notification(){
-
-    }
-
-    public Notification(String email,String notificationDetails){
+    public Notification(String email, String details) {
         this.email = email;
-        this.notificationDetails = notificationDetails;
+        this.details = details;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Notification() {
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setNotificationDetails(String notificationDetails) {
-        this.notificationDetails = notificationDetails;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getNotificationDetails() {
-        return notificationDetails;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 }

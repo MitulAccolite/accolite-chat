@@ -12,7 +12,7 @@ public class RegistrationForm {
     private String nickName;
     private String number;
 
-    public RegistrationForm(){
+    public RegistrationForm() {
     }
 
 

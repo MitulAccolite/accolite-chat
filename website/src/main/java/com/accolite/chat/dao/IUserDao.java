@@ -1,5 +1,7 @@
 package com.accolite.chat.dao;
 
+import com.accolite.chat.model.Credential;
+import com.accolite.chat.model.Role;
 import com.accolite.chat.model.User;
 
 import java.util.List;
@@ -9,20 +11,31 @@ import java.util.List;
  */
 public interface IUserDao {
 
-    void addNewUser(User user);
+    void add(Credential credential);
 
-    User findUserByUserId(int userID);
+    void add(User user);
+
+    void add(Role role);
+
+    Role findRoleByName(String role);
+
+/*
+    User findUserByNickname(String nickname);
+
+    User findUserByEmail(String email);
+
+
+    //TODO: needs to be reviewd
+
+    User findUserByUserId(int userId);
 
     User findUserByUsername(String username);
 
     List<User> showAllUsers();
 
-    User findUserByNickname(String nickname);
-
     void updateUserUsingId(int userID, String fname, String lname, String mname, String email, String nickname);
 
-    void setUserInActive(int userID, boolean activeState);
+    void setUserInActive(int userID, boolean activeState);*/
 
-    User findUserByEmail(String email);
 
 }

@@ -8,11 +8,20 @@ import java.util.List;
  * Created by Mitul Kapoor on 7/30/2016.
  */
 public interface IMessageDao {
-    public void sendMessage(Message message);
-    public void archieveMessage(int messageId, boolean archive);
-    public List<Message> showAllGroupMessages(int groupID);
-    public List<Message> showMessagesToPersonInGroup(int userID, int groupID);
-    public List<Message> showAllUserMessages(int userID);
-    public List<Message> showArchivedMessages();
+
+    void save(Message message);
+
+
+ /*   void sendMessage(Message message);
+
+    void archieveMessage(int messageId, boolean archive);
+
+    List<Message> showAllGroupMessages(int groupID);
+
+    List<Message> showMessagesToPersonInGroup(int userID, int groupID);
+
+    List<Message> showAllUserMessages(int userID);
+
+    List<Message> showArchivedMessages();*/
 
 }

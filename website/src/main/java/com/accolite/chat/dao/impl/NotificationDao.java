@@ -3,6 +3,7 @@ package com.accolite.chat.dao.impl;
 import com.accolite.chat.dao.INotificationDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
 import com.accolite.chat.model.Notification;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -16,7 +17,7 @@ public class NotificationDao implements INotificationDao {
     private Session session;
     private DatabaseManager databaseManager;
 
-    public NotificationDao(){
+    public NotificationDao() {
 
         databaseManager = new DatabaseManager();
         session = databaseManager.getSessionFactory().openSession();
@@ -32,16 +33,16 @@ public class NotificationDao implements INotificationDao {
     public List<Notification> showNotificationsSendToId(String email) {
         session = databaseManager.getSessionFactory().openSession();
         Query q = session.createQuery("From Notification where email =?");
-        q.setString(0,email);
+        q.setString(0, email);
         List<Notification> resultList = q.list();
         return resultList;
     }
 
-    public void postNotification(List<String> emails,String details) {
-        for(int i=0;i<emails.size();i++){
+    public void postNotification(List<String> emails, String details) {
+        for (int i = 0; i < emails.size(); i++) {
             Notification notification = new Notification();
             notification.setEmail(emails.get(i));
-            notification.setNotificationDetails(details);
+            notification.setDetails(details);
             session.beginTransaction();
             session.save(notification);
             session.getTransaction().commit();
