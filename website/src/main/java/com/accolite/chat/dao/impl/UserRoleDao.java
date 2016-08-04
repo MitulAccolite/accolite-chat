@@ -1,7 +1,7 @@
-package com.accolite.chat.dao;
+package com.accolite.chat.dao.impl;
 
-import com.accolite.chat.dao_interface.UserRoleDaoInterface;
-import com.accolite.chat.database_handler.DatabaseManager;
+import com.accolite.chat.dao.IUserRoleDao;
+import com.accolite.chat.dao.manager.DatabaseManager;
 import com.accolite.chat.model.UserRole;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Mitul Kapoor on 7/30/2016.
  */
-public class UserRoleDao implements UserRoleDaoInterface {
+public class UserRoleDao implements IUserRoleDao {
 
 
     private Session session;

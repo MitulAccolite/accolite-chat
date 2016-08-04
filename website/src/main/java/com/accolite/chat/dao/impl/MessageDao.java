@@ -1,7 +1,7 @@
-package com.accolite.chat.dao;
+package com.accolite.chat.dao.impl;
 
-import com.accolite.chat.dao_interface.MessageDaoInterface;
-import com.accolite.chat.database_handler.DatabaseManager;
+import com.accolite.chat.dao.IMessageDao;
+import com.accolite.chat.dao.manager.DatabaseManager;
 import com.accolite.chat.model.Message;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Mitul Kapoor on 7/30/2016.
  */
-public class MessageDao implements MessageDaoInterface {
+public class MessageDao implements IMessageDao {
 
     private Session session;
     private DatabaseManager databaseManager;

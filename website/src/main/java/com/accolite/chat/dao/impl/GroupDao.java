@@ -1,7 +1,7 @@
-package com.accolite.chat.dao;
+package com.accolite.chat.dao.impl;
 
-import com.accolite.chat.dao_interface.GroupDaoInterface;
-import com.accolite.chat.database_handler.DatabaseManager;
+import com.accolite.chat.dao.IGroupDao;
+import com.accolite.chat.dao.manager.DatabaseManager;
 import com.accolite.chat.model.Group;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by Mitul Kapoor on 7/30/2016.
  */
-public class GroupDao implements GroupDaoInterface {
+public class GroupDao implements IGroupDao {
 
     private Session session;
     private DatabaseManager databaseManager;

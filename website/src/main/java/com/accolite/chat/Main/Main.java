@@ -1,6 +1,11 @@
 package com.accolite.chat.Main;
 
-import com.accolite.chat.dao.*;
+import com.accolite.chat.dao.impl.GroupDao;
+import com.accolite.chat.dao.impl.LoginCredentialsDao;
+import com.accolite.chat.dao.impl.MessageDao;
+import com.accolite.chat.dao.impl.NotificationDao;
+import com.accolite.chat.dao.impl.UserDao;
+import com.accolite.chat.dao.impl.UserRoleDao;
 import com.accolite.chat.model.User;
 
 /**

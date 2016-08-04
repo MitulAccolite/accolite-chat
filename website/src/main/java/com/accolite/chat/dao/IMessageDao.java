@@ -1,4 +1,4 @@
-package com.accolite.chat.dao_interface;
+package com.accolite.chat.dao;
 
 import com.accolite.chat.model.Message;
 
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Mitul Kapoor on 7/30/2016.
  */
-public interface MessageDaoInterface {
+public interface IMessageDao {
     public void sendMessage(Message message);
     public void archieveMessage(int messageId, boolean archive);
     public List<Message> showAllGroupMessages(int groupID);

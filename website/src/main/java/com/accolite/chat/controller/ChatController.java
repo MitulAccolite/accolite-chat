@@ -1,7 +1,7 @@
 package com.accolite.chat.controller;
 
-import com.accolite.chat.dao.LoginCredentialsDao;
-import com.accolite.chat.dao.UserDao;
+import com.accolite.chat.dao.impl.LoginCredentialsDao;
+import com.accolite.chat.dao.impl.UserDao;
 import com.accolite.chat.dao.UserRoleDao;
 import com.accolite.chat.model.*;
 import manager.ChatManager;

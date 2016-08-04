@@ -1,4 +1,4 @@
-package com.accolite.chat.database_handler;
+package com.accolite.chat.dao.manager;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
