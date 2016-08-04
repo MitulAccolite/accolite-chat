@@ -13,4 +13,5 @@ public interface IUserRoleDao {
     void addUserRole(int userID, String role);
 
     List<Role> showAllUserRoles();
+
 }

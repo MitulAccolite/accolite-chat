@@ -1,4 +1,4 @@
-<%@ page import="com.accolite.chat.model.Group" %>
+<%@ page import="com.accolite.chat.model.User" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -68,15 +68,14 @@
 <%--
             Groups : ${user.email}
 --%>
-<%--
 
-           <c:forEach items="${user.groups}" var="m">
+
+           <c:forEach items="${user.chatGroups}" var="m">
             <div class="heading">
                 <img class="icon" src="/resources/theme1/img/placeholder.jpg">
-                <span class="title">${m.groupName}</span>
+                <span class="title">${m.name}</span>
             </div>
             </c:forEach>
---%>
 
         </div>
     </div>

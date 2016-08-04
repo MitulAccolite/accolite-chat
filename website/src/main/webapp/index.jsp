@@ -76,7 +76,7 @@
                         <h1 class="brand-heading">CHAT APPLICATION</h1>
                         <p class="intro-text">Chat Portal to Join, Share and Chat
                             <br>For Accolite Employees</p>
-						<form action="/authenticate">
+						<form action="/getstarted">
                         <input type="submit" value="Get Started" style=" font-weight: bolder ;background-color: white" class="btn btn-default btn-lg">
 						<br/>
                         </form>

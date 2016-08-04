@@ -11,6 +11,7 @@
     <title>Error 403 - Forbidden Page</title>
 </head>
 <body>
+<img src="/resources/theme1/img/4038.jpg" alt="Access Restricted"/>
 
 </body>
 </html>
