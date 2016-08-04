@@ -1,32 +1,740 @@
-<%@ taglib prefix="commandName" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Mitul Kapoor
-  Date: 7/31/2016
-  Time: 11:05 PM
+  User: Lokesh K
+  Date: 02 Aug 2016
+  Time: 5:07 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Accolite Chat Room</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description"
+          content="Accolite office chat, a sleek, intuitive, and powerful framework for faster and easier communication.">
+    <meta name="keywords"
+          content="Accolite, chat, office-chat, message, connect, team, communicate">
+    <meta name="author" content="Lokesh, Sachin, Diksha and Mitul">
+
+    <!-- <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' /> -->
+
+    <title>Chat Room :: Accolite office chat</title>
+
+    <link href="<c:url value="/resources/theme1/css/metro.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/metro-icons.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/metro-responsive.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/chat_room.css" />" rel="stylesheet">
+
+    <script src="<c:url value="/resources/theme1/js/jquery-2.1.3.min.js"/>"></script>
+    <script src="<c:url value="/resources/theme1/js/metro.js"/>"></script>
 </head>
 <body>
-Chat Room Appears Here
+<header>
+    <div class="app-bar" data-role="appbar">
 
-Username : ${username}
-Password : ${password}
+        <a class="app-bar-element branding">Accolite Chat</a>
 
-Details :
-Name : ${user.firstName}
-LastName : ${user.lastName}
-NickName : ${user.nickName}
-Email : ${user.email}
+        <ul class="app-bar-menu">
+            <li><a href="">Home</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="">Help</a></li>
+        </ul>
+    </div>
+</header>
 
-<form action="/profileView">
-    <input type="hidden" value="${user.email}" name="user">
-    <input type="submit" value="View Profile"/>
-</form>
+<section>
+    <div class="tile dont-transform grouplist bg-white" data-role="tile">
+        <h4>Groups</h4>
+        <ul>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li>
+            <li>
+                <div class="gsettings">
+                    <span></span>
+                </div>
+                <a href="grouplink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                    <span class="gname">Public</span>
+                    <span class="gloader"></span>
+                </a>
+            </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li><li>
+            <div class="gsettings">
+                <span></span>
+            </div>
+            <a href="grouplink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">Public</span>
+                <span class="gloader"></span>
+            </a>
+        </li>
 
+        </ul>
+    </div>
+    <div class="chatarea">
+        <div class="tile dont-transform chatbox bg-white" data-role="tile">
+            <ul>
+                <li class="day-divider">
+                    <abbr>today</abbr>
+                </li>
+                <li class="msg-body">
+                    <div class="dp-container">
+                        <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                    </div>
+                    <div class="msg-container">
+                        <div class="msg-timestamp">
+                            <abbr title="Today" >12:00pm</abbr>
+                        </div>
+                        <strong>
+                            <a href="#">User NickName</a>
+                        </strong>
+                        <div class="message">
+                            <p>Neruppuda! Nerunguda!</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="msg-body">
+                    <div class="dp-container">
+                        <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                    </div>
+                    <div class="msg-container">
+                        <div class="msg-timestamp">
+                            <abbr title="Today" >12:00pm</abbr>
+                        </div>
+                        <strong>
+                            <a href="#">User NickName</a>
+                        </strong>
+                        <div class="message">
+                            <p>Neruppuda! Nerunguda!</p>
+                        </div>
+                    </div>
+                </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li><li class="msg-body">
+                <div class="dp-container">
+                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                </div>
+                <div class="msg-container">
+                    <div class="msg-timestamp">
+                        <abbr title="Today" >12:00pm</abbr>
+                    </div>
+                    <strong>
+                        <a href="#">User NickName</a>
+                    </strong>
+                    <div class="message">
+                        <p>Neruppuda! Nerunguda!</p>
+                    </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+        <div class="tile dont-transform chatinput bg-white" data-role="tile">
+            <div class="input-control textarea full-size">
+                <textarea class="chattext" placeholder="Type a message ..."></textarea>
+                <button class="sender" title="send"><span class="mif-pencil"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="tile dont-transform userlist bg-white" data-role="tile">
+        <div class="userpan">
+            <ul>
+            <li>
+                <a href="userlink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                    <span class="nickname">Kabali</span>
+                    <span class="onlinestatus online"></span>
+                </a>
+            </li>
+            <li>
+                <a href="userlink">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                    <span class="nickname">Kabali</span>
+                    <span class="onlinestatus online"></span>
+                </a>
+            </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li><li>
+            <a href="userlink">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                <span class="nickname">Kabali</span>
+                <span class="onlinestatus online"></span>
+            </a>
+        </li>
+        </ul>
+        </div>
+        <div class="userquery">
+            <input type="text" placeholder="search">
+            <span class="mif-search"></span>
+        </div>
+    </div>
+</section>
+<input type="hidden" value="1" id="userID">
+<input type="hidden" value="1" id="groupID">
+    <script src="<c:url value="/resources/theme1/js/chat_room.js"/>"></script>
 </body>
 </html>

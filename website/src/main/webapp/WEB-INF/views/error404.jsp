@@ -1,12 +1,15 @@
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
-<title>Error 404</title>
+<style>
+  html{
+    background: url("/resources/theme1/img/40425.jpg")
+    no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+</style>
 
-<head>
-  <link href="<c:url value="/resources/css/404.css"/>" rel="stylesheet">
-</head>
-<body>
-<img src="/resources/img/40425.png" alt="Error 404"/>
-</body>
 </html>

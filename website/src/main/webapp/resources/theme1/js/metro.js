@@ -6,7 +6,7 @@
 
 //<<<user code
 function registerMe(){
-	var form = $("<form/>",{ action:'registered_user',method:'POST',commandName:"user"});
+	var form = $("<form/>",{ action:'register',method:'POST'});
 	form.append($(".wizard2"));
 	$("body").append(form);
 	form.submit();
@@ -8779,9 +8779,11 @@ $.widget( "metro.tile" , {
             } else if (X > dim.w*1/3 && X<dim.w*2/3 && Y > dim.h/2) {
                 transform = 'bottom';
             }
-
-            $(this).addClass("tile-transform-"+transform);
-
+            //<<<user code
+            if(!$(this).hasClass("dont-transform"))
+                $(this).addClass("tile-transform-"+transform);
+            //user code>>>
+            // $(this).addClass("tile-transform-"+transform);
             //console.log(transform);
 
             if (element[0].tagName === 'A' && element.attr('href')) {

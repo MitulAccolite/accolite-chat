@@ -1,0 +1,200 @@
+body{
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
+
+section {
+    position: fixed;
+    margin: 0.25% 0.25%;
+    width: 100%;
+}
+
+.chatarea {
+    float: left;
+    width: 52%;
+    margin: 5px;
+}
+
+.chatbox {
+    width: 100%;
+    height: 75.8vh;
+    margin: 0px;
+    overflow: auto;
+}
+
+.userlist {
+    width: 22%;
+    height: 89vh;
+}
+
+.grouplist {
+    width: 23%;
+    height: 89vh;
+}
+
+.chatinput{
+    width: 100%;
+    height: 12.5vh;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.chatinput .textarea {
+    margin: 0px;
+    height: 100%;
+}
+
+.chatinput textarea {
+    margin: 0px;
+    min-height: 100%;
+    width: 100%;
+    color: #3D3D3D;
+    resize: none;
+    border: none;
+}
+
+.tile:hover {
+    outline: none !important;
+}
+
+.sender {
+    background-color: #0072c6;
+    position: relative;
+    top: -8vh;
+    left: 92.5%;
+    color: white;
+    font-size: 1.8em;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+}
+
+.sender:focus {
+    outline:0;
+}
+
+.day-divider {
+    border-top: 1px solid #e8e8e8;
+    color: #bec2c9;
+    font-size: 11px;
+    margin: 17px 20px 2px;
+    text-align: center;
+}
+
+.day-divider abbr {
+    background-color: #fff;
+    padding: 0 5px;
+    position: relative;
+    top: -12px;
+}
+
+.dp-container {
+    float: left;
+    margin-right: 5px;
+}
+
+.msg-container {
+    float: left;
+    width: 94%;
+}
+
+.msg-container p {
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+.msg-timestamp {
+    float: right;
+    margin-right: 5px;
+}
+
+.msg-timestamp abbr {
+    color: #bec2c9;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+abbr {
+    border-bottom: none !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+.chatbox li, .grouplist li, .userlist li{
+    list-style-type: none;
+    clear: both;
+}
+
+.grouplist{
+    overflow: auto;
+}
+
+.grouplist h4 {
+    color: #3D3D3D;
+    margin-left: 25px;
+}
+
+.gsettings {
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    position: relative;
+    top: 2px;
+    color: gray;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 10px;
+}
+
+.grouplist li *, .userlist li * {
+    vertical-align: middle;
+}
+
+.gloader, .onlinestatus{
+    float: right;
+    margin-right: 25px;
+    top: 10px;
+    position: relative;
+}
+
+.gname, .nickname {
+    margin-left: 5px;
+}
+
+.grouplist li a, .userlist li a {
+    color: initial;
+}
+
+.onlinestatus.online {
+    background-image: url(../img/online.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+}
+
+.userlist li {
+    margin-bottom: 5px;
+}
+
+.userpan {
+    height: 96%;
+    overflow: auto;
+}
+
+.userquery span {
+    float: left;
+    position: relative;
+    top: -3vh;
+    left: 4px;
+    color: gray;
+}
+
+.userquery input {
+    width: 100%;
+    padding-left: 24px;
+}
