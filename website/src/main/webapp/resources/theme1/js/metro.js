@@ -6,7 +6,7 @@
 
 //<<<user code
 function registerMe(){
-	var form = $("<form/>",{ action:'register',method:'POST'});
+	var form = $("<form/>",{ action:'registered_user',method:'POST'});
 	form.append($(".wizard2"));
 	$("body").append(form);
 	form.submit();

@@ -1,3 +1,9 @@
+<%@ page import="manager.ChatManager" %>
+<%@ page import="com.accolite.chat.model.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Set" %>
+<%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Lokesh K
@@ -46,261 +52,24 @@
     </div>
 </header>
 
+
 <section>
     <div class="tile dont-transform grouplist bg-white" data-role="tile">
         <h4>Groups</h4>
         <ul>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li>
-            <li>
-                <div class="gsettings">
-                    <span></span>
-                </div>
-                <a href="grouplink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                    <span class="gname">Public</span>
-                    <span class="gloader"></span>
-                </a>
-            </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li><li>
-            <div class="gsettings">
-                <span></span>
-            </div>
-            <a href="grouplink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">Public</span>
-                <span class="gloader"></span>
-            </a>
-        </li>
+<d:forEach items="${user.chatGroups}" var="groups">
+                    <%--<d:out value="${groups.name}"/>--%>
+                <li>
+                    <div class="gsettings">
+                        <span></span>
+                    </div>
+                    <a href="${groups.name}">
+                        <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                        <span class="gname">${groups.name}</span>
+                        <span class="gloader"></span>
+                    </a>
+                </li>
+            </d:forEach>
 
         </ul>
     </div>
@@ -608,123 +377,44 @@
     </div>
     <div class="tile dont-transform userlist bg-white" data-role="tile">
         <div class="userpan">
+
+            <%
+                Set<User> activeUsers = ChatManager.getActiveUsers();
+
+    %>
+
+
+<%--
+            <a href="${groups.name}">
+                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                <span class="gname">${groups.name}</span>
+                <span class="gloader"></span>
+            </a>
+            --%>
+            <%--<d:choose>
+                <d:when test="${empty user}">
+                    I see!  You don't have a name.. well.. Hello no name
+                </d:when>
+                <d:otherwise>
+                    <%@ include file="response.jsp" %>
+                </d:otherwise>
+            </d:choose>--%>
+
             <ul>
-            <li>
-                <a href="userlink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                    <span class="nickname">Kabali</span>
-                    <span class="onlinestatus online"></span>
-                </a>
-            </li>
-            <li>
-                <a href="userlink">
-                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                    <span class="nickname">Kabali</span>
-                    <span class="onlinestatus online"></span>
-                </a>
-            </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li><li>
-            <a href="userlink">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                <span class="nickname">Kabali</span>
-                <span class="onlinestatus online"></span>
-            </a>
-        </li>
+                <% for(User user1 : activeUsers){%>
+                <d:set var="userId" value="<%=user1.getId()%>"></d:set>
+                    <d:if test="${user.id ne userId}">
+                        <li>
+                            <a href="userlink">
+
+                                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+
+                                <span class="nickname"><%=user1.getNickName() %></span>
+                                <span class="onlinestatus online"></span>
+                            </a>
+                        </li>
+                    </d:if>
+                <% }%>
         </ul>
         </div>
         <div class="userquery">
