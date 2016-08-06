@@ -405,17 +405,15 @@
                 <d:set var="userId" value="<%=user1.getId()%>"></d:set>
                     <d:if test="${user.id ne userId}">
                         <li>
-                            <a href="userlink">
-
+                            <a href="profileView?user=<%=user1.getEmail()%>">
                                 <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-
                                 <span class="nickname"><%=user1.getNickName() %></span>
                                 <span class="onlinestatus online"></span>
                             </a>
                         </li>
-                    </d:if>
+                </d:if>
                 <% }%>
-        </ul>
+            </ul>
         </div>
         <div class="userquery">
             <input type="text" placeholder="search">

@@ -93,6 +93,8 @@ public class UserDao implements IUserDao {
         Query q = session.createQuery("From User where email = ?");
         q.setString(0, email);
         User result = (User) q.list().get(0);
+
+
         return result.getId();
     }
 

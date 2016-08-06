@@ -229,7 +229,9 @@ public class ChatController {
            HttpServletRequest servletRequest) throws Exception {
         ModelAndView modelAndView = new ModelAndView("profile_view");
         UserDao userDao = new UserDao();
+        System.out.println("user email : " + username);
         User user = userDao.findUserByEmail(username);
+
         modelAndView.addObject("user",user);
         System.out.println("Profile view : ");
         System.out.println("user name : " + user.getFirstName());
