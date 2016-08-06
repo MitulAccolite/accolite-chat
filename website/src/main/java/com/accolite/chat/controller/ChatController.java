@@ -1,5 +1,8 @@
 package com.accolite.chat.controller;
 
+import com.accolite.chat.dao.ILoginCredentialsDao;
+import com.accolite.chat.dao.IUserDao;
+import com.accolite.chat.dao.IUserRoleDao;
 import com.accolite.chat.dao.impl.ChatGroupDao;
 import com.accolite.chat.dao.impl.LoginCredentialsDao;
 import com.accolite.chat.dao.impl.UserDao;
@@ -176,10 +179,10 @@ public class ChatController {
         UserDao userDao = new UserDao();
         userDao.addNewUser(user);
 
-        LoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
+        ILoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
         loginCredentialsDao.addUser(credential);
 
-        UserRoleDao userRoleDao = new UserRoleDao();
+        IUserRoleDao userRoleDao = new UserRoleDao();
         userRoleDao.addUserRole(userDao.getUserId(email), Roles.USER);
 
         return modelAndView;
@@ -192,7 +195,6 @@ public class ChatController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/validate")
     public ModelAndView validateUserCredentials(
            @RequestParam("user_login")String username,
@@ -203,7 +205,7 @@ public class ChatController {
         System.out.println("password : " + password);
 
         ModelAndView modelAndView  = null;
-        LoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
+        ILoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
         Credential user = loginCredentialsDao.verifyCredentials(username, password);
         if (user==null) {
             return new ModelAndView("error404");
@@ -212,29 +214,40 @@ public class ChatController {
         System.out.println("Username : " + user.getUsername());
         System.out.println("Password : " + user.getPassword());
         modelAndView = new ModelAndView("chat_room");
-        UserDao userDao = new UserDao();
+        IUserDao userDao = new UserDao();
         User user1 = userDao.findUserByEmail(user.getUsername());
 
-        servletRequest.setAttribute("user",user1);
+        servletRequest.getSession().setAttribute("user",user1);
         modelAndView.addObject("user", user1);
         ChatManager.setUserOnline(user1);
 
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/profileView")
     public ModelAndView profileView(
            @RequestParam("user")String username,
            HttpServletRequest servletRequest) throws Exception {
+
+        if(servletRequest.getSession().getAttribute("user")==null){
+            return new ModelAndView("error403");
+        }
+
         ModelAndView modelAndView = new ModelAndView("profile_view");
-        UserDao userDao = new UserDao();
+        IUserDao userDao = new UserDao();
         System.out.println("user email : " + username);
         User user = userDao.findUserByEmail(username);
 
         modelAndView.addObject("user",user);
         System.out.println("Profile view : ");
         System.out.println("user name : " + user.getFirstName());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/logout")
+    public ModelAndView logout(HttpServletRequest servletRequest){
+        ModelAndView modelAndView = new ModelAndView("index");
+        servletRequest.getSession().removeAttribute("user");
         return modelAndView;
     }
 

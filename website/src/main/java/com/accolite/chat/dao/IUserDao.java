@@ -18,6 +18,7 @@ public interface IUserDao {
     void add(Role role);
 
     Role findRoleByName(String role);
+    User findUserByEmail(String email);
 
 /*
     User findUserByNickname(String nickname);

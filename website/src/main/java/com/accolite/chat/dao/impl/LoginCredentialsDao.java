@@ -22,38 +22,37 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
 
     public LoginCredentialsDao() {
         databaseManager = new DatabaseManager();
-        session = databaseManager.getSessionFactory().openSession();
     }
 
     public void updateUserPassword(int userID, String password) {
-        session.getSessionFactory().openSession();
         Transaction tx = null;
         try {
+            session = databaseManager.getSessionFactory().openSession();
             tx = session.beginTransaction();
             Credential loginCredentials = (Credential) session.get(Credential.class, userID);
             loginCredentials.setPassword(password);
             session.update(loginCredentials);
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
+            session.getTransaction().rollback();
+            throw e;
         } finally {
             session.close();
         }
     }
 
     public void updateUserName(int userID, String username) {
-        session.getSessionFactory().openSession();
         Transaction tx = null;
         try {
+            session = databaseManager.getSessionFactory().openSession();
             tx = session.beginTransaction();
             Credential loginCredentials = (Credential) session.get(Credential.class, userID);
             loginCredentials.setUsername(username);
             session.update(loginCredentials);
             tx.commit();
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
+            session.getTransaction().rollback();
+            throw e;
         } finally {
             session.close();
         }
@@ -61,29 +60,52 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
     }
 
     public void addUser(Credential credential) {
-        session.beginTransaction();
-        session.save(credential);
-        session.getTransaction().commit();
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(credential);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
     }
 
     public List<Credential> showAllCredentials() {
-        session = databaseManager.getSessionFactory().openSession();
-        Query q = session.createQuery("From Credential ");
-        List<Credential> resultList = q.list();
-        return resultList;
+        List<Credential> resultList = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            Query q = session.createQuery("From Credential ");
+            resultList = q.list();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+            return resultList;
+        }
     }
 
     public Credential verifyCredentials(String username, String password) {
-        session.getSessionFactory().openSession();
-        Query q = session.createQuery("From Credential where username = ? and password = ?");
-        q.setString(0, username);
-        q.setString(1, password);
-        List user = (List<Credential>) q.list();
-        //int user =  q.list().size();
-        if(user.size()>0){
-            return (Credential) user.get(0);
+        List<Credential> user = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            Query q = session.createQuery("From Credential where username = ? and password = ?");
+            q.setString(0, username);
+            q.setString(1, password);
+            user = (List<Credential>) q.list();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+            if(user.size()>0){
+                return (Credential) user.get(0);
+            }
+            return null;
         }
-        return null;
     }
 
    /* private Session session;

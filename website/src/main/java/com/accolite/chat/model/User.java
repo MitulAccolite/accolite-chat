@@ -1,5 +1,7 @@
 package com.accolite.chat.model;
 
+import com.accolite.chat.dao.impl.ChatGroupDao;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.swing.plaf.basic.BasicMenuUI;
 
 /**
  * Created by Mitul Kapoor on 7/30/2016.
@@ -60,6 +63,7 @@ public class User {
         this.email = email;
         this.roles = roles;
         this.credential = credential;
+
     }
 
     public Integer getId() {
@@ -165,5 +169,24 @@ public class User {
 
     public void setCredential(Credential credential) {
         this.credential = credential;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                       "id=" + id +
+                       ", firstName='" + firstName + '\'' +
+                       ", middleName='" + middleName + '\'' +
+                       ", lastName='" + lastName + '\'' +
+                       ", created=" + created +
+                       ", updated=" + updated +
+                       ", isActive=" + isActive +
+                       ", nickName='" + nickName + '\'' +
+                       ", email='" + email + '\'' +
+                       ", messages=" + messages +
+                       ", chatGroups=" + chatGroups +
+                       ", roles=" + roles +
+                       ", credential=" + credential +
+                       '}';
     }
 }

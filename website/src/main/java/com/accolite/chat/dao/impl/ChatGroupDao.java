@@ -4,6 +4,8 @@ import com.accolite.chat.dao.IChatGroupDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
 import com.accolite.chat.model.ChatGroup;
 
+import com.accolite.chat.model.Message;
+import com.accolite.chat.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -16,48 +18,123 @@ import java.util.List;
  */
 public class ChatGroupDao implements IChatGroupDao {
 
-    private Session session;
     private DatabaseManager databaseManager;
+    private Session session;
 
     public ChatGroupDao() {
         databaseManager = new DatabaseManager();
-        session = databaseManager.getSessionFactory().openSession();
+
     }
 
     public void add(ChatGroup group) {
-        session.beginTransaction();
-        session.save(group);
-        session.getTransaction().commit();
+        Session session = databaseManager.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.save(group);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void addMessageToGroup(ChatGroup group, Message message) {
+        Session session = databaseManager.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            ChatGroup g = (ChatGroup)session.get(ChatGroup.class, group.getId());
+            g.getMessages().add(message);
+            session.merge(g);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+
     }
 
     public List<ChatGroup> all() {
-        session = databaseManager.getSessionFactory().openSession();
-        Query q = session.createQuery("From ChatGroup ");
-        List<ChatGroup> resultList = q.list();
-        return resultList;
+        Session session = databaseManager.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("From ChatGroup ");
+            List<ChatGroup> resultList = q.list();
+            session.getTransaction().commit();
+            return resultList;
+
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
     }
 
+    public void addUserToChatGroup(int groupID, User user) {
+        Session session = databaseManager.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Query q = session.createQuery("From ChatGroup where id=?");
+            q.setInteger(0, groupID);
+            ChatGroup chatGroup = (ChatGroup) q.list().get(0);
+            chatGroup.addUser(user);
+            System.out.println("User : " + user.getFirstName() + " added to group : " + groupID);
+
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+
     public void merge(ChatGroup group) {
-        session.beginTransaction();
-        session.merge(group);
-        session.getTransaction().commit();
+        Session session = databaseManager.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.merge(group);
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
     }
 
     public ChatGroup findById(Integer id) {
-        session.getSessionFactory().openSession();
+        session = databaseManager.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             return (ChatGroup) session.get(ChatGroup.class, id);
         } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            e.printStackTrace();
+            session.getTransaction().rollback();
+            throw e;
         } finally {
             tx.commit();
-           // session.close();
+            session.close();
         }
-        return null;
     }
 
+
+    public ChatGroup getDefaultChatGroup() {
+        session = databaseManager.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            return (ChatGroup) session.get(ChatGroup.class, 1);
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            tx.commit();
+            session.close();
+        }
+    }
 
 }

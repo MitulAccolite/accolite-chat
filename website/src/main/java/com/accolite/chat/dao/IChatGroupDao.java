@@ -1,6 +1,7 @@
 package com.accolite.chat.dao;
 
 import com.accolite.chat.model.ChatGroup;
+import com.accolite.chat.model.Message;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public interface IChatGroupDao {
     void merge(ChatGroup group);
 
     ChatGroup findById(Integer id);
+
+    void addMessageToGroup(ChatGroup group, Message message);
 
 
 

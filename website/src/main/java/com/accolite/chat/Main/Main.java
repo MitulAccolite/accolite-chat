@@ -33,11 +33,9 @@ public class Main {
         User user = new User("f1", "m1", "l1", new Date(), new Date(), true, "n1", "e1", Arrays.asList(roleByName), credential);
         userDao.add(user);
 
-        com.accolite.chat.model.ChatGroup g1 = new com.accolite.chat.model.ChatGroup("G1", new Date());
+        com.accolite.chat.model.ChatGroup g1 = new com.accolite.chat.model.ChatGroup("PUBLIC", new Date());
         IChatGroupDao groupDao = new ChatGroupDao();
         groupDao.add(g1);
-        //ye wala example dekh pura sab ready h
-        //mujhe smjh hi nhi aa rha hia ki changes kaise apply ho rhe hia islie to bol rha tha ki pura project bhej
 
        /* for (ChatGroupDao chatGroup : groupDao.all()) {
             System.out.println(chatGroup);
@@ -54,9 +52,10 @@ public class Main {
         IMessageDao messageDao = new MessageDao();
         messageDao.save(m1);
 
-        groupById.getMessages().add(m1);
-        groupDao.merge(groupById);
-        System.out.println(groupById);
+        groupDao.addMessageToGroup(g1,m1);
+
+
+//        System.out.println(groupById);
 
 
 

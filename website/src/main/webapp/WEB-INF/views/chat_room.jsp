@@ -48,6 +48,7 @@
             <li><a href="">Home</a></li>
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
+            <li><a href="logout">LogOut</a> </li>
         </ul>
     </div>
 </header>
@@ -57,9 +58,9 @@
     <div class="tile dont-transform grouplist bg-white" data-role="tile">
         <h4>Groups</h4>
         <ul>
-<d:forEach items="${user.chatGroups}" var="groups">
-                    <%--<d:out value="${groups.name}"/>--%>
-                <li>
+            <d:forEach items="${user.chatGroups}" var="groups">
+                <%--<d:out value="${groups.name}"/>--%>
+           iy     <li>
                     <div class="gsettings">
                         <span></span>
                     </div>
@@ -95,277 +96,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="msg-body">
-                    <div class="dp-container">
-                        <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                    </div>
-                    <div class="msg-container">
-                        <div class="msg-timestamp">
-                            <abbr title="Today" >12:00pm</abbr>
-                        </div>
-                        <strong>
-                            <a href="#">User NickName</a>
-                        </strong>
-                        <div class="message">
-                            <p>Neruppuda! Nerunguda!</p>
-                        </div>
-                    </div>
-                </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li><li class="msg-body">
-                <div class="dp-container">
-                    <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                </div>
-                <div class="msg-container">
-                    <div class="msg-timestamp">
-                        <abbr title="Today" >12:00pm</abbr>
-                    </div>
-                    <strong>
-                        <a href="#">User NickName</a>
-                    </strong>
-                    <div class="message">
-                        <p>Neruppuda! Nerunguda!</p>
-                    </div>
-                </div>
-            </li>
             </ul>
         </div>
         <div class="tile dont-transform chatinput bg-white" data-role="tile">
@@ -381,16 +111,16 @@
             <%
                 Set<User> activeUsers = ChatManager.getActiveUsers();
 
-    %>
+            %>
 
 
-<%--
-            <a href="${groups.name}">
-                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                <span class="gname">${groups.name}</span>
-                <span class="gloader"></span>
-            </a>
-            --%>
+            <%--
+                        <a href="${groups.name}">
+                            <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
+                            <span class="gname">${groups.name}</span>
+                            <span class="gloader"></span>
+                        </a>
+                        --%>
             <%--<d:choose>
                 <d:when test="${empty user}">
                     I see!  You don't have a name.. well.. Hello no name
@@ -403,14 +133,14 @@
             <ul>
                 <% for(User user1 : activeUsers){%>
                 <d:set var="userId" value="<%=user1.getId()%>"></d:set>
-                    <d:if test="${user.id ne userId}">
-                        <li>
-                            <a href="profileView?user=<%=user1.getEmail()%>">
-                                <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
-                                <span class="nickname"><%=user1.getNickName() %></span>
-                                <span class="onlinestatus online"></span>
-                            </a>
-                        </li>
+                <d:if test="${user.id ne userId}">
+                    <li>
+                        <a href="profileView?user=<%=user1.getEmail()%>">
+                            <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                            <span class="nickname"><%=user1.getNickName() %></span>
+                            <span class="onlinestatus online"></span>
+                        </a>
+                    </li>
                 </d:if>
                 <% }%>
             </ul>
@@ -423,6 +153,6 @@
 </section>
 <input type="hidden" value="1" id="userID">
 <input type="hidden" value="1" id="groupID">
-    <script src="<c:url value="/resources/theme1/js/chat_room.js"/>"></script>
+<script src="<c:url value="/resources/theme1/js/chat_room.js"/>"></script>
 </body>
 </html>

@@ -76,6 +76,10 @@ public class ChatGroup {
         this.messages = messages;
     }
 
+    public void addUser(User user){
+        this.users.add(user);
+    }
+
     @Override
     public String toString() {
         return "ChatGroupDao{" +
