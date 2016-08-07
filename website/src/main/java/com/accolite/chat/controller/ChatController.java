@@ -3,21 +3,26 @@ package com.accolite.chat.controller;
 import com.accolite.chat.dao.*;
 import com.accolite.chat.dao.impl.*;
 import com.accolite.chat.model.*;
+import com.accolite.chat.model.Message;
 import com.accolite.chat.model.Role;
 import manager.ChatManager;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.management.relation.*;
+import javax.mail.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by Mitul Kapoor on 7/31/2016.
@@ -135,20 +140,6 @@ public class ChatController {
         ModelAndView modelAndView = new ModelAndView("authenticate");
         return modelAndView;
     }
-/*
-    @RequestMapping(value = "/registered_user")
-    public ModelAndView register(
-            @ModelAttribute("user")UserRegistration registration,
-            HttpServletRequest httpServletRequest){
-        ModelAndView modelAndView = new ModelAndView("registered_user");
-
-
-        System.out.println("User name : " + registration.getFirstName() + " " + registration.getMiddleName() + " " + registration.getLastName());
-        System.out.println("Password : " + registration.getUserPassword());
-        System.out.println("Mail : " + registration.getUserMail());
-        return modelAndView;
-    }*/
-
 
     @RequestMapping(value = "/registered_user")
     public ModelAndView registeredUser(
@@ -182,6 +173,9 @@ public class ChatController {
         IUserRoleDao userRoleDao = new UserRoleDao();
         userRoleDao.addUserRole(userDao.getUserId(email), Roles.USER);
 
+        OfflineUsers offlineUsers = new OfflineUsers();
+        offlineUsers.notifyUsersForNewRegistration(firstName,nickName);
+
         return modelAndView;
     }
 
@@ -194,9 +188,9 @@ public class ChatController {
 
     @RequestMapping(value = "/validate")
     public ModelAndView validateUserCredentials(
-           @RequestParam("user_login")String username,
-           @RequestParam("user_password")String password,
-           HttpServletRequest servletRequest) throws Exception {
+                                                       @RequestParam("user_login")String username,
+                                                       @RequestParam("user_password")String password,
+                                                       HttpServletRequest servletRequest) throws Exception {
 
         System.out.println("username : " + username);
         System.out.println("password : " + password);
@@ -236,8 +230,8 @@ public class ChatController {
 
     @RequestMapping(value = "/profileView")
     public ModelAndView profileView(
-           @RequestParam("user")String username,
-           HttpServletRequest servletRequest) throws Exception {
+                                           @RequestParam("user")String username,
+                                           HttpServletRequest servletRequest) throws Exception {
 
         if(servletRequest.getSession().getAttribute("user")==null){
             return new ModelAndView("error403");
@@ -263,12 +257,12 @@ public class ChatController {
 
     @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
     public ModelAndView postMessage(
-            @RequestParam("message")String message,
-            @RequestParam("userID")int userid,
-            @RequestParam("userEmail")String userEmail,
-            @RequestParam("created")Long date,
-            @RequestParam("groupID")int groupid,
-            HttpServletRequest servletRequest){
+                                           @RequestParam("message")String message,
+                                           @RequestParam("userID")int userid,
+                                           @RequestParam("userEmail")String userEmail,
+                                           @RequestParam("created")Long date,
+                                           @RequestParam("groupID")int groupid,
+                                           HttpServletRequest servletRequest){
 
         System.out.println("values obtained : " + message + " : " + userid);
         IMessageDao messageDao = new MessageDao();

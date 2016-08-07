@@ -3,10 +3,7 @@ package com.accolite.chat.dao.impl;
 import com.accolite.chat.dao.IChatGroupDao;
 import com.accolite.chat.dao.IUserDao;
 import com.accolite.chat.dao.manager.DatabaseManager;
-import com.accolite.chat.model.ChatGroup;
-import com.accolite.chat.model.Credential;
-import com.accolite.chat.model.Role;
-import com.accolite.chat.model.User;
+import com.accolite.chat.model.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -68,6 +65,20 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+        }
+    }
+
+    public List<User> listAddUsers() {
+        List<User> resultList = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            Query q = session.createQuery("From User");
+            resultList = q.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return resultList;
         }
     }
 
