@@ -20,6 +20,7 @@ public interface IChatGroupDao {
 
     void addMessageToGroup(ChatGroup group, Message message);
 
+    ChatGroup getChatGroupById(int id);
 
 
    /* void updateGroupName(int groupID, String name);*/

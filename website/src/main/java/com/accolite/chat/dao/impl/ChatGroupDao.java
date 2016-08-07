@@ -57,6 +57,22 @@ public class ChatGroupDao implements IChatGroupDao {
 
     }
 
+    public ChatGroup getChatGroupById(int id) {
+        Session session = databaseManager.getSessionFactory().openSession();
+        ChatGroup resultList = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            Query q = session.createQuery("From ChatGroup where id=?");
+            q.setInteger(0, id);
+            resultList = (ChatGroup) q.list().get(0);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return resultList;
+        }
+    }
+
     public List<ChatGroup> all() {
         Session session = databaseManager.getSessionFactory().openSession();
         try {

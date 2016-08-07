@@ -1,12 +1,7 @@
 package com.accolite.chat.controller;
 
-import com.accolite.chat.dao.ILoginCredentialsDao;
-import com.accolite.chat.dao.IUserDao;
-import com.accolite.chat.dao.IUserRoleDao;
-import com.accolite.chat.dao.impl.ChatGroupDao;
-import com.accolite.chat.dao.impl.LoginCredentialsDao;
-import com.accolite.chat.dao.impl.UserDao;
-import com.accolite.chat.dao.impl.UserRoleDao;
+import com.accolite.chat.dao.*;
+import com.accolite.chat.dao.impl.*;
 import com.accolite.chat.model.*;
 import com.accolite.chat.model.Role;
 import manager.ChatManager;
@@ -14,12 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.management.relation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -221,6 +218,19 @@ public class ChatController {
         modelAndView.addObject("user", user1);
         ChatManager.setUserOnline(user1);
 
+
+        ///////
+        List<Message> message = (List<Message>) (new MessageDao()).showMessagesToPersonInGroup(user1.getId(),1);
+        modelAndView.addObject("messages",message);
+
+        if(message.size() >0 ) {
+            for (Message message1 : message) {
+                System.out.println("user : " + message1.getUser().getNickName() + " message : " + message1.getMessage());
+            }
+        }
+
+        /////
+
         return modelAndView;
     }
 
@@ -251,5 +261,31 @@ public class ChatController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/sendMessage",method = RequestMethod.POST)
+    public ModelAndView postMessage(
+            @RequestParam("message")String message,
+            @RequestParam("userID")int userid,
+            @RequestParam("userEmail")String userEmail,
+            @RequestParam("created")Long date,
+            @RequestParam("groupID")int groupid,
+            HttpServletRequest servletRequest){
 
+        System.out.println("values obtained : " + message + " : " + userid);
+        IMessageDao messageDao = new MessageDao();
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(userEmail);
+        Message message1 = new Message(message,new Date(date),user);
+
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup chatGroup = chatGroupDao.findById(groupid);
+
+        message1.setChatGroup(chatGroup);
+
+        messageDao.save(message1);
+
+        System.out.println("Message saved successfully");
+
+        return new ModelAndView("chat_room");
+        //return message;
+    }
 }

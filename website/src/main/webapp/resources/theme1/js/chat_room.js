@@ -27,14 +27,16 @@ $( document ).ready(function() {
         $(this).prop('disabled',true);
         $.ajax({
             async:false,
-            url: "tweet",
+            url: "sendMessage",
             method: 'POST',
             context: $('.sender'),
             data: {
                 message: $('.chattext').val(),
                 userID: $('#userID').val(),
+                userEmail:$('#userEmail').val(),
                 created: new Date().getTime(),
-                groupID: $('#groupID').val()
+               // groupID: $('#groupID').val()
+                groupID: 1
             },
             success: function(result){
                 this.disabled=false;

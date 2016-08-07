@@ -37,10 +37,6 @@ public class Main {
         IChatGroupDao groupDao = new ChatGroupDao();
         groupDao.add(g1);
 
-       /* for (ChatGroupDao chatGroup : groupDao.all()) {
-            System.out.println(chatGroup);
-        }*/
-
 
         g1.getUsers().add(user);
         groupDao.merge(g1);
@@ -54,28 +50,5 @@ public class Main {
 
         groupDao.addMessageToGroup(g1,m1);
 
-
-//        System.out.println(groupById);
-
-
-
-       /* java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-        GroupDao groupDao = new GroupDao();
-        LoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
-        MessageDao messageDao = new MessageDao();
-        NotificationDao notificationDao = new NotificationDao();
-        UserDao userDao = new UserDao();
-        UserRoleDao userRoleDao = new UserRoleDao();
-
-        User user = new User("mitul", "k", "kapoor", date, date, true, "mitu", "mitul.kapoor@accoliteindia.com");
-        userDao.add(user);
-
-        userRoleDao.addUserRole(user.getId(), "USER");
-
-        User user1 = userDao.findUserByNickname("mitu");
-        System.out.println("Nickname is : " + user1.getNickName());
-
-
-        System.out.println("Mitul kapoor");*/
     }
 }

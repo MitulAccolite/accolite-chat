@@ -45,7 +45,7 @@
         <a class="app-bar-element branding">Accolite Chat</a>
 
         <ul class="app-bar-menu">
-            <li><a href="">Home</a></li>
+            <li><a href="index.jsp">Home</a></li>
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
             <li><a href="logout">LogOut</a> </li>
@@ -53,14 +53,12 @@
     </div>
 </header>
 
-
 <section>
     <div class="tile dont-transform grouplist bg-white" data-role="tile">
         <h4>Groups</h4>
         <ul>
             <d:forEach items="${user.chatGroups}" var="groups">
-                <%--<d:out value="${groups.name}"/>--%>
-           iy     <li>
+                <li>
                     <div class="gsettings">
                         <span></span>
                     </div>
@@ -71,12 +69,37 @@
                     </a>
                 </li>
             </d:forEach>
-
         </ul>
+
     </div>
     <div class="chatarea">
         <div class="tile dont-transform chatbox bg-white" data-role="tile">
             <ul>
+
+                <d:forEach items="${messages}" var="message">
+                    <li class="day-divider">
+                        <abbr>${message.created.date}</abbr>
+                    </li>
+                    <li class="msg-body">
+                        <div class="dp-container">
+                            <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                        </div>
+                        <div class="msg-container">
+                            <div class="msg-timestamp">
+                                <abbr title="Today" >${message.created.time}</abbr>
+                            </div>
+                            <strong>
+                                <a href="#">${message.user.nickName}</a>
+                            </strong>
+                            <div class="message">
+                                <p>${message.message}</p>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </d:forEach>
+                <%--
                 <li class="day-divider">
                     <abbr>today</abbr>
                 </li>
@@ -95,7 +118,7 @@
                             <p>Neruppuda! Nerunguda!</p>
                         </div>
                     </div>
-                </li>
+                </li>--%>
             </ul>
         </div>
         <div class="tile dont-transform chatinput bg-white" data-role="tile">
@@ -107,29 +130,9 @@
     </div>
     <div class="tile dont-transform userlist bg-white" data-role="tile">
         <div class="userpan">
-
             <%
                 Set<User> activeUsers = ChatManager.getActiveUsers();
-
             %>
-
-
-            <%--
-                        <a href="${groups.name}">
-                            <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
-                            <span class="gname">${groups.name}</span>
-                            <span class="gloader"></span>
-                        </a>
-                        --%>
-            <%--<d:choose>
-                <d:when test="${empty user}">
-                    I see!  You don't have a name.. well.. Hello no name
-                </d:when>
-                <d:otherwise>
-                    <%@ include file="response.jsp" %>
-                </d:otherwise>
-            </d:choose>--%>
-
             <ul>
                 <% for(User user1 : activeUsers){%>
                 <d:set var="userId" value="<%=user1.getId()%>"></d:set>
@@ -151,7 +154,8 @@
         </div>
     </div>
 </section>
-<input type="hidden" value="1" id="userID">
+<input type="hidden" value="${user.id}" id="userID">
+<input type="hidden" value="${user.email}" id="userEmail">
 <input type="hidden" value="1" id="groupID">
 <script src="<c:url value="/resources/theme1/js/chat_room.js"/>"></script>
 </body>
