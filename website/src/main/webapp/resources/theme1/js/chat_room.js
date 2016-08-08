@@ -26,7 +26,6 @@ $( document ).ready(function() {
     $('.sender').click(function () {
         $(this).prop('disabled',true);
         $.ajax({
-            async:false,
             url: "sendMessage",
             method: 'POST',
             context: $('.sender'),
@@ -79,16 +78,16 @@ $( document ).ready(function() {
 
     $('.grouplist li').hover(
         function () {
-            $('.gsettings span').addClass("mif-cog");
+            $(this).find('.gsettings span').addClass("mif-cog");
         },
         function () {
-            $('.gsettings span').removeClass("mif-cog");
+            $(this).find('.gsettings span').removeClass("mif-cog");
         }
     );
 
     $('.grouplist li a').click(function (e) {
         e.preventDefault();
-        $('.gloader').addClass("mif-spinner5");
-        $('.gloader').addClass("mif-ani-spin");
+        $(this).children('.gloader').addClass("mif-spinner5");
+        $(this).children('.gloader').addClass("mif-ani-spin");
     });
 });

@@ -18,3 +18,25 @@ section {
 .groups {
     clear: both;
 }
+
+.groups li{
+    margin-bottom: 5px;
+}
+
+.groups li a{
+    color: initial;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.groups li *{
+    vertical-align: middle;
+}
+
+.groups li{
+    list-style-type: none;
+    clear: both;
+}

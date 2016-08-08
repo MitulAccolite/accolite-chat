@@ -6,10 +6,10 @@
 
 //<<<user code
 function registerMe(){
-	var form = $("<form/>",{ action:'registered_user',method:'POST'});
-	form.append($(".wizard2"));
-	$("body").append(form);
-	form.submit();
+    var form = $("<form/>",{ action:'registered_user',method:'POST'});
+    form.append($(".wizard2"));
+    $("body").append(form);
+    form.submit();
 }
 function markMe(element,state){
 	element.addClass(state);
@@ -10712,20 +10712,24 @@ $.widget( "metro.wizard2" , {
         onNext: function(page, wiz){return true;},
         onFinish: function(page, wiz){
         	//<<<user code
-        	//mobile number validation
-    		var isMobileValid=false;
-	    	var elements=$('div.step.active input');
-	        var mobile=$(elements[0]);
-	        if(mobile.val().search("/[^0-9]/")==-1 && mobile.val().length==10){
-	        	isMobileValid=true;
-	        	markMe(mobile.parent(),"success");
-	        }else{
-	        	showHint(mobile, "invalid mobile number");
-	        	markMe(mobile.parent(),"error");
-	        }
-	        if(isMobileValid){
-	        	registerMe();
-	        }
+            if(/login/.test(window.location)){
+                //mobile number validation
+                var isMobileValid=false;
+                var elements=$('div.step.active input');
+                var mobile=$(elements[0]);
+                if(mobile.val().search("/[^0-9]/")==-1 && mobile.val().length==10){
+                    isMobileValid=true;
+                    markMe(mobile.parent(),"success");
+                }else{
+                    showHint(mobile, "invalid mobile number");
+                    markMe(mobile.parent(),"error");
+                }
+                if(isMobileValid){
+                    registerMe();
+                }
+            }else{
+
+            }
 	        //user code>>>>
         },
         onHelp: function(page, wiz){},
@@ -10909,40 +10913,44 @@ $.widget( "metro.wizard2" , {
 
     next: function(){
     	//<<<user code
-    	switch(this._step){
-    	case 1://validating credentials
-    		var isEmailValid=false;
-	    	var isPasswordValid=false;
-	    	var isConfirmPasswordValid=false;
-	        var elements=$('div.step.active input');
-	        var email=$(elements[0]);
-	        var password=$(elements[1]);
-	        var confirmPassword=$(elements[2]);
-	        if(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(email.val())){
-	        	isEmailValid=true;
-	        	markMe(email.parent(),"success");
-	        }else{
-	        	showHint(email, "invalid email");
-	        	markMe(email.parent(),"error");
-	        }
-	        if(password.val().length>=8){
-	        	isPasswordValid=true;
-	        	markMe(password.parent(),"success");
-	        }else{
-	        	showHint(password, "invalid password, it must be 8 characters");
-	        	markMe(password.parent(),"error");
-	        }
-	        if(isPasswordValid && confirmPassword.val() == password.val()){
-	        	isConfirmPasswordValid=true;
-	        	markMe(confirmPassword.parent(),"success");
-	        }else{
-	        	showHint(confirmPassword, "invalid password, re-enter");
-	        	markMe(confirmPassword.parent(),"error");
-	        }
-	        if(!(isEmailValid&&isPasswordValid&&isConfirmPasswordValid))
-	        	return false;
-	        break;
-    	default:	
+        if(/login/.test(window.location)) {
+            switch (this._step) {
+                case 1://validating credentials
+                    var isEmailValid = false;
+                    var isPasswordValid = false;
+                    var isConfirmPasswordValid = false;
+                    var elements = $('div.step.active input');
+                    var email = $(elements[0]);
+                    var password = $(elements[1]);
+                    var confirmPassword = $(elements[2]);
+                    if (/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(email.val())) {
+                        isEmailValid = true;
+                        markMe(email.parent(), "success");
+                    } else {
+                        showHint(email, "invalid email");
+                        markMe(email.parent(), "error");
+                    }
+                    if (password.val().length >= 8) {
+                        isPasswordValid = true;
+                        markMe(password.parent(), "success");
+                    } else {
+                        showHint(password, "invalid password, it must be 8 characters");
+                        markMe(password.parent(), "error");
+                    }
+                    if (isPasswordValid && confirmPassword.val() == password.val()) {
+                        isConfirmPasswordValid = true;
+                        markMe(confirmPassword.parent(), "success");
+                    } else {
+                        showHint(confirmPassword, "invalid password, re-enter");
+                        markMe(confirmPassword.parent(), "error");
+                    }
+                    if (!(isEmailValid && isPasswordValid && isConfirmPasswordValid))
+                        return false;
+                    break;
+                default:
+            }
+        }else{
+
         }
     	//user code>>>
         var new_step = this._step + 1;

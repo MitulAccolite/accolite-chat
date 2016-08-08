@@ -34,6 +34,7 @@
     <link href="<c:url value="/resources/theme1/css/metro-icons.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/theme1/css/metro-responsive.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/theme1/css/chat_room.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/app_bar.css" />" rel="stylesheet">
 
     <script src="<c:url value="/resources/theme1/js/jquery-2.1.3.min.js"/>"></script>
     <script src="<c:url value="/resources/theme1/js/metro.js"/>"></script>
@@ -48,7 +49,13 @@
             <li><a href="index.jsp">Home</a></li>
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
-            <li><a href="logout">LogOut</a> </li>
+            <li>
+                <a href="#" class="userhandle">
+                    <img src="<c:url value="/resources/theme1/images/placeholder.jpg"/>" width="32" height="32" alt="nick name">
+                    <span class="nickname">${user.nickName}</span>
+                </a>
+            </li>
+            <li><a href="" class="logout">logout</a></li>
         </ul>
     </div>
 </header>
@@ -82,14 +89,14 @@
                     </li>
                     <li class="msg-body">
                         <div class="dp-container">
-                            <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
+                            <a href="/profileView?user=${message.user.email}"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
                         </div>
                         <div class="msg-container">
                             <div class="msg-timestamp">
                                 <abbr title="Today" >${message.created.time}</abbr>
                             </div>
                             <strong>
-                                <a href="#">${message.user.nickName}</a>
+                                <a href="/profileView?user=${message.user.email}">${message.user.nickName}</a>
                             </strong>
                             <div class="message">
                                 <p>${message.message}</p>
@@ -99,26 +106,7 @@
 
 
                 </d:forEach>
-                <%--
-                <li class="day-divider">
-                    <abbr>today</abbr>
-                </li>
-                <li class="msg-body">
-                    <div class="dp-container">
-                        <a href="#"><img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="user nickname"></a>
-                    </div>
-                    <div class="msg-container">
-                        <div class="msg-timestamp">
-                            <abbr title="Today" >12:00pm</abbr>
-                        </div>
-                        <strong>
-                            <a href="#">User NickName</a>
-                        </strong>
-                        <div class="message">
-                            <p>Neruppuda! Nerunguda!</p>
-                        </div>
-                    </div>
-                </li>--%>
+
             </ul>
         </div>
         <div class="tile dont-transform chatinput bg-white" data-role="tile">
@@ -158,5 +146,6 @@
 <input type="hidden" value="${user.email}" id="userEmail">
 <input type="hidden" value="1" id="groupID">
 <script src="<c:url value="/resources/theme1/js/chat_room.js"/>"></script>
+<script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
 </body>
 </html>

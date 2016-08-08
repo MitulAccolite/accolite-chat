@@ -282,4 +282,27 @@ public class ChatController {
         return new ModelAndView("chat_room");
         //return message;
     }
+
+    @RequestMapping(value = "userprofile")
+    public ModelAndView userprofile(HttpServletRequest servletRequest,
+                                    @RequestParam("user")String email){
+
+        ModelAndView modelAndView = new ModelAndView("userprofile");
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+        modelAndView.addObject("user",user);
+        return modelAndView;
+
+    }
+
+/*
+    @RequestMapping(value = "/profile_edit")
+    public ModelAndView ediProfile(
+            HttpServletRequest servletRequest){
+
+
+
+
+    }*/
+
 }

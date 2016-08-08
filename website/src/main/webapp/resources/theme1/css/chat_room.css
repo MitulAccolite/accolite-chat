@@ -140,7 +140,7 @@ abbr {
     height: 20px;
     margin-right: 8px;
     position: relative;
-    top: 2px;
+    top: 1px;
     color: gray;
 }
 
@@ -169,7 +169,7 @@ ul {
 }
 
 .onlinestatus.online {
-    background-image: url(../img/online.jpg);
+    background-image: url(../images/online.png);
     background-size: auto;
     background-repeat: no-repeat;
     display: inline-block;

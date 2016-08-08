@@ -1,14 +1,13 @@
-<%@ page import="com.accolite.chat.model.User" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lokesh K
-  Date: 02 Aug 2016
-  Time: 5:07 PM
+  Date: 05 Aug 2016
+  Time: 10:18 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="d" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,14 +25,14 @@
 
     <title>Profile :: Accolite office chat</title>
 
-    <link href="<d:url value="/resources/theme1/css/metro.min.css" />" rel="stylesheet">
-    <link href="<d:url value="/resources/theme1/css/metro-icons.min.css"/>" rel="stylesheet">
-    <link href="<d:url value="/resources/theme1/css/metro-responsive.min.css"/>" rel="stylesheet">
-    <link href="<d:url value="/resources/theme1/css/profile.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/metro.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/metro-icons.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/metro-responsive.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/theme1/css/profile_edit.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/theme1/css/app_bar.css" />" rel="stylesheet">
 
-    <script src="<d:url value="/resources/theme1/js/jquery-2.1.3.min.js"/>"></script>
-    <script src="<d:url value="/resources/theme1/js/metro.js"/>"></script>
+    <script src="<c:url value="/resources/theme1/js/jquery-2.1.3.min.js"/>"></script>
+    <script src="<c:url value="/resources/theme1/js/metro.js"/>"></script>
 </head>
 <body>
 <header>
@@ -57,10 +56,11 @@
 </header>
 
 <section class="bg-grayLighter">
+    <span class="pedit" title="edit your profile"><span class="mif-pencil"></span> Edit</span>
     <div class="tile dptile">
         <div class="tile-content zooming-out">
             <div class="slide">
-                <image src="/resources/theme1/img/placeholder.jpg" alt="profile image" width="width"/>
+                <image src="resources/theme1/images/placeholder.png" alt="profile image" width="width"/>
             </div>
         </div>
     </div>
@@ -73,24 +73,25 @@
     <div class="groups">
         <h2>Groups</h2>
         <ul>
-<%--
-            Groups : ${user.email}
---%>
-            <c:forEach items="${user.chatGroups}" var="m">
+
+            <d:forEach items="${user.chatGroups}" var="groups">
                 <li>
-                    <a href="grouplink">
+                    <a href="groupview.jsp">
                         <div class="panel">
                             <div class="heading">
-                                <img class="icon" src="/resources/theme1/img/placeholder.jpg">
-                                <span class="title">${m.name}</span>
+                                <img class="icon" src="resources/theme1/images/placeholder.png">
+                                <span class="title">${groups.name}</span>
                             </div>
                         </div>
                     </a>
                 </li>
-            </c:forEach>
+            </d:forEach>
+
         </ul>
     </div>
 </section>
+<input type="hidden" value="1" id="userID">
 <script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
+<script src="<c:url value="/resources/theme1/js/user_view.js"/>"></script>
 </body>
 </html>
