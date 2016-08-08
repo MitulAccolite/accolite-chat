@@ -4,12 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Mitul Kapoor on 7/30/2016.
@@ -23,7 +18,7 @@ public class ChatGroup {
     private Integer id;
     private String name;
     private Date created;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<User> users = new ArrayList();
     @OneToMany
     private List<Message> messages = new ArrayList<Message>();

@@ -2,6 +2,7 @@
 <%@ page import="com.accolite.chat.model.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Set" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
@@ -50,12 +51,12 @@
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
             <li>
-                <a href="#" class="userhandle">
-                    <img src="<c:url value="/resources/theme1/images/placeholder.jpg"/>" width="32" height="32" alt="nick name">
+                <a href="userprofile?user=${user.email}" class="userhandle">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="nick name">
                     <span class="nickname">${user.nickName}</span>
                 </a>
             </li>
-            <li><a href="" class="logout">logout</a></li>
+            <li><a href="logout?user=${user.email}" class="logout">logout</a></li>
         </ul>
     </div>
 </header>
@@ -69,7 +70,7 @@
                     <div class="gsettings">
                         <span></span>
                     </div>
-                    <a href="${groups.name}">
+                    <a href="groupView?groupID=${groups.id}&userEmail=${user.email}">
                         <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
                         <span class="gname">${groups.name}</span>
                         <span class="gloader"></span>
@@ -82,10 +83,9 @@
     <div class="chatarea">
         <div class="tile dont-transform chatbox bg-white" data-role="tile">
             <ul>
-
                 <d:forEach items="${messages}" var="message">
                     <li class="day-divider">
-                        <abbr>${message.created.date}</abbr>
+                        <abbr>${message.created.date}/${message.created.month}/${1900 + message.created.year}</abbr>
                     </li>
                     <li class="msg-body">
                         <div class="dp-container">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="msg-container">
                             <div class="msg-timestamp">
-                                <abbr title="Today" >${message.created.time}</abbr>
+                                <abbr title="Today" >${message.created.hours}:${message.created.minutes}:${message.created.seconds}</abbr>
                             </div>
                             <strong>
                                 <a href="/profileView?user=${message.user.email}">${message.user.nickName}</a>
@@ -103,10 +103,7 @@
                             </div>
                         </div>
                     </li>
-
-
                 </d:forEach>
-
             </ul>
         </div>
         <div class="tile dont-transform chatinput bg-white" data-role="tile">

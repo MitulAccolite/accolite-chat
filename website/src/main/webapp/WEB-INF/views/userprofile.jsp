@@ -45,12 +45,12 @@
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
             <li>
-                <a href="userprofile" class="userhandle">
-                    <img src="<c:url value="/resources/theme1/images/placeholder.png"/>" width="32" height="32" alt="nick name">
-                    <span class="nickname">Kabali</span>
+                <a href="userprofile?user=${user.email}" class="userhandle">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="nick name">
+                    <span class="nickname">${user.nickName}</span>
                 </a>
             </li>
-            <li><a href="" class="logout">logout</a></li>
+            <li><a href="logout?user=${user.email}" class="logout">logout</a></li>
         </ul>
     </div>
 </header>
@@ -60,7 +60,7 @@
     <div class="tile dptile">
         <div class="tile-content zooming-out">
             <div class="slide">
-                <image src="resources/theme1/images/placeholder.png" alt="profile image" width="width"/>
+                <image src="resources/theme1/img/placeholder.jpg" alt="profile image" width="width"/>
             </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
                     <a href="groupview.jsp">
                         <div class="panel">
                             <div class="heading">
-                                <img class="icon" src="resources/theme1/images/placeholder.png">
+                                <img class="icon" src="resources/theme1/img/placeholder.jpg">
                                 <span class="title">${groups.name}</span>
                             </div>
                         </div>

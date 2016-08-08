@@ -86,7 +86,6 @@ $( document ).ready(function() {
     );
 
     $('.grouplist li a').click(function (e) {
-        e.preventDefault();
         $(this).children('.gloader').addClass("mif-spinner5");
         $(this).children('.gloader').addClass("mif-ani-spin");
     });

@@ -44,80 +44,6 @@ public class ChatController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/profileView")
-    public ModelAndView profileView(
-            //@ModelAttribute("user")User user,
-            @RequestParam("user")String username,
-            HttpServletRequest servletRequest) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("profile_view");
-        UserDao userDao = new UserDao();
-        User user = userDao.findUserByEmail(username);
-        modelAndView.addObject("user",user);
-        System.out.println("Profile view : ");
-        System.out.println("user name : " + user.getFirstName());
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/registered_user")
-    public ModelAndView registeredUser(
-            @ModelAttribute("user")UserRegistration registration,
-            HttpServletRequest servletRequest) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("registered_user");
-        String firstName = registration.getFirstName();
-        String middleName = registration.getMiddleName();
-        String lastName = registration.getLastName();
-        String nickName = registration.getNickName();
-        String email = registration.getUserMail();
-        String password = registration.getUserPassword();
-        String phone = registration.getUserMobile();
-        System.out.println(registration.toString());
-
-        //check whether the user is already registereed or not.
-        //to be done here.
-
-        java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-        User user = new User(firstName,middleName,lastName,date,date,true,nickName,email);
-        UserDao userDao = new UserDao();
-        userDao.addNewUser(user);
-
-        LoginCredentials loginCredentials = new LoginCredentials(email,password,date,date,userDao.getUserId(email));
-        LoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
-        loginCredentialsDao.addUser(loginCredentials);
-
-        UserRoleDao userRoleDao = new UserRoleDao();
-        userRoleDao.addUserRole(userDao.getUserId(email),"USER");
-
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/validate")
-    public ModelAndView validateUserCredentials(
-            @RequestParam("user_login")String username,
-            @RequestParam("user_password")String password,
-            HttpServletRequest servletRequest) throws Exception {
-
-                System.out.println("username : " + username);
-        System.out.println("password : " + password);
-
-        ModelAndView modelAndView  = null;
-            LoginCredentialsDao loginCredentialsDao = new LoginCredentialsDao();
-            LoginCredentials user = loginCredentialsDao.verifyCredentials(username, password);
-            if (user==null) {
-                return new ModelAndView("error404");
-            }
-        System.out.println("User Details : ");
-        System.out.println("Username : " + user.getUsername());
-        System.out.println("Password : " + user.getPassword());
-        modelAndView = new ModelAndView("chat_room");
-            UserDao userDao = new UserDao();
-            User user1 = userDao.findUserByEmail(user.getUsername());
-
-        servletRequest.setAttribute("user",user1);
-            modelAndView.addObject("user", user1);
-        ChatManager.setUserOnline(user1);
-            return modelAndView;
-    }
-
     @RequestMapping(value = "/chatRoom")
     public ModelAndView chatRoom(
             @RequestParam("user") User user,
@@ -292,8 +218,25 @@ public class ChatController {
         User user = userDao.findUserByEmail(email);
         modelAndView.addObject("user",user);
         return modelAndView;
-
     }
+
+    @RequestMapping(value = "groupView")
+    public ModelAndView groupView(HttpServletRequest servletRequest,
+                                  @RequestParam("groupID")int groupID,
+                                  @RequestParam("userEmail")String email
+                                  ){
+        ModelAndView modelAndView = new ModelAndView("groupview");
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup group = chatGroupDao.getChatGroupById(groupID);
+
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("group",group);
+        return modelAndView;
+    }
+//    public
 
 /*
     @RequestMapping(value = "/profile_edit")

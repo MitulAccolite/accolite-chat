@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.accolite.chat.dao.IUserDao" %>
+<%@ page import="com.accolite.chat.dao.impl.UserDao" %>
+<%@ page import="com.accolite.chat.model.User" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Lokesh K
   Date: 02 Aug 2016
@@ -7,6 +10,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,12 +48,12 @@
             <li><a href="">Support</a></li>
             <li><a href="">Help</a></li>
             <li>
-                <a href="userprofile" class="userhandle">
-                    <img src="<c:url value="/resources/theme1/images/placeholder.png"/>" width="32" height="32" alt="nick name">
-                    <span class="nickname">Kabali</span>
+                <a href="userprofile?user=${user.email}" class="userhandle">
+                    <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="32" height="32" alt="nick name">
+                    <span class="nickname">${user.nickName}</span>
                 </a>
             </li>
-            <li><a href="" class="logout">logout</a></li>
+            <li><a href="logout?user=${user.email}" class="logout">logout</a></li>
         </ul>
     </div>
 </header>
@@ -59,45 +63,36 @@
     <div class="tile dptile">
         <div class="tile-content zooming-out">
             <div class="slide">
-                <image src="resources/theme1/images/placeholder.png" alt="group image" width="width"/>
+                <image src="resources/theme1/img/placeholder.jpg" alt="group image" width="width"/>
             </div>
         </div>
     </div>
     <div>
-        <h1>Public</h1>
-        <h2><small>Created: 12 Dec 2012</small></h2>
+        <h1>${group.name}</h1>
+        <h2><small>Created: ${group.created.date}/${group.created.month}/${1900+group.created.year}</small></h2>
     </div>
     <div class="people">
         <h2>People</h2>
         <ul>
-            <li>
-                <a href="userlink">
-                    <div class="panel">
-                        <div class="heading">
-                            <span class="icon mif-user"></span>
-                            <span class="title">Kabali</span>
-                            <span class="mif-user-minus leaveg"></span>
-                            <input type="hidden" value="1" class="userID">
+
+            <d:forEach items="${group.getUsers()}" var="user">
+                <li>
+                    <a href="profileView?user=${user.email}">
+                        <div class="panel">
+                            <div class="heading">
+                                <span class="icon mif-user"></span>
+                                <span class="title">${user.nickName}</span>
+                                <span class="mif-user-minus leaveg"></span>
+                                <input type="hidden" value=${user.id} class="userID">
+                            </div>
                         </div>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="userlink">
-                    <div class="panel">
-                        <div class="heading">
-                            <span class="icon mif-user"></span>
-                            <span class="title">Manic Basha</span>
-                            <span class="mif-user-minus leaveg"></span>
-                            <input type="hidden" value="2" class="userID">
-                        </div>
-                    </div>
-                </a>
-            </li>
+                    </a>
+                </li>
+            </d:forEach>
         </ul>
     </div>
 </section>
-<input type="hidden" value="1" id="UserID">
+<input type="hidden" value=${user.id} id="UserID">
 <input type="hidden" value="1" id="groupID">
 <script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
 <script src="<c:url value="/resources/theme1/js/group_view.js"/>"></script>

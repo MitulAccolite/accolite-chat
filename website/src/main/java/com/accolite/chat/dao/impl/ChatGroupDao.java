@@ -125,15 +125,18 @@ public class ChatGroupDao implements IChatGroupDao {
     public ChatGroup findById(Integer id) {
         session = databaseManager.getSessionFactory().openSession();
         Transaction tx = null;
+        ChatGroup chatGroup = null;
         try {
             tx = session.beginTransaction();
-            return (ChatGroup) session.get(ChatGroup.class, id);
+            chatGroup = (ChatGroup) session.get(ChatGroup.class, id);
         } catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
         } finally {
             tx.commit();
             session.close();
+            System.out.println(chatGroup);
+            return chatGroup;
         }
     }
 
