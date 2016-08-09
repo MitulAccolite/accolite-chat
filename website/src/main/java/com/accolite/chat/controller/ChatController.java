@@ -380,12 +380,12 @@ public class ChatController {
     }
 
     @RequestMapping(value = "groupCreate")
-    public ModelAndView groupCreate(HttpServletRequest servletRequest,
+    public int groupCreate(HttpServletRequest servletRequest,
                                     @RequestParam("user")String email,
                                     @RequestParam("groupName")String groupName,
                                     @RequestParam("userList[]")int[] userList){
 
-        ModelAndView modelAndView = new ModelAndView("groupview");
+//        ModelAndView modelAndView = new ModelAndView("groupview");
         IChatGroupDao chatGroupDao = new ChatGroupDao();
         ChatGroup group = new ChatGroup(groupName,new Date());
 
@@ -399,9 +399,10 @@ public class ChatController {
         chatGroupDao.add(group);
         User user = userDao.findUserByEmail(email);
 
-        modelAndView.addObject("user",user);
-        modelAndView.addObject("group",group);
-        return modelAndView;
+//        modelAndView.addObject("user",user);
+//        modelAndView.addObject("group",group);
+        System.out.println(group.getId());
+        return group.getId();
     }
 
     @RequestMapping(value = "cgroupView")

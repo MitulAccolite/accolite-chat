@@ -72,12 +72,13 @@
             <d:forEach items="${user.chatGroups}" var="groups">
                 <li>
                     <div class="gsettings">
-                        <span></span>
+                        <a href="groupView?groupID=${groups.id}&userEmail=${user.email}"><span></span></a>
                     </div>
-                    <a href="groupView?groupID=${groups.id}&userEmail=${user.email}">
+                    <a href="#">
                         <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="20" height="20" alt="group name">
                         <span class="gname">${groups.name}</span>
                         <span class="gloader"></span>
+                        <input type="hidden" value=${groups.id} class="groupID">
                     </a>
                 </li>
             </d:forEach>

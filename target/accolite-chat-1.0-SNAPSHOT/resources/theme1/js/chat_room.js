@@ -1,5 +1,5 @@
 var topics = {};
-var lastUpdated=new Date().getTime();
+var lastUpdated=-1;
 
 jQuery.Topic = function( id ) {
     var callbacks, method,
@@ -85,9 +85,32 @@ $( document ).ready(function() {
         }
     );
 
-    $('.grouplist li a').click(function (e) {
-        $(this).children('.gloader').addClass("mif-spinner5");
-        $(this).children('.gloader').addClass("mif-ani-spin");
+    $('.grouplist li>a').click(function (e) {
+        e.preventDefault();
+        lastUpdated=-1;
+        var spinnerSpan=$(this).children('.gloader');
+        spinnerSpan.addClass("mif-spinner5");
+        spinnerSpan.addClass("mif-ani-spin");
+        $("#groupID").val($(this).children('.groupID').val());
+        $.ajax({
+            url: "poll",
+            method: 'GET',
+            dataType: 'json',
+            data: {
+                'userID': $('#userID').val(),
+                'groupID' : $('#groupID').val(),
+                'lastUpdated': lastUpdated
+            },
+            success: function(result){
+                lastUpdated=new Date().getTime();
+                spinnerSpan.removeClass("mif-spinner5");
+                spinnerSpan.removeClass("mif-ani-spin");
+                $.Topic('updateChatbox').publish(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus+": "+errorThrown);
+            }
+        });
     });
 
     $('.gadd').click(function () {
