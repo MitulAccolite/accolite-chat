@@ -22,6 +22,7 @@ function groupCreate(){
     $.ajax({
         url: "groupCreate",
         method: 'POST',
+        dataType: 'text/plain',
         data: {
             'user': $('#userEmail').val(),
             'groupName' : $('#groupName').val(),

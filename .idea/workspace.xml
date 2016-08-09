@@ -7,9 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="620350ad-df89-4055-9d43-a70a46ac2891" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/controller/ChatController.java" afterPath="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/controller/ChatController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/chat_room.jsp" afterPath="$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/chat_room.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/chat_room.js" afterPath="$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/chat_room.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT/WEB-INF/classes/com/accolite/chat/controller/ChatController.class" afterPath="$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT/WEB-INF/classes/com/accolite/chat/controller/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/target/classes/com/accolite/chat/controller/ChatController.class" afterPath="$PROJECT_DIR$/website/target/classes/com/accolite/chat/controller/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/target/website-1.0-SNAPSHOT/WEB-INF/classes/com/accolite/chat/controller/ChatController.class" afterPath="$PROJECT_DIR$/website/target/website-1.0-SNAPSHOT/WEB-INF/classes/com/accolite/chat/controller/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT/resources/theme1/js/metro.js" afterPath="$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT/resources/theme1/js/metro.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/target/website-1.0-SNAPSHOT/resources/theme1/js/metro.js" afterPath="$PROJECT_DIR$/website/target/website-1.0-SNAPSHOT/resources/theme1/js/metro.js" />
     </list>
     <list id="2ca45b9d-3553-4a30-9bca-f307a765fcff" name="New changelist" comment="" />
     <ignored path="accolite-chat.iws" />
@@ -36,8 +39,8 @@
       <file leaf-file-name="group_edit.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/group_edit.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+            <state relative-caret-position="17">
+              <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -47,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/website/src/main/java/com/accolite/chat/controller/ChatController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="403" column="35" selection-start-line="403" selection-start-column="35" selection-end-line="403" selection-end-column="35" />
+              <caret line="397" column="0" selection-start-line="397" selection-start-column="0" selection-end-line="397" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#14103#14112#0" expanded="true" />
@@ -69,8 +72,8 @@
       <file leaf-file-name="chat_room.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/chat_room.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+            <state relative-caret-position="281">
+              <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -79,13 +82,13 @@
       <file leaf-file-name="metro.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/metro.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="22" />
+            <state relative-caret-position="111">
+              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
               <folding>
-                <marker date="1470763282010" expanded="true" signature="75022:75031" ph="..." />
-                <marker date="1470763282010" expanded="true" signature="104928:104936" ph="&amp;##12296;" />
-                <marker date="1470763282010" expanded="true" signature="105249:105257" ph="&amp;##12297;" />
-                <marker date="1470763282010" expanded="true" signature="194123:194151" ph="..." />
+                <marker date="1470768431832" expanded="true" signature="75054:75063" ph="..." />
+                <marker date="1470768431832" expanded="true" signature="104960:104968" ph="&amp;##12296;" />
+                <marker date="1470768431832" expanded="true" signature="105281:105289" ph="&amp;##12297;" />
+                <marker date="1470768431832" expanded="true" signature="194155:194183" ph="..." />
               </folding>
             </state>
           </provider>
@@ -143,11 +146,11 @@
         <option value="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/dao/IChatGroupDao.java" />
         <option value="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/dao/impl/ChatGroupDao.java" />
         <option value="$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/group_create.jsp" />
-        <option value="$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/metro.js" />
         <option value="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/dao/impl/UserDao.java" />
         <option value="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/dao/IUserDao.java" />
         <option value="$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/chat_room.jsp" />
         <option value="$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/chat_room.js" />
+        <option value="$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/metro.js" />
         <option value="$PROJECT_DIR$/website/src/main/java/com/accolite/chat/controller/ChatController.java" />
       </list>
     </option>
@@ -1405,7 +1408,7 @@
       <workItem from="1470669302711" duration="391000" />
       <workItem from="1470713135467" duration="6683000" />
       <workItem from="1470723594758" duration="23318000" />
-      <workItem from="1470758504575" duration="8081000" />
+      <workItem from="1470758504575" duration="11342000" />
     </task>
     <task id="LOCAL-00001" summary="Profile edit and group edit integrated">
       <created>1470755575244</created>
@@ -1414,15 +1417,22 @@
       <option name="project" value="LOCAL" />
       <updated>1470755575244</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="group creation integrated">
+      <created>1470769894807</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1470769894807</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39380000" />
+    <option name="totallyTimeSpent" value="42641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5030257" order="14" side_tool="true" content_ui="tabs" />
@@ -1436,12 +1446,12 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30392158" sideWeight="0.49394855" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30392158" sideWeight="0.49394855" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21895425" sideWeight="0.48789713" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38398692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38398692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.4969743" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1489,7 +1499,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Profile edit and group edit integrated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile edit and group edit integrated" />
+    <MESSAGE value="group creation integrated" />
+    <option name="LAST_COMMIT_MESSAGE" value="group creation integrated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1507,14 +1518,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,14 +1747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/group_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/profile_edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1800,27 +1795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/group_create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/metro.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <marker date="1470763282010" expanded="true" signature="75022:75031" ph="..." />
-            <marker date="1470763282010" expanded="true" signature="104928:104936" ph="&amp;##12296;" />
-            <marker date="1470763282010" expanded="true" signature="105249:105257" ph="&amp;##12297;" />
-            <marker date="1470763282010" expanded="true" signature="194123:194151" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/src/main/java/com/accolite/chat/dao/impl/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
@@ -1861,10 +1835,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/WEB-INF/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/src/main/webapp/WEB-INF/views/group_edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="53" column="28" selection-start-line="53" selection-start-column="28" selection-end-line="53" selection-end-column="28" />
+        <state relative-caret-position="17">
+          <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/group_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/group_create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1879,16 +1877,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/chat_room.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="80" column="26" selection-start-line="80" selection-start-column="26" selection-end-line="80" selection-end-column="26" />
+        <state relative-caret-position="281">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/src/main/webapp/resources/theme1/js/metro.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding>
+            <marker date="1470768431832" expanded="true" signature="75054:75063" ph="..." />
+            <marker date="1470768431832" expanded="true" signature="104960:104968" ph="&amp;##12296;" />
+            <marker date="1470768431832" expanded="true" signature="105281:105289" ph="&amp;##12297;" />
+            <marker date="1470768431832" expanded="true" signature="194155:194183" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/website/src/main/java/com/accolite/chat/controller/ChatController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="403" column="35" selection-start-line="403" selection-start-column="35" selection-end-line="403" selection-end-column="35" />
+          <caret line="397" column="0" selection-start-line="397" selection-start-column="0" selection-end-line="397" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#14103#14112#0" expanded="true" />
