@@ -1,5 +1,7 @@
 package com.accolite.chat.model;
 
+import org.hibernate.annotations.Fetch;
+
 import java.util.Date;
 
 import javax.persistence.*;

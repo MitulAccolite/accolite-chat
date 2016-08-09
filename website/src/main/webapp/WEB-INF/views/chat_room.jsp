@@ -3,6 +3,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.util.Date" %>
+<%@ page import="com.accolite.chat.controller.OfflineUsers" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.accolite.chat.dao.IUserDao" %>
+<%@ page import="com.accolite.chat.dao.impl.UserDao" %>
 <%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%--
@@ -85,7 +89,7 @@
             <ul>
                 <d:forEach items="${messages}" var="message">
                     <li class="day-divider">
-                        <abbr>${message.created.date}/${message.created.month}/${1900 + message.created.year}</abbr>
+                        <abbr>${message.created.date}/${1 + message.created.month}/${1900 + message.created.year}</abbr>
                     </li>
                     <li class="msg-body">
                         <div class="dp-container">
@@ -127,6 +131,28 @@
                             <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
                             <span class="nickname"><%=user1.getNickName() %></span>
                             <span class="onlinestatus online"></span>
+                        </a>
+                    </li>
+                </d:if>
+                <% }%>
+                <!-- displaying for all offline users-->
+                <%
+                    OfflineUsers offlineUsers = new OfflineUsers();
+                    List<String> remainingUserEmail = offlineUsers.getAllOfflineUsers();
+                    List<User> remainingUsers = new ArrayList<User>();
+                    for(String temp : remainingUserEmail){
+                        IUserDao userDao = new UserDao();
+                        User user = userDao.findUserByEmail(temp);
+                        remainingUsers.add(user);
+                    }
+                    for(User user1 : remainingUsers){%>
+                <d:set var="userId" value="<%=user1.getId()%>"></d:set>
+                <d:if test="${user.id ne userId}">
+                    <li>
+                        <a href="profileView?user=<%=user1.getEmail()%>">
+                            <img src="<c:url value="/resources/theme1/img/placeholder.jpg"/>" width="38" height="38" alt="nick name">
+                            <span class="nickname"><%=user1.getNickName() %></span>
+                            <span class="onlinestatus "></span>
                         </a>
                     </li>
                 </d:if>
