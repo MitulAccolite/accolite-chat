@@ -22,6 +22,8 @@ public interface IChatGroupDao {
 
     ChatGroup getChatGroupById(int id);
 
+    void updateGroupNameByID(int groupID, String update);
+
 
    /* void updateGroupName(int groupID, String name);*/
 }

@@ -33,6 +33,7 @@ public class NotificationDao implements INotificationDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -49,6 +50,7 @@ public class NotificationDao implements INotificationDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }

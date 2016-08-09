@@ -1,25 +1,6 @@
 $(document).ready(function () {
 
-    $('.leaveg').click(leavegClick);
-
-    $('.joing').click(function (e) {
-        e.preventDefault();
-        $.ajax({
-            url: "joingroup",
-            method: 'POST',
-            data: {
-                'groupID': $('#groupID').val(),
-                'userID' : $(this).parent().children(".userID").val()
-            },
-            success: function(result){
-                $(this).parent().parent().remove();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus+": "+errorThrown);
-            }
-        });
-    });
-
+    $('.gentry').click(groupEntry);
 
     $('.edit').click(function (e) {
         e.preventDefault();
@@ -30,12 +11,13 @@ $(document).ready(function () {
                 url: "update_"+param,
                 method: 'POST',
                 data: {
-                    'userID': $('#userID').val(),
+                    'user': $('#userEmail').val(),
+                    'groupID':$('#groupID').val(),
                     'update' : inputElement.val()
                 },
                 success: function(result){
                     inputElement.prop("disabled",true);
-                    $(this).html("<span class='mif-pencil'></span> Edit");
+                    $('.edit').html("<span class='mif-pencil'></span> Edit");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus+": "+errorThrown);

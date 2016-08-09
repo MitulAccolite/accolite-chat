@@ -39,7 +39,7 @@ $( document ).ready(function() {
             },
             success: function(result){
                 this.disabled=false;
-                $('.chattext').html("");
+                $('.chattext').val("");
                 $.Topic('updateChatbox').publish(result);
             },
             error: function (jqXHR, textStatus, errorThrown) {

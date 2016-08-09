@@ -78,7 +78,7 @@
 --%>
             <c:forEach items="${user.chatGroups}" var="m">
                 <li>
-                    <a href="grouplink">
+                    <a href="groupView?groupID=${m.id}&userEmail=${user.email}">
                         <div class="panel">
                             <div class="heading">
                                 <img class="icon" src="/resources/theme1/img/placeholder.jpg">

@@ -78,6 +78,7 @@ public class UserDao implements IUserDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -95,6 +96,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result;
         }
     }
@@ -129,6 +131,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result;
         }
     }
@@ -145,6 +148,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result;
         }
     }
@@ -156,7 +160,7 @@ public class UserDao implements IUserDao {
             Query q = session.createQuery("From User where email = ?");
             q.setString(0, email);
             result = (User) q.list().get(0);
-            System.out.println(result);
+            System.out.println(result.getChatGroups()+" "+result.getMessages());
         }catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
@@ -178,6 +182,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result.getId();
         }
     }
@@ -194,6 +199,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result;
         }
     }
@@ -209,6 +215,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -225,6 +232,7 @@ public class UserDao implements IUserDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(result);
             return result;
         }
     }
@@ -260,6 +268,86 @@ public class UserDao implements IUserDao {
             session.update(user1);
             tx.commit();
         } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateFirstNameByEmail(String email,String update) {
+        User result = null;
+        Transaction tx = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("From User where email = ?");
+            q.setString(0, email);
+            result = (User) q.list().get(0);
+            result.setFirstName(update);
+            session.update(result);
+            tx.commit();
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateMiddleNameByEmail(String email, String update) {
+        User result = null;
+        Transaction tx = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("From User where email = ?");
+            q.setString(0, email);
+            result = (User) q.list().get(0);
+            result.setMiddleName(update);
+            session.update(result);
+            tx.commit();
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateLastNameByEmail(String email, String update) {
+        User result = null;
+        Transaction tx = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("From User where email = ?");
+            q.setString(0, email);
+            result = (User) q.list().get(0);
+            result.setLastName(update);
+            session.update(result);
+            tx.commit();
+        }catch (HibernateException e) {
+            session.getTransaction().rollback();
+            throw e;
+        } finally {
+            session.close();
+        }
+    }
+
+    public void updateNickNameByEmail(String email, String update) {
+        User result = null;
+        Transaction tx = null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("From User where email = ?");
+            q.setString(0, email);
+            result = (User) q.list().get(0);
+            result.setNickName(update);
+            session.update(result);
+            tx.commit();
+        }catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
         } finally {

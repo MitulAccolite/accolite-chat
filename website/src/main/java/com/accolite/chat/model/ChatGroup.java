@@ -1,5 +1,8 @@
 package com.accolite.chat.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +24,7 @@ public class ChatGroup {
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<User> users = new ArrayList();
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Message> messages = new ArrayList<Message>();
 
     public ChatGroup() {
@@ -77,12 +81,14 @@ public class ChatGroup {
 
     @Override
     public String toString() {
+        getMessages();
+        getUsers();
         return "ChatGroupDao{" +
-                "messages=" + messages +
-                ", users=" + users +
-                ", created=" + created +
-                ", name='" + name + '\'' +
-                ", id=" + id +
+//                "messages=" + getMessages() +
+//                ", users=" + getUsers() +
+//                ", created=" + created +
+//                ", name='" + name +
+//                ", id=" + id +
                 '}';
     }
 }

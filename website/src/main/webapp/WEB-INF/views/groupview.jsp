@@ -92,8 +92,9 @@
         </ul>
     </div>
 </section>
-<input type="hidden" value=${user.id} id="UserID">
-<input type="hidden" value="1" id="groupID">
+<input type="hidden" value=${user.id} id="userID">
+<input type="hidden" value=${user.email} id="userEmail">
+<input type="hidden" value=${group.id} id="groupID">
 <script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
 <script src="<c:url value="/resources/theme1/js/group_view.js"/>"></script>
 </body>

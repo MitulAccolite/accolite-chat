@@ -2,11 +2,7 @@ package com.accolite.chat.model;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Mitul Kapoor on 7/30/2016.
@@ -22,7 +18,7 @@ public class Message {
     private Date created;
     @ManyToOne
     private User user;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ChatGroup chatGroup;
 
     public Message() {

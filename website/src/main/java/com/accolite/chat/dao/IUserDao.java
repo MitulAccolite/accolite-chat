@@ -20,6 +20,10 @@ public interface IUserDao {
     List<User> listAddUsers();
     Role findRoleByName(String role);
     User findUserByEmail(String email);
+    void updateFirstNameByEmail(String email,String update);
+    void updateMiddleNameByEmail(String email,String update);
+    void updateLastNameByEmail(String email,String update);
+    void updateNickNameByEmail(String email,String update);
 
 /*
     User findUserByNickname(String nickname);

@@ -19,10 +19,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by Mitul Kapoor on 7/31/2016.
@@ -198,7 +195,7 @@ public class ChatController {
 
         IChatGroupDao chatGroupDao = new ChatGroupDao();
         ChatGroup chatGroup = chatGroupDao.findById(groupid);
-
+        System.out.println(chatGroup);
         message1.setChatGroup(chatGroup);
 
         messageDao.save(message1);
@@ -214,6 +211,17 @@ public class ChatController {
                                     @RequestParam("user")String email){
 
         ModelAndView modelAndView = new ModelAndView("userprofile");
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "profile_edit")
+    public ModelAndView profileEdit(HttpServletRequest servletRequest,
+                                    @RequestParam("user")String email){
+
+        ModelAndView modelAndView = new ModelAndView("profile_edit");
         IUserDao userDao = new UserDao();
         User user = userDao.findUserByEmail(email);
         modelAndView.addObject("user",user);
@@ -236,16 +244,117 @@ public class ChatController {
         modelAndView.addObject("group",group);
         return modelAndView;
     }
-//    public
 
-/*
-    @RequestMapping(value = "/profile_edit")
-    public ModelAndView ediProfile(
-            HttpServletRequest servletRequest){
+    @RequestMapping(value = "/update_firstName",method = RequestMethod.POST )
+    public ModelAndView updateFirstName( @RequestParam("user")String userEmail,
+                                   @RequestParam("update")String update,
+                                   HttpServletRequest servletRequest){
+        IUserDao userDao = new UserDao();
+        userDao.updateFirstNameByEmail(userEmail,update);
 
+        User user = userDao.findUserByEmail(userEmail);
 
+        ModelAndView modelAndView = new ModelAndView("userprofile");
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
 
+    @RequestMapping(value = "/update_middleName",method = RequestMethod.POST )
+    public ModelAndView updateMiddleName( @RequestParam("user")String userEmail,
+                                         @RequestParam("update")String update,
+                                         HttpServletRequest servletRequest){
+        IUserDao userDao = new UserDao();
+        userDao.updateMiddleNameByEmail(userEmail,update);
 
-    }*/
+        User user = userDao.findUserByEmail(userEmail);
+
+        ModelAndView modelAndView = new ModelAndView("userprofile");
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update_lastName",method = RequestMethod.POST )
+    public ModelAndView updateLastName( @RequestParam("user")String userEmail,
+                                         @RequestParam("update")String update,
+                                         HttpServletRequest servletRequest){
+        IUserDao userDao = new UserDao();
+        userDao.updateLastNameByEmail(userEmail,update);
+
+        User user = userDao.findUserByEmail(userEmail);
+
+        ModelAndView modelAndView = new ModelAndView("userprofile");
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update_nickName",method = RequestMethod.POST )
+    public ModelAndView updateNickName( @RequestParam("user")String userEmail,
+                                         @RequestParam("update")String update,
+                                         HttpServletRequest servletRequest){
+        IUserDao userDao = new UserDao();
+        userDao.updateNickNameByEmail(userEmail,update);
+
+        User user = userDao.findUserByEmail(userEmail);
+
+        ModelAndView modelAndView = new ModelAndView("userprofile");
+        modelAndView.addObject("user",user);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update_groupName",method = RequestMethod.POST )
+    public ModelAndView updateGroupName( @RequestParam("user")String userEmail,
+                                         @RequestParam("groupID")int groupID,
+                                        @RequestParam("update")String update,
+                                        HttpServletRequest servletRequest){
+        ModelAndView modelAndView = new ModelAndView("groupview");
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        chatGroupDao.updateGroupNameByID(groupID,update);
+        ChatGroup group = chatGroupDao.getChatGroupById(groupID);
+
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(userEmail);
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("group",group);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "group_edit")
+    public ModelAndView profileEdit(HttpServletRequest servletRequest,
+                                    @RequestParam("groupID")int groupID,
+                                    @RequestParam("userEmail")String email
+    ){
+        ModelAndView modelAndView = new ModelAndView("group_edit");
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup group = chatGroupDao.getChatGroupById(groupID);
+        ChatGroup pGroup = chatGroupDao.getChatGroupById(1);//public group
+
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+
+        List<User> gUsers = group.getUsers();
+
+        List<User> nonGUsers = new ArrayList<User>();
+
+        for (User u: pGroup.getUsers()){
+            if(!(gUsers.indexOf(u)>-1)){
+                nonGUsers.add(u);
+            }
+        }
+
+        for(User u:gUsers){
+            System.out.println(u.getNickName());
+        }
+
+        for(User u:nonGUsers){
+            System.out.println(u.getNickName());
+        }
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("group",group);
+        modelAndView.addObject("gUsers",gUsers);
+        modelAndView.addObject("nonGUsers",nonGUsers);
+        return modelAndView;
+    }
 
 }

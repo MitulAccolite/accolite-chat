@@ -1,5 +1,6 @@
-<div class="wizard2" data-role="wizard2"
-     data-button-labels='{"help": "?", "prev": "<span class=\"mif-arrow-left\"></span>", "next": "<span class=\"mif-arrow-right\"></span>", "finish": "<a href=\"userprofile\"><span class=\"mif-checkmark\"></span></a>"}'>
+<%@taglib prefix="e" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="wizard2 profileEditWizard" data-role="wizard2"
+     data-button-labels='{"help": "?", "prev": "<span class=\"mif-arrow-left\"></span>", "next": "<span class=\"mif-arrow-right\"></span>", "finish": "<a href=\"userprofile?user=${user.email}\"><span class=\"mif-checkmark\"></span></a>"}'>
 
     <div class="step">
         <div class="step-content">
@@ -9,7 +10,7 @@
                 <div class="row">
                     <div class="cell">
                         <div class="input-control modern text iconic" data-role="input">
-                            <input id="firstName" name="firstName" type="text" style="padding-right: 5px;" disabled value="Harry">
+                            <input id="firstName" name="firstName" type="text" style="padding-right: 5px;" disabled value=${user.firstName}>
                             <span class="label">Your First Name</span>
                             <span class="informer">Please enter your first name</span>
                             <span class="placeholder" style="display: block;">Harry</span>
@@ -20,7 +21,7 @@
                 <div class="row">
                     <div class="cell">
                         <div class="input-control modern text iconic" data-role="input">
-                            <input id="middleName" name="middleName" type="text" style="padding-right: 5px;" disabled value="James">
+                            <input id="middleName" name="middleName" type="text" style="padding-right: 5px;" disabled value=${user.middleName}>
                             <span class="label">Your Middle Name</span>
                             <span class="informer">Please enter your middle name</span>
                             <span class="placeholder" style="display: block;">James</span>
@@ -31,7 +32,7 @@
                 <div class="row">
                     <div class="cell">
                         <div class="input-control modern text iconic" data-role="input">
-                            <input id="lastName" name="lastName" type="text" style="padding-right: 5px;" disabled value="Potter">
+                            <input id="lastName" name="lastName" type="text" style="padding-right: 5px;" disabled value=${user.lastName}>
                             <span class="label">Your last Name</span>
                             <span class="informer">Please enter your last name</span>
                             <span class="placeholder" style="display: block;">Potter</span>
@@ -42,7 +43,7 @@
                 <div class="row">
                     <div class="cell">
                         <div class="input-control modern text iconic" data-role="input">
-                            <input id="nickName" name="nickName" type="text" style="padding-right: 5px;" disabled value="Parry Hotter">
+                            <input id="nickName" name="nickName" type="text" style="padding-right: 5px;" disabled value=${user.nickName}>
                             <span class="label">Your nick Name</span>
                             <span class="informer">Please enter your nick name</span>
                             <span class="placeholder" style="display: block;">Parry Hotter</span>
@@ -85,30 +86,20 @@
             <h1 class="no-margin-top sub-leader">Groups</h1>
             <div class="groupedit">
                 <ul>
-                    <li>
-                        <a href="grouplink">
-                            <div class="panel">
-                                <div class="heading">
-                                    <span class="icon mif-user"></span>
-                                    <span class="title">Public</span>
-                                    <span class="mif-exit leaveg"></span>
-                                    <input type="hidden" value="1" class="groupID">
+                    <e:forEach items="${user.chatGroups}" var="groups">
+                        <li>
+                            <a href="groupView?groupID=${groups.id}&userEmail=${user.email}">
+                                <div class="panel">
+                                    <div class="heading">
+                                        <span class="icon mif-user"></span>
+                                        <span class="title">${groups.name}</span>
+                                        <span class="mif-exit leaveg"></span>
+                                        <input type="hidden" value=${groups.id} class="groupID">
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="grouplink">
-                            <div class="panel">
-                                <div class="heading">
-                                    <span class="icon mif-user"></span>
-                                    <span class="title">Public</span>
-                                    <span class="mif-exit leaveg"></span>
-                                    <input type="hidden" value="2" class="groupID">
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    </e:forEach>
                 </ul>
             </div>
         </div>

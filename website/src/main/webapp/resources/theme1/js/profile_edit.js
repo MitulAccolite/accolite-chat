@@ -35,12 +35,12 @@ $(document).ready(function () {
                 url: "update_"+param,
                 method: 'POST',
                 data: {
-                    'userID': $('#userID').val(),
+                    'user': $('#userEmail').val(),
                     'update' : inputElement.val()
                 },
                 success: function(result){
                     inputElement.prop("disabled",true);
-                    $(this).html("<span class='mif-pencil'></span> Edit");
+                    $('.edit').html("<span class='mif-pencil'></span> Edit");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus+": "+errorThrown);

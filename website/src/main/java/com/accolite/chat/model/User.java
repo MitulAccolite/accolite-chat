@@ -1,19 +1,14 @@
 package com.accolite.chat.model;
 
 import com.accolite.chat.dao.impl.ChatGroupDao;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.swing.plaf.basic.BasicMenuUI;
 
 /**
@@ -36,6 +31,7 @@ public class User {
     private String email;
 
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Message> messages;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
@@ -173,20 +169,22 @@ public class User {
 
     @Override
     public String toString() {
+        getMessages();
+        getChatGroups();
         return "User{" +
-                       "id=" + id +
-                       ", firstName='" + firstName + '\'' +
-                       ", middleName='" + middleName + '\'' +
-                       ", lastName='" + lastName + '\'' +
-                       ", created=" + created +
-                       ", updated=" + updated +
-                       ", isActive=" + isActive +
-                       ", nickName='" + nickName + '\'' +
-                       ", email='" + email + '\'' +
-                       ", messages=" + messages +
-                       ", chatGroups=" + chatGroups +
-                       ", roles=" + roles +
-                       ", credential=" + credential +
-                       '}';
+//                       "id=" + id +
+//                       ", firstName='" + firstName +
+//                       ", middleName='" + middleName +
+//                       ", lastName='" + lastName +
+//                       ", created=" + created +
+//                       ", updated=" + updated +
+//                       ", isActive=" + isActive +
+//                       ", nickName='" + nickName +
+//                       ", email='" + email +
+////                       ", messages=" + getMessages() +
+////                       ", chatGroups=" + getChatGroups() +
+//                       ", roles=" + roles +
+//                       ", credential=" + credential +
+                       "}";
     }
 }

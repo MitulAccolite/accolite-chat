@@ -76,7 +76,7 @@
 
             <d:forEach items="${user.chatGroups}" var="groups">
                 <li>
-                    <a href="groupview.jsp">
+                    <a href="groupView?groupID=${groups.id}&userEmail=${user.email}">
                         <div class="panel">
                             <div class="heading">
                                 <img class="icon" src="resources/theme1/img/placeholder.jpg">
@@ -90,7 +90,8 @@
         </ul>
     </div>
 </section>
-<input type="hidden" value="1" id="userID">
+<input type="hidden" value=${user.id} id="userID">
+<input type="hidden" value=${user.email} id="userEmail">
 <script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
 <script src="<c:url value="/resources/theme1/js/user_view.js"/>"></script>
 </body>

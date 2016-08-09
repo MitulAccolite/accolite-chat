@@ -76,6 +76,7 @@ public class MessageDao implements IMessageDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -102,6 +103,7 @@ public class MessageDao implements IMessageDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(finalResult);
             return finalResult;
         }
     }
@@ -117,6 +119,7 @@ public class MessageDao implements IMessageDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -132,6 +135,7 @@ public class MessageDao implements IMessageDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }

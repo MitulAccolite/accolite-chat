@@ -3,4 +3,10 @@
   <data-source name="MySQL - officechat@localhost" uuid="54c10d54-9285-4488-a064-06902ceb49e6">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source name="database.cfg.xml/Hibernate" uuid="0e063f25-f9d8-40fb-8d5b-2a3cf3c1b94e">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source name="database.cfg.xml/Hibernate" uuid="6ae65cbb-b3e6-471b-83d2-4008914da3d9">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

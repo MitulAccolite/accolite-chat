@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="accolite-chat:war exploded">
+  <artifact type="exploded-war" build-on-make="true" name="accolite-chat:war exploded">
     <output-path>$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
@@ -41,12 +41,16 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.4" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.10" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1.1" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/accolite-chat-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="accolite-chat/web/Web" />
+      <element id="artifact" artifact-name="website:war exploded" />
     </root>
   </artifact>
 </component>

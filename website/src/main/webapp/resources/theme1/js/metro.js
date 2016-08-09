@@ -10712,7 +10712,7 @@ $.widget( "metro.wizard2" , {
         onNext: function(page, wiz){return true;},
         onFinish: function(page, wiz){
         	//<<<user code
-            if(/login/.test(window.location)){
+            if($('.wizard2').hasClass("registerWizard")){
                 //mobile number validation
                 var isMobileValid=false;
                 var elements=$('div.step.active input');
@@ -10913,7 +10913,7 @@ $.widget( "metro.wizard2" , {
 
     next: function(){
     	//<<<user code
-        if(/login/.test(window.location)) {
+        if($('.wizard2').hasClass("registerWizard")) {
             switch (this._step) {
                 case 1://validating credentials
                     var isEmailValid = false;

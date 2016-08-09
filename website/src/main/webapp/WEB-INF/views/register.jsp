@@ -1,4 +1,4 @@
-<div class="wizard2" data-role="wizard2"
+<div class="wizard2 registerWizard" data-role="wizard2"
 	 data-button-labels='{"help": "?", "prev": "<span class=\"mif-arrow-left\"></span>", "next": "<span class=\"mif-arrow-right\"></span>", "finish": "<span class=\"mif-checkmark\"></span>"}'>
 
 	<div class="step">

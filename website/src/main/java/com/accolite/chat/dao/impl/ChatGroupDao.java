@@ -48,6 +48,7 @@ public class ChatGroupDao implements IChatGroupDao {
             g.getMessages().add(message);
             session.merge(g);
             session.getTransaction().commit();
+            System.out.println("added msg: "+g.getMessages());
         } catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
@@ -69,6 +70,7 @@ public class ChatGroupDao implements IChatGroupDao {
             e.printStackTrace();
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -80,6 +82,7 @@ public class ChatGroupDao implements IChatGroupDao {
             Query q = session.createQuery("From ChatGroup ");
             List<ChatGroup> resultList = q.list();
             session.getTransaction().commit();
+            System.out.println(resultList);
             return resultList;
 
         } catch (HibernateException e) {
@@ -146,7 +149,9 @@ public class ChatGroupDao implements IChatGroupDao {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            return (ChatGroup) session.get(ChatGroup.class, 1);
+            ChatGroup chatGroup=(ChatGroup) session.get(ChatGroup.class, 1);
+            System.out.println(chatGroup);
+            return chatGroup;
         } catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
@@ -156,4 +161,23 @@ public class ChatGroupDao implements IChatGroupDao {
         }
     }
 
+    public void updateGroupNameByID(int groupID, String update) {
+        Session session = databaseManager.getSessionFactory().openSession();
+        ChatGroup chatGroup = null;
+        Transaction tx=null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx=session.beginTransaction();
+            Query q = session.createQuery("From ChatGroup where id=?");
+            q.setInteger(0, groupID);
+            chatGroup = (ChatGroup) q.list().get(0);
+            chatGroup.setName(update);
+            session.update(chatGroup);
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }

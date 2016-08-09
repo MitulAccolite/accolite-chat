@@ -84,6 +84,7 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
             throw e;
         } finally {
             session.close();
+            System.out.println(resultList);
             return resultList;
         }
     }
@@ -96,6 +97,7 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
             q.setString(0, username);
             q.setString(1, password);
             user = (List<Credential>) q.list();
+            System.out.println(user);
         } catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
