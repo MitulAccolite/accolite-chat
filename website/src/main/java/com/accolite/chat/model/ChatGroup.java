@@ -18,7 +18,7 @@ public class ChatGroup {
     private Integer id;
     private String name;
     private Date created;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users = new ArrayList();
     @OneToMany
     private List<Message> messages = new ArrayList<Message>();

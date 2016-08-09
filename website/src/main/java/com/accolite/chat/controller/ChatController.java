@@ -236,16 +236,13 @@ public class ChatController {
         modelAndView.addObject("group",group);
         return modelAndView;
     }
-//    public
 
-/*
     @RequestMapping(value = "/profile_edit")
     public ModelAndView ediProfile(
+            @RequestParam("userEmail")String email,
             HttpServletRequest servletRequest){
-
-
-
-
-    }*/
-
+        ModelAndView modelAndView = new ModelAndView("profile_edit");
+        modelAndView.addObject("user",(new UserDao()).findUserByEmail(email));
+        return modelAndView;
+    }
 }

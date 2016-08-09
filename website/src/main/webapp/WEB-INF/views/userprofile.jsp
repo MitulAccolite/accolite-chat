@@ -90,7 +90,8 @@
         </ul>
     </div>
 </section>
-<input type="hidden" value="1" id="userID">
+<input type="hidden" value=${user.id} id="userID">
+<input type="hidden" value=${user.email} id="userEmail">
 <script src="<c:url value="/resources/theme1/js/app_bar.js"/>"></script>
 <script src="<c:url value="/resources/theme1/js/user_view.js"/>"></script>
 </body>

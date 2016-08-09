@@ -1,12 +1,10 @@
 package com.accolite.chat.model;
 
+import org.hibernate.annotations.Fetch;
+
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Mitul Kapoor on 7/30/2016.
