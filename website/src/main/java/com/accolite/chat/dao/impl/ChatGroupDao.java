@@ -180,4 +180,24 @@ public class ChatGroupDao implements IChatGroupDao {
             session.close();
         }
     }
+
+    public ChatGroup getChatGroupByName(String groupName) {
+        Session session = databaseManager.getSessionFactory().openSession();
+        ChatGroup chatGroup = null;
+        Transaction tx=null;
+        try {
+            session = databaseManager.getSessionFactory().openSession();
+            tx=session.beginTransaction();
+            Query q = session.createQuery("From ChatGroup where name=?");
+            q.setString(0, groupName);
+            chatGroup = (ChatGroup) q.list().get(0);
+            System.out.println(chatGroup.getUsers()+" "+chatGroup.getMessages());
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+            return chatGroup;
+        }
+    }
 }

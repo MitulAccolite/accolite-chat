@@ -1,0 +1,11 @@
+.logout {
+    left: 55vw;
+}
+
+.userhandle {
+    left: 55vw;
+}
+
+.app-bar-menu li:hover {
+    background-color: #0072c6 !important;
+}

@@ -1,0 +1,103 @@
+body{
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
+
+section {
+    position: relative;
+    top: 12%;
+    width: 35%;
+    left: 32.5%;
+    margin-bottom: 50px;
+}
+
+.dptile{
+    width: 200px;
+    height: 200px;
+}
+
+.people {
+    clear: both;
+}
+
+.people li a, .peopleEdit li a{
+    color: initial;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.peopleEdit ul {
+    padding-left: 10px;
+    width: 60%;
+}
+
+.peopleEdit {
+    overflow: auto;
+    height: 350px;
+}
+
+.people li *, .peopleEdit li *{
+    vertical-align: middle;
+}
+
+.people li, .peopleEdit li{
+    list-style-type: none;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.gedit {
+    float: right;
+    top: 2px;
+    left: -2px;
+    font-size: 1.5em;
+    color: #0072c6;
+    position: relative;
+}
+
+.gedit span {
+    font-size: 0.8em;
+}
+
+.leaveg, .joing{
+    float: right;
+    left: -1vw;
+    position: relative;
+    font-size: 1.2em;
+}
+
+.heading {
+    padding: 12px 0px;
+}
+
+.groupEditSection {
+    top: 4vh;
+    width: 50vw;
+    left: 25vw;
+}
+
+.edit {
+    float: right;
+    top: 25px;
+    position: relative;
+    left: 48px;
+}
+
+.edit span {
+    font-size: 0.8em;
+}
+
+.wizard2 {
+    background-color: white;
+}
+
+.peopleSearch {
+    margin-left: 10px;
+    width: 90% !important;
+}
+
+.peopleSearch input {
+    font-size: 1.2em;
+}

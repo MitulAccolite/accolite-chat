@@ -332,23 +332,28 @@ public class ChatController {
         IUserDao userDao = new UserDao();
         User user = userDao.findUserByEmail(email);
 
+        List<Integer> gUID=new ArrayList<Integer>();
         List<User> gUsers = group.getUsers();
+
+        for(User u:gUsers){
+            gUID.add(u.getId());
+        }
 
         List<User> nonGUsers = new ArrayList<User>();
 
         for (User u: pGroup.getUsers()){
-            if(!(gUsers.indexOf(u)>-1)){
+            if(!(gUID.indexOf(u.getId())>-1)){
                 nonGUsers.add(u);
             }
         }
 
-        for(User u:gUsers){
-            System.out.println(u.getNickName());
-        }
-
-        for(User u:nonGUsers){
-            System.out.println(u.getNickName());
-        }
+//        for(User u:gUsers){
+//            System.out.println(u.getNickName());
+//        }
+//
+//        for(User u:nonGUsers){
+//            System.out.println(u.getNickName());
+//        }
 
         modelAndView.addObject("user",user);
         modelAndView.addObject("group",group);
@@ -357,4 +362,62 @@ public class ChatController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "group_create")
+    public ModelAndView groupCreatePage(HttpServletRequest servletRequest,
+                                    @RequestParam("user")String email){
+
+        ModelAndView modelAndView = new ModelAndView("group_create");
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup pGroup = chatGroupDao.getChatGroupById(1);
+        List<User> allUsers=pGroup.getUsers();
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("pGroup",allUsers);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "groupCreate")
+    public ModelAndView groupCreate(HttpServletRequest servletRequest,
+                                    @RequestParam("user")String email,
+                                    @RequestParam("groupName")String groupName,
+                                    @RequestParam("userList[]")int[] userList){
+
+        ModelAndView modelAndView = new ModelAndView("groupview");
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup group = new ChatGroup(groupName,new Date());
+
+        IUserDao userDao = new UserDao();
+
+        for(int i=0;i<userList.length;i++){
+            System.out.println(userList[i]);
+            group.addUser(userDao.findUserByUserId(userList[i]));
+        }
+
+        chatGroupDao.add(group);
+        User user = userDao.findUserByEmail(email);
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("group",group);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "cgroupView")
+    public ModelAndView cgroupView(HttpServletRequest servletRequest,
+                                  @RequestParam("groupName")String groupName,
+                                  @RequestParam("userEmail")String email
+    ){
+        ModelAndView modelAndView = new ModelAndView("groupview");
+        IChatGroupDao chatGroupDao = new ChatGroupDao();
+        ChatGroup group = chatGroupDao.getChatGroupByName(groupName);
+
+        IUserDao userDao = new UserDao();
+        User user = userDao.findUserByEmail(email);
+
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("group",group);
+        return modelAndView;
+    }
 }

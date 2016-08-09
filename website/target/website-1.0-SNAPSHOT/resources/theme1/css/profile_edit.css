@@ -1,0 +1,106 @@
+body{
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
+
+section {
+    position: relative;
+    top: 12%;
+    width: 35%;
+    left: 32.5%;
+    margin-bottom: 50px;
+}
+
+.dptile{
+    width: 200px;
+    height: 200px;
+}
+
+.groups {
+    clear: both;
+}
+
+.profileEditSection {
+    top: 4vh;
+    width: 50vw;
+    left: 25vw;
+}
+
+.dptile{
+    width: 200px;
+    height: 200px;
+}
+
+.groups {
+    clear: both;
+}
+
+.pedit span {
+    font-size: 0.8em;
+}
+
+.groupedit li a, .groups li a{
+    color: initial;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 10px;
+}
+
+.groups ul {
+    padding-left: 0px;
+}
+
+.groupedit {
+    overflow: auto;
+    height: 400px;
+}
+
+.groupdedit li *, .groups li *{
+    vertical-align: middle;
+}
+
+.groupedit li, .groups li{
+    list-style-type: none;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.groupedit ul {
+    width: 60%;
+}
+
+.heading {
+    padding: 12px 0px;
+}
+
+.leaveg {
+    float: right;
+    left: -1vw;
+    position: relative;
+    font-size: 1.2em;
+}
+
+.edit {
+    float: right;
+    top: 25px;
+    position: relative;
+    left: 48px;
+}
+
+.edit span {
+    font-size: 0.8em;
+}
+
+.wizard2 {
+    background-color: white;
+}
+
+.pedit {
+    float: right;
+    top: 2px;
+    left: -2px;
+    font-size: 1.5em;
+    color: #0072c6;
+    position: relative;
+}

@@ -1,0 +1,42 @@
+body{
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
+
+section {
+    position: relative;
+    top: 12%;
+    width: 35%;
+    left: 32.5%;
+    margin-bottom: 50px;
+}
+
+.dptile{
+    width: 200px;
+    height: 200px;
+}
+
+.groups {
+    clear: both;
+}
+
+.groups li{
+    margin-bottom: 5px;
+}
+
+.groups li a{
+    color: initial;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.groups li *{
+    vertical-align: middle;
+}
+
+.groups li{
+    list-style-type: none;
+    clear: both;
+}

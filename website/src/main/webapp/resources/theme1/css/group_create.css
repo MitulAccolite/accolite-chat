@@ -1,0 +1,64 @@
+body{
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjNDAzYzNmIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMxZTI5MmQiPjwvcGF0aD4KPC9zdmc+");
+}
+
+section {
+    position: relative;
+    top: 4vh;
+    width: 50vw;
+    left: 25vw;
+    margin-bottom: 50px;
+}
+
+.peopleEdit li a{
+    color: initial;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.peopleEdit ul {
+    padding-left: 10px;
+    width: 60%;
+}
+
+.peopleEdit {
+    overflow: auto;
+    height: 350px;
+}
+
+.peopleEdit li *{
+    vertical-align: middle;
+}
+
+.peopleEdit li{
+    list-style-type: none;
+    clear: both;
+    margin-bottom: 5px;
+}
+
+.gentry{
+    float: right;
+    left: -1vw;
+    position: relative;
+    font-size: 1.2em;
+}
+
+.heading {
+    padding: 12px 0px;
+}
+
+.wizard2 {
+    background-color: white;
+}
+
+.peopleSearch {
+    margin-left: 10px;
+    width: 90% !important;
+}
+
+.peopleSearch input {
+    font-size: 1.2em;
+}

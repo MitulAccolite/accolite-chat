@@ -25,6 +25,8 @@ public interface IUserDao {
     void updateLastNameByEmail(String email,String update);
     void updateNickNameByEmail(String email,String update);
 
+    User findUserByUserId(int id);
+
 /*
     User findUserByNickname(String nickname);
 
