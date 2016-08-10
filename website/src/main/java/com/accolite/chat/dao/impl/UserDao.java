@@ -126,12 +126,12 @@ public class UserDao implements IUserDao {
             Query q = session.createQuery("From User where id = ?");
             q.setInteger(0, userID);
             result = (User) q.list().get(0);
+            result.getChatGroups();
         }catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;
         } finally {
             session.close();
-            System.out.println(result);
             return result;
         }
     }

@@ -7,6 +7,9 @@ import com.accolite.chat.model.Message;
 import com.accolite.chat.model.Role;
 import manager.ChatManager;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.node.ArrayNode;
+import org.codehaus.jackson.node.JsonNodeFactory;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -173,7 +176,7 @@ public class ChatController {
 
         System.out.println("Message saved successfully");
 
-        return new ModelAndView("chat_room");
+        return poll(servletRequest,userid,groupid,message1.getCreated().getTime()-10);
         //return message;
     }
 
@@ -373,51 +376,249 @@ public class ChatController {
         return mav;
     }
 
-    @RequestMapping(value = "/poll")
-    public ModelAndView poll(HttpServletRequest servletRequest,
-                                    @RequestParam("user")String email,
-                                    @RequestParam("groupID")int groupID,
-                                    @RequestParam("lastUpdated")long lastUpdated){
-
-        final ObjectMapper mapper=new ObjectMapper();
-
+    @RequestMapping(value = "getGroup")
+    public ModelAndView getGroup(HttpServletRequest servletRequest,
+                                        @RequestParam("user")int userID,
+                                        @RequestParam("groupID")int groupID){
         ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
-        try {
-            MessageDao messageDao = new MessageDao();
-            ChatGroupDao chatGroupDao = new ChatGroupDao();
-            UserDao userDao = new UserDao();
-            User user = userDao.findUserByEmail(email);
-            List<ChatGroup> allNewGroups;
-            List<Message> allNewMessages=new ArrayList<Message>();
-            List<User> allNewUsers;
-            System.out.println(lastUpdated);
-            if (lastUpdated == -1) {
-                System.out.println("show");
-                try{
-                    allNewMessages = messageDao.showMessagesToPersonInGroup(user.getId(), groupID);
-                }catch (NullPointerException e){
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("poll");
-                try {
-                    System.out.println(user.getId()+" "+ groupID);
-                    allNewMessages = messageDao.pollMessagesToPersonInGroup(user.getId(), groupID, new Date(lastUpdated));
-                }catch (NullPointerException e){
-                    e.printStackTrace();
-                }
-            }
-            //        mav.addObject("groups",allNewGroups);
-            //        mav.addObject("users",allNewUsers);
-            //        try {
-            mav.addObject("messages", allNewMessages);
-            //            mav.addObject("mmessages",mapper.writeValueAsString(allNewMessages));
-            //        } catch (IOException e) {
-            //            e.printStackTrace();
-            //        }
-        }catch(Exception e){
-            e.printStackTrace();
+        MessageDao messageDao = new MessageDao();
+        List<Message> messages=(List<Message>)messageDao.showMessagesToPersonInGroup(userID, groupID);
+
+        List<GMessage> gms=new ArrayList<GMessage>();
+        for(Message msg:messages){
+            gms.add(new GMessage(msg.getMessage(),msg.getCreated().getTime(),msg.getUser().getEmail(),msg.getUser().getNickName()));
         }
+        mav.addObject("messages",gms);
+
+        ChatGroupDao chatGroupDao = new ChatGroupDao();
+//        UserDao userDao = new UserDao();
+//        User usr=userDao.findUserByUserId(userID);
+//        List<ListGroups> allNewGroups=new ArrayList<ListGroups>();
+//        List<ChatGroup> chatGroupList=usr.getChatGroups();
+//        for(ChatGroup cg:chatGroupList)
+//        {
+//            ListGroups obj=new ListGroups(cg.getId(),cg.getName());
+//            allNewGroups.add(obj);
+//        }
+//        mav.addObject("groups", allNewGroups);
+
+        ChatGroup cg=chatGroupDao.findById(groupID);
+        List<User> gUsers=cg.getUsers();
+        List<OnlineUsers> allNewUsers=new ArrayList<OnlineUsers>();
+        Set<User> users=ChatManager.getActiveUsers();
+        List<Integer> gUID=new ArrayList<Integer>();
+
+        for(User u:gUsers){
+            gUID.add(u.getId());
+        }
+
+        List<User> nonActiveGUsers = new ArrayList<User>();
+        List<User> activeGUsers = new ArrayList<User>();
+        List<Integer> aGUID=new ArrayList<Integer>();
+        for (User u: users){
+            if(gUID.indexOf(u.getId())>-1&&u.getId()!=userID){
+                activeGUsers.add(u);
+                aGUID.add(u.getId());
+            }
+        }
+
+        for (User u: gUsers){
+            if(u.getId()!=userID&&!(aGUID.indexOf(u.getId())>-1)){
+                nonActiveGUsers.add(u);
+            }
+        }
+
+        for (User u:activeGUsers) {
+            OnlineUsers obj=new OnlineUsers(u.getEmail(),u.getNickName(),true);
+            allNewUsers.add(obj);
+        }
+        for (User u:nonActiveGUsers) {
+            OnlineUsers obj=new OnlineUsers(u.getEmail(),u.getNickName(),false);
+            allNewUsers.add(obj);
+        }
+        mav.addObject("activeUsers",allNewUsers);
+
         return mav;
     }
+
+    @RequestMapping(value = "poll")
+    public ModelAndView poll(HttpServletRequest servletRequest,
+                                 @RequestParam("user")int userID,
+                                 @RequestParam("groupID")int groupID,
+                                @RequestParam("lastUpdated")long lastUpdate){
+        if(lastUpdate==-1)
+            return getGroup(servletRequest,userID,groupID);
+        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+        MessageDao messageDao = new MessageDao();
+        List<Message> messages=(List<Message>)messageDao.pollMessagesToPersonInGroup(userID, groupID,new Date(lastUpdate));
+
+        List<GMessage> gms=new ArrayList<GMessage>();
+        for(Message msg:messages){
+            gms.add(new GMessage(msg.getMessage(),msg.getCreated().getTime(),msg.getUser().getEmail(),msg.getUser().getNickName()));
+        }
+        mav.addObject("messages",gms);
+
+        ChatGroupDao chatGroupDao = new ChatGroupDao();
+//        UserDao userDao = new UserDao();
+//        User usr=userDao.findUserByUserId(userID);
+//        List<ListGroups> allNewGroups=new ArrayList<ListGroups>();
+//        List<ChatGroup> chatGroupList=usr.getChatGroups();
+//        for(ChatGroup cg:chatGroupList)
+//        {
+//            ListGroups obj=new ListGroups(cg.getId(),cg.getName());
+//            allNewGroups.add(obj);
+//        }
+//        mav.addObject("groups", allNewGroups);
+
+        ChatGroup cg=chatGroupDao.findById(groupID);
+        List<User> gUsers=cg.getUsers();
+        List<OnlineUsers> allNewUsers=new ArrayList<OnlineUsers>();
+        Set<User> users=ChatManager.getActiveUsers();
+        List<Integer> gUID=new ArrayList<Integer>();
+
+        for(User u:gUsers){
+            gUID.add(u.getId());
+        }
+
+        List<User> nonActiveGUsers = new ArrayList<User>();
+        List<User> activeGUsers = new ArrayList<User>();
+        List<Integer> aGUID=new ArrayList<Integer>();
+        for (User u: users){
+            if(gUID.indexOf(u.getId())>-1&&u.getId()!=userID){
+                activeGUsers.add(u);
+                aGUID.add(u.getId());
+            }
+        }
+
+        for (User u: gUsers){
+            if(u.getId()!=userID&&!(aGUID.indexOf(u.getId())>-1)){
+                nonActiveGUsers.add(u);
+            }
+        }
+
+        for (User u:activeGUsers) {
+            OnlineUsers obj=new OnlineUsers(u.getEmail(),u.getNickName(),true);
+            allNewUsers.add(obj);
+        }
+        for (User u:nonActiveGUsers) {
+            OnlineUsers obj=new OnlineUsers(u.getEmail(),u.getNickName(),false);
+            allNewUsers.add(obj);
+        }
+        mav.addObject("activeUsers",allNewUsers);
+        return mav;
+    }
+
+//        @RequestMapping(value = "/poll")
+//        public ModelAndView poll(HttpServletRequest servletRequest,
+//                                        @RequestParam("user")String email,
+//                                        @RequestParam("groupID")int groupID,
+//                                        @RequestParam("lastUpdated")long lastUpdated){
+//
+//            final ObjectMapper mapper=new ObjectMapper();
+//
+//            ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+//            MessageDao messageDao = new MessageDao();
+//            ChatGroupDao chatGroupDao = new ChatGroupDao();
+//            UserDao userDao = new UserDao();
+//                User user = userDao.findUserByEmail(email);
+//                List<ChatGroup> allNewGroups;
+//                List<Message> allNewMessages=new ArrayList<Message>();
+//                List<User> allNewUsers;
+//                System.out.println(lastUpdated);
+//                if (lastUpdated == -1) {
+//                    System.out.println("show");
+//                    try{
+//                        allNewMessages = messageDao.showMessagesToPersonInGroup(user.getId(), groupID);
+//                    }catch (NullPointerException e){
+//                        e.printStackTrace();
+//                    }
+//                } else {
+//                    System.out.println("poll");
+//                    try {
+//                        System.out.println(user.getId()+" "+ groupID);
+//                        allNewMessages = messageDao.pollMessagesToPersonInGroup(user.getId(), groupID, new Date(lastUpdated));
+//                    }catch (NullPointerException e){
+//                        e.printStackTrace();
+//                    }
+//                }
+//                //        mav.addObject("groups",allNewGroups);
+//                //        mav.addObject("users",allNewUsers);
+//                //        try {
+//                mav.addObject("messages", allNewMessages);
+//                //            mav.addObject("mmessages",mapper.writeValueAsString(allNewMessages));
+//                //        } catch (IOException e) {
+//                //            e.printStackTrace();
+//                //        }
+//            return mav;
+//        }
+
+//    @RequestMapping(value = "/pollGroup")
+//    public ModelAndView pollGroup(HttpServletRequest servletRequest,
+//                             @RequestParam("user")String email){
+//
+//        final ObjectMapper mapper=new ObjectMapper();
+//
+//        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+//        try {
+//
+//            ChatGroupDao chatGroupDao = new ChatGroupDao();
+//            UserDao userDao = new UserDao();
+//            //User user = userDao.findUserByEmail(email);
+//            List<ChatGroup> allNewGroups;
+//            List<User> allNewUsers;
+//            allNewGroups=new ArrayList<ChatGroup>();
+//            User user=userDao.allGroupsForUser(email);
+//
+//            try{
+//                allNewGroups=user.getChatGroups();
+//
+//            }catch (NullPointerException e){
+//                e.printStackTrace();
+//            }
+//
+//            //        mav.addObject("groups",allNewGroups);
+//            //        mav.addObject("users",allNewUsers);
+//            //        try {
+//            mav.addObject("groups", allNewGroups);
+//            //            mav.addObject("mmessages",mapper.writeValueAsString(allNewMessages));
+//            //        } catch (IOException e) {
+//            //            e.printStackTrace();
+//            //        }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return mav;
+//    }
+//
+//    @RequestMapping(value = "/pollActiveUsers")
+//    public ModelAndView pollActiveUsers(HttpServletRequest servletRequest){
+//
+//        final ObjectMapper mapper=new ObjectMapper();
+//
+//        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+//        Set<User> allNewUsers;
+//        allNewUsers=new HashSet<User>();
+//        try {
+//
+//            try{
+//                allNewUsers = ChatManager.getActiveUsers();
+//            }catch (NullPointerException e){
+//                e.printStackTrace();
+//            }
+//
+//
+//
+//            //        mav.addObject("groups",allNewGroups);
+//            //        mav.addObject("users",allNewUsers);
+//            //        try {
+//            mav.addObject("activeUsers",allNewUsers);
+//            //            mav.addObject("mmessages",mapper.writeValueAsString(allNewMessages));
+//            //        } catch (IOException e) {
+//            //            e.printStackTrace();
+//            //        }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//        }
+//        return mav;
+//    }
 }

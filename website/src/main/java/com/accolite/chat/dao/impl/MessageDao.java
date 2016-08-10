@@ -97,11 +97,6 @@ public class MessageDao implements IMessageDao {
             resultList =(List<Message>) q.list();
             for(Message message:resultList){
                 if(message.getCreated().compareTo(user.getCreated()) > 0){
-                    User userTemp=message.getUser();
-                    userTemp.setChatGroups(null);
-                    userTemp.setRoles(null);
-                    userTemp.setMessages(null);
-                    message.setUser(userTemp);
                     finalResult.add(message);
                 }
             }
@@ -129,9 +124,6 @@ public class MessageDao implements IMessageDao {
             resultList =(List<Message>) q.list();
             for(Message message:resultList){
                 if((message.getCreated().compareTo(user.getCreated()) > 0)&&(message.getCreated().compareTo(date) > 0)){
-                    User userTemp=message.getUser();
-                    User dUser=new User(userTemp.getFirstName(),userTemp.getMiddleName(),userTemp.getLastName(),userTemp.getCreated(),userTemp.getUpdated(),userTemp.isActive(),userTemp.getNickName(),userTemp.getEmail(),null,userTemp.getCredential());
-                    message.setUser(dUser);
                     finalResult.add(message);
                 }
             }

@@ -16,6 +16,10 @@ public class ChatManager {
     private static Set<User> activeUsers = new HashSet<User>();
 
     public static void setUserOnline(User user){
+        for(User u:activeUsers){
+            if(u.getEmail().equals(user.getEmail()))
+                return;
+        }
         activeUsers.add(user);
     }
 
