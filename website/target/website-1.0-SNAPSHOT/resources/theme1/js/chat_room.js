@@ -22,6 +22,27 @@ jQuery.Topic = function( id ) {
 $( document ).ready(function() {
     $.Topic('updateChatbox').subscribe(function (message) {
         console.log(message);
+        var addition=$('.chatbox ul').html();
+        for(var i=0;i<message.length;i++){
+            var date=new Date(message[i].created);
+            addition+='<li class="msg-body">'+
+            '<div class="dp-container">'+
+            '<a href="/profileView?user='+message[i].user.email+'"><img src="/resources/theme1/img/placeholder.jpg" width="32" height="32" alt="user nickname"></a>'+
+            '</div>'+
+            '<div class="msg-container">'+
+            '<div class="msg-timestamp">'+
+            '<abbr title="Today" >'+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()+'</abbr>'+
+            '</div>'+
+            '<strong>'+
+            '<a href="/profileView?user='+message[i].user.email+'">'+message[i].user.nickName+'</a>'+
+            '</strong>'+
+            '<div class="message">'+
+            '<p>'+message[i].message+'</p>'+
+            '</div>'+
+            '</div>'+
+            '</li>'
+        }
+        $('.chatbox ul').html(addition);
     });
     $('.sender').click(function () {
         $(this).prop('disabled',true);
@@ -34,13 +55,12 @@ $( document ).ready(function() {
                 userID: $('#userID').val(),
                 userEmail:$('#userEmail').val(),
                 created: new Date().getTime(),
-               // groupID: $('#groupID').val()
-                groupID: 1
+                groupID: $('#groupID').val()
             },
             success: function(result){
                 this.disabled=false;
                 $('.chattext').val("");
-                $.Topic('updateChatbox').publish(result);
+                // $.Topic('updateChatbox').publish(result);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert(textStatus+": "+errorThrown);
@@ -52,15 +72,15 @@ $( document ).ready(function() {
         $.ajax({
             url: "poll",
             method: 'GET',
-            dataType: 'json',
             data: {
-                'userID': $('#userID').val(),
+                'user': $('#userEmail').val(),
                 'groupID' : $('#groupID').val(),
                 'lastUpdated': lastUpdated
             },
             success: function(result){
                 lastUpdated=new Date().getTime();
-                $.Topic('updateChatbox').publish(result);
+                // console.log(result['mmessages']);
+                $.Topic('updateChatbox').publish(result["messages"]);
                 var timeout=($(".chattext").is(":focus"))?5000:10000;
                 setTimeout(function () {
                     poll();
@@ -95,9 +115,8 @@ $( document ).ready(function() {
         $.ajax({
             url: "poll",
             method: 'GET',
-            dataType: 'json',
             data: {
-                'userID': $('#userID').val(),
+                'user': $('#userEmail').val(),
                 'groupID' : $('#groupID').val(),
                 'lastUpdated': lastUpdated
             },
@@ -105,7 +124,9 @@ $( document ).ready(function() {
                 lastUpdated=new Date().getTime();
                 spinnerSpan.removeClass("mif-spinner5");
                 spinnerSpan.removeClass("mif-ani-spin");
-                $.Topic('updateChatbox').publish(result);
+                // console.log(result['mmessages']);
+                $('.chatbox ul').html("");
+                $.Topic('updateChatbox').publish(result["messages"]);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus+": "+errorThrown);

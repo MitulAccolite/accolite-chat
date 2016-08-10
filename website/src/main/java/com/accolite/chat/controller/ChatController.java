@@ -6,18 +6,18 @@ import com.accolite.chat.model.*;
 import com.accolite.chat.model.Message;
 import com.accolite.chat.model.Role;
 import manager.ChatManager;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
@@ -27,36 +27,6 @@ import java.util.*;
 @Controller
 public class ChatController {
 
-    /*private List<User> activeUsers = new ArrayList<User>();
-
-    @RequestMapping(value = "/authenticate")
-    public ModelAndView authenticate(HttpServletRequest servletRequest) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("authenticate");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/register")
-    public ModelAndView register(HttpServletRequest servletRequest) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("register");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/chatRoom")
-    public ModelAndView chatRoom(
-            @RequestParam("user") User user,
-            HttpServletRequest servletRequest) throws Exception {
-                ModelAndView modelAndView = new ModelAndView("chat_room");
-            modelAndView.addObject("user",user);
-            String details = "Name : " + user.getFirstName() + "email : " +user.getEmail();
-                System.out.println(details);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/error")
-    public ModelAndView error(HttpServletRequest servletRequest) throws Exception {
-        ModelAndView modelAndView = new ModelAndView("error404");
-        return modelAndView;
-    }*/
 
     @RequestMapping(value = "/getstarted")
     public ModelAndView getStarted(HttpServletRequest servletRequest){
@@ -173,8 +143,9 @@ public class ChatController {
 
     @RequestMapping(value = "/logout")
     public ModelAndView logout(HttpServletRequest servletRequest){
-        ModelAndView modelAndView = new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("authenticate");
         servletRequest.getSession().removeAttribute("user");
+        servletRequest.getSession().invalidate();
         return modelAndView;
     }
 
@@ -385,7 +356,6 @@ public class ChatController {
                                     @RequestParam("groupName")String groupName,
                                     @RequestParam("userList[]")int[] userList){
 
-        ModelAndView modelAndView = new ModelAndView("groupview");
         IChatGroupDao chatGroupDao = new ChatGroupDao();
         ChatGroup group = new ChatGroup(groupName,new Date());
 
@@ -397,27 +367,57 @@ public class ChatController {
         }
 
         chatGroupDao.add(group);
-        User user = userDao.findUserByEmail(email);
 
-        modelAndView.addObject("user",user);
-        modelAndView.addObject("group",group);
-        return modelAndView;
+        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+        mav.addObject("groupID", group.getId());
+        return mav;
     }
 
-    @RequestMapping(value = "cgroupView")
-    public ModelAndView cgroupView(HttpServletRequest servletRequest,
-                                  @RequestParam("groupName")String groupName,
-                                  @RequestParam("userEmail")String email
-    ){
-        ModelAndView modelAndView = new ModelAndView("groupview");
-        IChatGroupDao chatGroupDao = new ChatGroupDao();
-        ChatGroup group = chatGroupDao.getChatGroupByName(groupName);
+    @RequestMapping(value = "/poll")
+    public ModelAndView poll(HttpServletRequest servletRequest,
+                                    @RequestParam("user")String email,
+                                    @RequestParam("groupID")int groupID,
+                                    @RequestParam("lastUpdated")long lastUpdated){
 
-        IUserDao userDao = new UserDao();
-        User user = userDao.findUserByEmail(email);
+        final ObjectMapper mapper=new ObjectMapper();
 
-        modelAndView.addObject("user",user);
-        modelAndView.addObject("group",group);
-        return modelAndView;
+        ModelAndView mav = new ModelAndView(new MappingJackson2JsonView());
+        try {
+            MessageDao messageDao = new MessageDao();
+            ChatGroupDao chatGroupDao = new ChatGroupDao();
+            UserDao userDao = new UserDao();
+            User user = userDao.findUserByEmail(email);
+            List<ChatGroup> allNewGroups;
+            List<Message> allNewMessages=new ArrayList<Message>();
+            List<User> allNewUsers;
+            System.out.println(lastUpdated);
+            if (lastUpdated == -1) {
+                System.out.println("show");
+                try{
+                    allNewMessages = messageDao.showMessagesToPersonInGroup(user.getId(), groupID);
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("poll");
+                try {
+                    System.out.println(user.getId()+" "+ groupID);
+                    allNewMessages = messageDao.pollMessagesToPersonInGroup(user.getId(), groupID, new Date(lastUpdated));
+                }catch (NullPointerException e){
+                    e.printStackTrace();
+                }
+            }
+            //        mav.addObject("groups",allNewGroups);
+            //        mav.addObject("users",allNewUsers);
+            //        try {
+            mav.addObject("messages", allNewMessages);
+            //            mav.addObject("mmessages",mapper.writeValueAsString(allNewMessages));
+            //        } catch (IOException e) {
+            //            e.printStackTrace();
+            //        }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return mav;
     }
 }

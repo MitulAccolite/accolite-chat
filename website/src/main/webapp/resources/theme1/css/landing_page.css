@@ -1,0 +1,32 @@
+.btn-default:hover {
+    border: 1px solid #2B9CFF;
+    outline: 0;
+    color: #000;
+    background-color: #2B9CFF;
+}
+
+.btn-default{
+    border: 1px solid #2B9CFF;
+    color: #2B9CFF;
+    background-color: transparent;
+}
+
+.pagedown-arrow{
+    color: darkslategrey;
+    border-color: darkslategrey;
+}
+
+.brand-heading {
+    -webkit-text-stroke-color: #2B9CFF
+}
+
+.intro-text {
+    -webkit-text-stroke-color: initial;
+    background-color: rgba(43,156,255,0.8);
+    text-align: center;
+    width: 66%;
+    position: relative;
+    left: 110px;
+    top: -18px;
+    color: darkslategrey;
+}

@@ -23,6 +23,16 @@ public class Message {
     @ManyToOne(cascade = CascadeType.ALL)
     private ChatGroup chatGroup;
 
+    private boolean isArchive;
+
+    public boolean isArchive() {
+        return isArchive;
+    }
+
+    public void setArchive(boolean archive) {
+        isArchive = archive;
+    }
+
     public Message() {
     }
 

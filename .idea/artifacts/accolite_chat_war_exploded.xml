@@ -51,6 +51,7 @@
       </element>
       <element id="javaee-facet-resources" facet="accolite-chat/web/Web" />
       <element id="artifact" artifact-name="website:war exploded" />
+      <element id="artifact" artifact-name="website:war" />
     </root>
   </artifact>
 </component>

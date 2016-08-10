@@ -22,14 +22,13 @@ function groupCreate(){
     $.ajax({
         url: "groupCreate",
         method: 'POST',
-        dataType: 'text/plain',
         data: {
             'user': $('#userEmail').val(),
             'groupName' : $('#groupName').val(),
             'userList' : userList
         },
         success: function(result){
-            window.location.href="cgroupView?groupName="+$('#groupName').val()+"&userEmail="+$('#userEmail').val();
+            window.location.href="groupView?groupID="+result["groupID"]+"&userEmail="+$('#userEmail').val();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log(textStatus+": "+errorThrown);
