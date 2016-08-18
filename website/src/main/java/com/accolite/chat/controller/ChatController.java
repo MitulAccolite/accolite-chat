@@ -161,6 +161,8 @@ public class ChatController {
                                            @RequestParam("groupID")int groupid,
                                            HttpServletRequest servletRequest){
 
+        Date pollTime=new Date();
+
         System.out.println("values obtained : " + message + " : " + userid);
         IMessageDao messageDao = new MessageDao();
         IUserDao userDao = new UserDao();
@@ -176,7 +178,7 @@ public class ChatController {
 
         System.out.println("Message saved successfully");
 
-        return poll(servletRequest,userid,groupid,message1.getCreated().getTime()-10);
+        return poll(servletRequest,userid,groupid,pollTime.getTime());
         //return message;
     }
 

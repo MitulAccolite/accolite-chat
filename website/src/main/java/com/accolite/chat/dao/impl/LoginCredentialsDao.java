@@ -97,7 +97,7 @@ public class LoginCredentialsDao implements ILoginCredentialsDao {
             q.setString(0, username);
             q.setString(1, password);
             user = (List<Credential>) q.list();
-            System.out.println(user);
+            System.out.println(user.get(0));
         } catch (HibernateException e) {
             session.getTransaction().rollback();
             throw e;

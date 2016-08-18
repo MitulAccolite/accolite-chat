@@ -23,7 +23,7 @@ $( document ).ready(function() {
     $.Topic('updateActiveUsers').subscribe(function (users) {
         console.log(users);
         var activeUsers="";
-        if(users==undefined)return;
+        if(!users||typeof users==undefined)return;
         for(var i=0;i<users.length;i++){
             activeUsers+='<li>'+
                 '<a href="profileView?user='+users[i].emailID+'">'+
@@ -98,7 +98,7 @@ $( document ).ready(function() {
                 this.disabled=false;
                 $('.chattext').val("");
                 $.Topic('updateActiveUsers').publish(result["activeUsers"]);
-                $.Topic('updateGroup').publish(result["groups"]);
+                // $.Topic('updateGroup').publish(result["groups"]);
                 $.Topic('updateChatbox').publish(result["messages"]);
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -157,6 +157,7 @@ $( document ).ready(function() {
 
 
     (function poll() {
+        console.log("polling.....");
         $.ajax({
             url: "poll",
             method: 'POST',
@@ -171,7 +172,7 @@ $( document ).ready(function() {
                     $('.chatbox ul').html("");
                 lastUpdated=new Date().getTime();
                 $.Topic('updateActiveUsers').publish(result["activeUsers"]);
-                $.Topic('updateGroup').publish(result["groups"]);
+                // $.Topic('updateGroup').publish(result["groups"]);
                 $.Topic('updateChatbox').publish(result["messages"]);
                 var timeout=($(".chattext").is(":focus"))?10000:20000;
                 setTimeout(function () {
@@ -216,7 +217,7 @@ $( document ).ready(function() {
                 spinnerSpan.removeClass("mif-ani-spin");
                 $('.chatbox ul').html("");
                 $.Topic('updateActiveUsers').publish(result["activeUsers"]);
-                $.Topic('updateGroup').publish(result["groups"]);
+                // $.Topic('updateGroup').publish(result["groups"]);
                 $.Topic('updateChatbox').publish(result["messages"]);
             },
             error: function (jqXHR, textStatus, errorThrown) {

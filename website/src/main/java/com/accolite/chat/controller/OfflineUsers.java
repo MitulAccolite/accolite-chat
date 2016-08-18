@@ -67,41 +67,11 @@ public class OfflineUsers {
         try {
             List<String> addresses = getAllOfflineUsers();
             for (int i = 0; i < addresses.size(); i++) {
-                final String username = "saumyadeepjndi@gmail.com";
-                final String password = "jndijndi123123";
-
-                Properties props = new Properties();
-                props.put("mail.smtp.auth", "true");
-                props.put("mail.smtp.starttls.enable", "true");
-                props.put("mail.smtp.host", "smtp.gmail.com");
-                props.put("mail.smtp.port", "587");
-
-                Session session = Session.getInstance(props,
-                        new javax.mail.Authenticator() {
-                            protected PasswordAuthentication getPasswordAuthentication() {
-                                return new PasswordAuthentication(username, password);
-                            }
-                        });
-                try {
-                    MimeMessage message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress(username));
-                    message.setRecipients(javax.mail.Message.RecipientType.TO,
-                            InternetAddress.parse(addresses.get(0)));
-                    message.setSubject("Welcome " + newUser + " as " + nickName + " to Chaster - The Accolite Chat Group");
-                    message.setText("Welcome on-board " + newUser + " We are very happy to have you as part of our chat group.");
-
-                    Transport.send(message);
-                    System.out.println("Done");
-
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
-                }
+                Thread notify=new Thread(new sendMail(newUser,nickName,addresses.get(i)));
+                notify.start();
             }
         }catch(Exception e){
             e.printStackTrace();
         }
     }
-
-
-
 }
